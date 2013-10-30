@@ -1,0 +1,82 @@
+{
+  "shims": {
+    "/javascripts/app/main.js": {
+      "bootstrap": {
+        "deps": [
+          "jquery"
+        ],
+        "exports": "jQuery"
+      }
+    }
+  },
+  "deps": {
+    "/javascripts/app/main.js": [
+      "modernizr/modernizr",
+      "durandal/app",
+      "durandal/viewLocator",
+      "durandal/system"
+    ],
+    "/javascripts/app/viewmodels/flickr.js": [
+      "plugins/http",
+      "durandal/app",
+      "knockout"
+    ],
+    "/javascripts/app/viewmodels/nowplaying.js": [],
+    "/javascripts/app/viewmodels/playercontrols.js": [
+      "bootstraplib/bootstrap-slider"
+    ],
+    "/javascripts/app/viewmodels/radio.js": [],
+    "/javascripts/app/viewmodels/shell.js": [
+      "plugins/router",
+      "durandal/app",
+      "touchscroll/touchscroll"
+    ],
+    "/javascripts/app/viewmodels/spotify.js": [],
+    "/javascripts/app/viewmodels/welcome.js": []
+  },
+  "aliases": {
+    "/javascripts/app/main.js": {
+      "modernizr": "../vendor/modernizr",
+      "text": "../vendor/requirejs-text/text",
+      "knockout": "../vendor/knockout.js/knockout",
+      "jquery": "../vendor/jquery/jquery",
+      "bootstrap": "../vendor/bootstrap/bootstrap",
+      "bootstraplib": "../vendor/bootstrap",
+      "durandal": "../vendor/durandal",
+      "plugins": "../vendor/durandal/plugins",
+      "transitions": "../vendor/durandal/transitions",
+      "touchscroll": "../vendor/touchscroll"
+    }
+  },
+  "mappings": {
+    "/javascripts/app/main.js": null
+  },
+  "packages": {
+    "/javascripts/app/main.js": null
+  },
+  "originalConfig": {
+    "shim": {
+      "bootstrap": {
+        "deps": [
+          "jquery"
+        ],
+        "exports": "jQuery"
+      }
+    },
+    "paths": {
+      "modernizr": "../vendor/modernizr",
+      "text": "../vendor/requirejs-text/text",
+      "knockout": "../vendor/knockout.js/knockout",
+      "jquery": "../vendor/jquery/jquery",
+      "bootstrap": "../vendor/bootstrap/bootstrap",
+      "bootstraplib": "../vendor/bootstrap",
+      "durandal": "../vendor/durandal",
+      "plugins": "../vendor/durandal/plugins",
+      "transitions": "../vendor/durandal/transitions",
+      "touchscroll": "../vendor/touchscroll"
+    }
+  },
+  "requireFiles": [
+    "/javascripts/app/main.js"
+  ]
+}
