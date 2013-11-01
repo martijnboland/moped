@@ -7,9 +7,9 @@ requirejs.config({
         'bootstrap': '../vendor/bootstrap/bootstrap',
         'bootstraplib': '../vendor/bootstrap',
         'durandal':'../vendor/durandal',
-        'plugins' : '../vendor/durandal/plugins',
-        'transitions' : '../vendor/durandal/transitions',
-        'touchscroll' : '../vendor/touchscroll'
+        'plugins': '../vendor/durandal/plugins',
+        'transitions': '../vendor/durandal/transitions',
+        'touchscroll': '../vendor/touchscroll'
     },
     shim: {
         'bootstrap': {
@@ -34,7 +34,8 @@ define(function(require) {
     app.configurePlugins({
         router:true,
         widget: true,
-        observable: true
+        observable: true,
+        dialog: true
     });
 
     app.start().then(function() {

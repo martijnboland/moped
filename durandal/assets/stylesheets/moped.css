@@ -51,12 +51,20 @@ body {
   background-position: 8px 8px;
 }
 
+.menu a > .panel-heading:hover {
+  background-color: #555;
+}
+
 .menu .panel-heading.spotify {
   background-image: url(../images/spotify-icon.png);
 }
 
 .menu .panel-heading.radio {
   background-image: url(../images/radio-icon.png);
+}
+
+.menu .panel-heading.settings {
+  background-image: url(../images/settings-icon.png);
 }
 
 .menu .panel-body {

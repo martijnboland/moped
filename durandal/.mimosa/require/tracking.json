@@ -16,23 +16,23 @@
       "durandal/viewLocator",
       "durandal/system"
     ],
-    "/javascripts/app/viewmodels/flickr.js": [
-      "plugins/http",
-      "durandal/app",
-      "knockout"
-    ],
+    "/javascripts/app/viewmodels/home.js": [],
     "/javascripts/app/viewmodels/nowplaying.js": [],
     "/javascripts/app/viewmodels/playercontrols.js": [
       "bootstraplib/bootstrap-slider"
     ],
-    "/javascripts/app/viewmodels/radio.js": [],
+    "/javascripts/app/viewmodels/radio/radio.js": [],
+    "/javascripts/app/viewmodels/radio/radiomenu.js": [],
+    "/javascripts/app/viewmodels/radiomenu.js": [],
+    "/javascripts/app/viewmodels/settings.js": [
+      "durandal/app"
+    ],
     "/javascripts/app/viewmodels/shell.js": [
       "plugins/router",
       "durandal/app",
       "touchscroll/touchscroll"
     ],
-    "/javascripts/app/viewmodels/spotify.js": [],
-    "/javascripts/app/viewmodels/welcome.js": []
+    "/javascripts/app/viewmodels/spotify/spotifymenu.js": []
   },
   "aliases": {
     "/javascripts/app/main.js": {
@@ -73,7 +73,8 @@
       "durandal": "../vendor/durandal",
       "plugins": "../vendor/durandal/plugins",
       "transitions": "../vendor/durandal/transitions",
-      "touchscroll": "../vendor/touchscroll"
+      "touchscroll": "../vendor/touchscroll",
+      "mopidy": "../vendor/mopidy"
     }
   },
   "requireFiles": [

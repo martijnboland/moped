@@ -1,7 +1,10 @@
 ﻿<div>
   <aside id="menu" class="menu pane-col scroll-y">
-    <div data-bind="compose:'viewmodels/spotify'"></div>
-    <div data-bind="compose:'viewmodels/radio'"></div>
+    <div data-bind="compose:'viewmodels/spotify/spotifymenu'"></div>
+    <div data-bind="compose:'viewmodels/radio/radiomenu'"></div>
+    <div class="panel">
+      <a href="#settings"><div class="panel-heading settings">Settings</div></a>
+    </div>
   </aside>
 
   <div class="main pane-col" data-bind="css: { outtaway: ! isSidebarVisible }">
@@ -14,12 +17,14 @@
         <span class="icon-bar"></span>
       </button>
       <div class="title-bar">
-        Moped
+        <a href="#">Moped</a>
       </div>
     </header>
 
     <section id="maincontent" class="maincontent pane-row scroll-y">
-      
+      <div class="container" data-bind="router: {}">
+
+      </div>
     </section>
 
     <section class="nowplaying pane-row">
