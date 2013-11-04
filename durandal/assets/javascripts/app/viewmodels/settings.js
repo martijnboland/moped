@@ -3,28 +3,40 @@ define(['durandal/app'], function (app) {
     settings: {
       mopidyUrl: ''
     },
-    activate: function () {
+    activate: function() {
       if (window.localStorage && localStorage['moped.mopidyUrl'] !== null) {
         this.settings.mopidyUrl = localStorage['moped.mopidyUrl'];
       }
     },
     saveSettings: function() {
-      var self = this;
       if (window.localStorage) {
-        if (self.settings.mopidyUrl !== '' && self.settings.mopidyUrl !== null) {
-          // validate
-          var mopidy = new Mopidy({
-            webSocketUrl: self.settings.mopidyUrl
-          });
-          mopidy.on("state:online", function () {
-            localStorage['moped.mopidyUrl'] = self.settings.mopidyUrl;
-            app.showMessage('Settings are saved.', 'Settings');
-          });
+        if (this.settings.mopidyUrl !== '' && this.settings.mopidyUrl !== null) {
+          localStorage['moped.mopidyUrl'] = this.settings.mopidyUrl;
         }
         else {
           localStorage['moped.mopidyUrl'] = '';  
         }
+        app.showMessage('Settings are saved.', 'Settings');
       }
+    },
+    verifyConnection: function() {
+      var mopidy = new Mopidy({
+        webSocketUrl: this.settings.mopidyUrl
+      });
+      mopidy.on(console.log.bind(console));
+      mopidy.on('state:online', function() {
+        app.showMessage('Connection successful.', 'Verify connection');
+      });
+      mopidy.on('websocket:error', function(error) {
+        app.showMessage('Unable to connect to Mopidy server. Check if the url is correct.', 'Verify connection');
+      });
+
+      setTimeout(function() {
+        mopidy.close();
+        mopidy.off();
+        mopidy = null;
+        console.log('Mopidy closed.');
+      }, 1000);
     }
   };
 });
