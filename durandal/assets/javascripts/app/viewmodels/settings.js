@@ -16,7 +16,9 @@ define(['durandal/app'], function (app) {
         else {
           localStorage['moped.mopidyUrl'] = '';  
         }
-        app.showMessage('Settings are saved.', 'Settings');
+        app.showMessage('Settings are saved.', 'Settings').then(function(){
+          app.trigger('settings:saved');
+        });
       }
     },
     verifyConnection: function() {
