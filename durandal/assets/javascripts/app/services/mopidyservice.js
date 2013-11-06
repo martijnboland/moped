@@ -29,6 +29,9 @@ define(['durandal/app'], function (app) {
     restart: function() {
       this.stop();
       this.start();
+    },
+    getPlaylists: function() {
+      return this.mopidy.playlists.getPlaylists();
     }
   };
 });

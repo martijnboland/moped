@@ -24,7 +24,11 @@
     "/javascripts/app/viewmodels/playercontrols.js": [
       "bootstraplib/bootstrap-slider"
     ],
-    "/javascripts/app/viewmodels/playlists/menu.js": [],
+    "/javascripts/app/viewmodels/playlists/menu.js": [
+      "services/mopidyservice",
+      "durandal/app",
+      "knockout"
+    ],
     "/javascripts/app/viewmodels/radio/menu.js": [],
     "/javascripts/app/viewmodels/radio/radio.js": [],
     "/javascripts/app/viewmodels/radiomenu.js": [],
