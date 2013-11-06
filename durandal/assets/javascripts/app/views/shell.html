@@ -1,7 +1,8 @@
 ﻿<div>
   <aside id="menu" class="menu pane-col scroll-y">
-    <div data-bind="compose:'viewmodels/spotify/spotifymenu'"></div>
-    <div data-bind="compose:'viewmodels/radio/radiomenu'"></div>
+    <div data-bind="compose:'viewmodels/search/search'"></div>
+    <div data-bind="compose:'viewmodels/playlists/menu'"></div>
+    <div data-bind="compose:'viewmodels/radio/menu'"></div>
     <div class="panel">
       <a href="#settings"><div class="panel-heading settings">Settings</div></a>
     </div>
@@ -16,8 +17,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div class="title-bar">
-        <div class="pull-right" data-bind="text: connectionState"></div>
+      <div class="container title-bar">
+        <div class="pull-right">
+          Status: <span data-bind="text: connectionState">
+        </div>
         <a href="#">Moped</a>
       </div>
     </header>

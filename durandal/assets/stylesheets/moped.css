@@ -41,6 +41,7 @@ body {
 .menu .panel {
   background-color: transparent;
   border-radius: 0;
+  margin-bottom: 10px;
 }
 
 .menu .panel-heading {
@@ -55,8 +56,12 @@ body {
   background-color: #555;
 }
 
-.menu .panel-heading.spotify {
-  background-image: url(../images/spotify-icon.png);
+.menu .panel-heading.search {
+  background-image: url(../images/search-icon.png);
+}
+
+.menu .panel-heading.playlists {
+  background-image: url(../images/playlists-icon.png);
 }
 
 .menu .panel-heading.radio {
@@ -75,14 +80,13 @@ body {
 .menu .list-group {
   background-color: #444;
   font-size: 90%;
+  border: none;
 }
 
 .menu .list-group-item {
   color: #ccc;
-  padding: 7px 15px;
   background-color: transparent;
-  border-radius: 0;
-  border-color: #4c4c4c;
+  border: none;
 }
 
 .menu .list-group-item:hover {

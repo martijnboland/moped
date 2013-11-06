@@ -24,9 +24,11 @@
     "/javascripts/app/viewmodels/playercontrols.js": [
       "bootstraplib/bootstrap-slider"
     ],
+    "/javascripts/app/viewmodels/playlists/menu.js": [],
+    "/javascripts/app/viewmodels/radio/menu.js": [],
     "/javascripts/app/viewmodels/radio/radio.js": [],
-    "/javascripts/app/viewmodels/radio/radiomenu.js": [],
     "/javascripts/app/viewmodels/radiomenu.js": [],
+    "/javascripts/app/viewmodels/search/search.js": [],
     "/javascripts/app/viewmodels/settings.js": [
       "durandal/app"
     ],
@@ -35,8 +37,7 @@
       "durandal/app",
       "touchscroll/touchscroll",
       "services/mopidyservice"
-    ],
-    "/javascripts/app/viewmodels/spotify/spotifymenu.js": []
+    ]
   },
   "aliases": {
     "/javascripts/app/main.js": {
