@@ -2,7 +2,7 @@
   <div class="panel-heading playlists">Playlists</div>
   <div class="panel-body">
     <div class="list-group" data-bind="foreach: playlists">
-      <a href="#" class="list-group-item" data-bind="click: $parent.showPlaylist.bind($data, uri)"><span class="glyphicon glyphicon-music"></span> <span data-bind="text: name"></a>
+      <a class="list-group-item" data-bind="attr: { href: '#playlist/' + uri }"><span class="glyphicon glyphicon-music"></span> <span data-bind="text: name"></a>
     </div>    
   </div>
 </div>

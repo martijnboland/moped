@@ -20,18 +20,21 @@
       "durandal/app"
     ],
     "/javascripts/app/viewmodels/home.js": [],
+    "/javascripts/app/viewmodels/notconnected.js": [],
     "/javascripts/app/viewmodels/nowplaying.js": [],
     "/javascripts/app/viewmodels/playercontrols.js": [
       "bootstraplib/bootstrap-slider"
     ],
+    "/javascripts/app/viewmodels/playlists/list.js": [
+      "services/mopidyservice",
+      "durandal/app"
+    ],
     "/javascripts/app/viewmodels/playlists/menu.js": [
       "services/mopidyservice",
-      "durandal/app",
-      "knockout"
+      "durandal/app"
     ],
     "/javascripts/app/viewmodels/radio/menu.js": [],
     "/javascripts/app/viewmodels/radio/radio.js": [],
-    "/javascripts/app/viewmodels/radiomenu.js": [],
     "/javascripts/app/viewmodels/search/search.js": [],
     "/javascripts/app/viewmodels/settings.js": [
       "durandal/app"
@@ -40,7 +43,8 @@
       "plugins/router",
       "durandal/app",
       "touchscroll/touchscroll",
-      "services/mopidyservice"
+      "services/mopidyservice",
+      "jquery"
     ]
   },
   "aliases": {

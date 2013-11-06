@@ -32,6 +32,10 @@ define(['durandal/app'], function (app) {
     },
     getPlaylists: function() {
       return this.mopidy.playlists.getPlaylists();
+    },
+    getPlaylist: function(uri) {
+      return this.mopidy.playlists.lookup(uri);
     }
   };
+
 });

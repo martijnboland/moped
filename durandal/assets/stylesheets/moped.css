@@ -105,6 +105,11 @@ body {
   transition: all 0.2s ease-out;
 }
 
+.main .container {
+  margin-left: 0;
+  margin-right: auto;
+}
+
 .title-bar { 
   background-color: #eee; 
   color: #666; 

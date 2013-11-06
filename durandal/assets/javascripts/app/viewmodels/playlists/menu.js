@@ -1,4 +1,4 @@
-define(['services/mopidyservice', 'durandal/app', 'knockout'], function (mopidyservice, app, ko) {
+define(['services/mopidyservice', 'durandal/app'], function (mopidyservice, app) {
   return {
     playlists: [],
     activate: function() {
@@ -8,9 +8,6 @@ define(['services/mopidyservice', 'durandal/app', 'knockout'], function (mopidys
           self.playlists = data;
         }, console.error);
       });
-    },
-    showPlaylist: function(uri) {
-      alert(uri);
     }
   };
 });
