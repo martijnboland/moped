@@ -17,10 +17,10 @@
       "durandal/system"
     ],
     "/javascripts/app/services/mopidyservice.js": [
-      "durandal/app"
+      "durandal/app",
+      "durandal/system"
     ],
     "/javascripts/app/viewmodels/home.js": [],
-    "/javascripts/app/viewmodels/notconnected.js": [],
     "/javascripts/app/viewmodels/nowplaying.js": [],
     "/javascripts/app/viewmodels/playercontrols.js": [
       "bootstraplib/bootstrap-slider"
@@ -86,8 +86,7 @@
       "durandal": "../vendor/durandal",
       "plugins": "../vendor/durandal/plugins",
       "transitions": "../vendor/durandal/transitions",
-      "touchscroll": "../vendor/touchscroll",
-      "mopidy": "../vendor/mopidy"
+      "touchscroll": "../vendor/touchscroll"
     }
   },
   "requireFiles": [
