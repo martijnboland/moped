@@ -27,7 +27,8 @@
     ],
     "/javascripts/app/viewmodels/playlists/list.js": [
       "services/mopidyservice",
-      "durandal/app"
+      "durandal/app",
+      "lodash"
     ],
     "/javascripts/app/viewmodels/playlists/menu.js": [
       "services/mopidyservice",
@@ -58,7 +59,8 @@
       "durandal": "../vendor/durandal",
       "plugins": "../vendor/durandal/plugins",
       "transitions": "../vendor/durandal/transitions",
-      "touchscroll": "../vendor/touchscroll"
+      "touchscroll": "../vendor/touchscroll",
+      "lodash": "../vendor/lodash/lodash.compat"
     }
   },
   "mappings": {
@@ -86,7 +88,8 @@
       "durandal": "../vendor/durandal",
       "plugins": "../vendor/durandal/plugins",
       "transitions": "../vendor/durandal/transitions",
-      "touchscroll": "../vendor/touchscroll"
+      "touchscroll": "../vendor/touchscroll",
+      "lodash": "../vendor/lodash/lodash.compat"
     }
   },
   "requireFiles": [

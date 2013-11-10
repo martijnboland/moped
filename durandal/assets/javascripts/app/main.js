@@ -9,7 +9,8 @@ requirejs.config({
         'durandal':'../vendor/durandal',
         'plugins': '../vendor/durandal/plugins',
         'transitions': '../vendor/durandal/transitions',
-        'touchscroll': '../vendor/touchscroll'
+        'touchscroll': '../vendor/touchscroll',
+        'lodash': '../vendor/lodash/lodash.compat'
     },
     shim: {
         'bootstrap': {
