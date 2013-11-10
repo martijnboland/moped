@@ -1,7 +1,6 @@
-<a class="list-group-item row">
-  <div class="col-xs-1" data-bind="text: $index()+1"></div>
-  <h4 class="list-group-item-heading" data-bind="text: name"></h4>
-  <div class="col-xs-4" data-bind="text: getArtistsAsString(artists)"></div>
-  <div class="col-xs-4" data-bind=""></div>
-  <div class="col-xs-4" data-bind=""></div>
-</a>
+<div class="col-xs-1" data-bind="text: getItemIndex()"></div>
+<h4 class="list-group-item-heading" data-bind="text: track.name"></h4>
+<div class="col-xs-1"></div>
+<div class="col-xs-4" data-bind="text: getArtistsAsString()"></div>
+<div class="col-xs-6" data-bind="text: track.album.name"></div>
+<div class="col-xs-1" data-bind="text: getDuration()"></div>
