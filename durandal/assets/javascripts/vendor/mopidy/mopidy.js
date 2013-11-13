@@ -1268,7 +1268,16 @@ Mopidy.prototype._send = function (message) {
         message.jsonrpc = "2.0";
         message.id = this._nextRequestId();
         this._pendingRequests[message.id] = deferred.resolver;
-        this._webSocket.send(JSON.stringify(message));
+        //HACK: skip the __observable__ property that is added by Durandal.
+        //this._webSocket.send(JSON.stringify(message));
+        this._webSocket.send(JSON.stringify(message, function(key, val) {
+          if (key === '__observable__') {
+            return;
+          }
+          else {
+            return val;
+          }
+        }));
         this.emit("websocket:outgoingMessage", message);
     }
 

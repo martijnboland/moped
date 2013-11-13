@@ -1,4 +1,7 @@
-define(['durandal/app', 'durandal/system'], function (app, system) {
+define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) {
+
+  var consoleLog = console.log.bind(console);
+  var consoleError = console.error.bind(console);
 
   // Wraps calls to mopidy api and converts mopidy's promise to Durandal promise.
   // Mopidy method calls are passed as a string because some methods are not 
@@ -13,14 +16,18 @@ define(['durandal/app', 'durandal/system'], function (app, system) {
       if (self.isConnected) {
         executeFunctionByName(functionNameToWrap, self, args).then(function(data) {
           deferred.resolve(data);
-        }, console.error);
+        }, function(err) { 
+          deferred.reject(err);
+        });
       }
       else
       {
         self.mopidy.on("state:online", function() {
           executeFunctionByName(functionNameToWrap, self, args).then(function(data) {
             deferred.resolve(data);
-          }, console.error);
+          }, function(err) { 
+            deferred.reject(err);
+          });
         });
       }
       return deferred.promise();
@@ -51,7 +58,7 @@ define(['durandal/app', 'durandal/system'], function (app, system) {
       else {
         this.mopidy = new Mopidy();
       }
-      this.mopidy.on(console.log.bind(console));
+      this.mopidy.on(consoleLog);
       // Convert Mopidy events to Durandal events
       this.mopidy.on(function(ev, args) {
         app.trigger('mopidy:' + ev, args);
@@ -81,6 +88,22 @@ define(['durandal/app', 'durandal/system'], function (app, system) {
     },
     getPlaylist: function(uri) {
       return wrapMopidyFunc("mopidy.playlists.lookup", this)(uri);
+    },
+    playTrack: function(track, surroundingTracks) {
+      var self = this;
+      self.mopidy.playback.stop(true)
+        .then(self.mopidy.tracklist.clear(), consoleError)
+        .then(self.mopidy.tracklist.add(surroundingTracks), consoleError)
+        .then(function() {
+          var tlTracks = self.mopidy.tracklist.getTlTracks()
+            .then(function(tlTracks) {
+              var tlTrackToPlay = _.find(tlTracks, function(tlTrack) {
+                return tlTrack.track.uri === track.uri;
+              });
+              self.mopidy.playback.changeTrack(tlTrackToPlay);
+              self.mopidy.playback.play();
+            }, consoleError);
+        } , consoleError);
     }
   };
 });

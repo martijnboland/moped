@@ -21,10 +21,6 @@ body { margin: 0 }
   background-color: #333; 
 }
 
-.glyphicon {
-  color: #fff;
-}
-
 /* Custom styles */
 body {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif
@@ -93,6 +89,10 @@ body {
   background-color: #555;
 }
 
+.menu .glyphicon {
+  color: #fff;
+}
+
 .main { 
   left: 0; 
   right: auto;
@@ -153,6 +153,7 @@ body {
 }
 
 .controls .glyphicon {
+  color: #fff;
   font-size: 20px;
 }
 
@@ -167,6 +168,8 @@ body {
 .controls .slider-selection {
   background: #cef;
 }
+
+
 
 @media screen and (min-width: 768px) {
   .main { left: 270px; right: 0; width: auto;  }

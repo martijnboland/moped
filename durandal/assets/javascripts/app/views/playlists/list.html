@@ -1,5 +1,5 @@
 <h2 data-bind="text: playlist.name"></h2>
 <div class="list-group" data-bind="foreach: tracks">
-  <a class="list-group-item row" data-bind="widget: {kind: 'track', track: $data, idx: $index()}">
+  <a href="#" class="list-group-item row" data-bind="widget: {kind: 'track', track: $data, idx: $index()}, click: $parent.playTrack">
   </a>
 </div>

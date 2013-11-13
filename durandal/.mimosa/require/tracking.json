@@ -18,7 +18,8 @@
     ],
     "/javascripts/app/services/mopidyservice.js": [
       "durandal/app",
-      "durandal/system"
+      "durandal/system",
+      "lodash"
     ],
     "/javascripts/app/viewmodels/home.js": [],
     "/javascripts/app/viewmodels/nowplaying.js": [],
