@@ -104,6 +104,18 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
               self.mopidy.playback.play();
             }, consoleError);
         } , consoleError);
+    },
+    play: function() {
+      return wrapMopidyFunc("mopidy.playback.play", this)();
+    },
+    pause: function() {
+      return wrapMopidyFunc("mopidy.playback.pause", this)();
+    },
+    previous: function() {
+      return wrapMopidyFunc("mopidy.playback.previous", this)();
+    },
+    next: function() {
+      return wrapMopidyFunc("mopidy.playback.next", this)();
     }
   };
 });

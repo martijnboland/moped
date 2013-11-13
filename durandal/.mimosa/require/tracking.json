@@ -24,7 +24,10 @@
     "/javascripts/app/viewmodels/home.js": [],
     "/javascripts/app/viewmodels/nowplaying.js": [],
     "/javascripts/app/viewmodels/playercontrols.js": [
-      "bootstraplib/bootstrap-slider"
+      "bootstraplib/bootstrap-slider",
+      "durandal/app",
+      "services/mopidyservice",
+      "jquery"
     ],
     "/javascripts/app/viewmodels/playlists/list.js": [
       "services/mopidyservice",
