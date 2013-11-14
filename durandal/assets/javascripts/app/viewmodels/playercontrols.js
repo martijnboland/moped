@@ -3,19 +3,32 @@ define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice
     isPlaying: false,
     attached: function(view) {
       var self = this;
-      $(view).find('.slider').slider();
+      $(view).find('.volume-slider').slider()
+        .on('slideStop', function(ev) {
+          mopidyservice.setVolume(ev.value);
+        });
+
       app.on('mopidy:event:playbackStateChanged')
         .then(function(data) {
-          if (data.new_state === 'playing') {
-            self.isPlaying = true;
-          }
-          else {
-            self.isPlaying = false;
-          }
+          self.isPlaying = data.new_state === 'playing';
+        });
+      app.on('mopidy:state:online')
+        .then(function(data) {
+          mopidyservice.getVolume()
+            .then(function(volume) {
+              $(view).find('.volume-slider').slider('setValue', volume);
+            });
+          mopidyservice.getState()
+            .then(function (state) {
+              self.isPlaying = state === 'playing';
+            });
+        });
+      app.on('mopidy:event:volumeChanged')
+        .then(function(data) {
+          $(view).find('.volume-slider').slider('setValue', data.volume);
         });
     },
     play: function() {
-
       if (this.isPlaying) {
         // pause
         mopidyservice.pause();
