@@ -89,6 +89,12 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
     getPlaylist: function(uri) {
       return wrapMopidyFunc("mopidy.playlists.lookup", this)(uri);
     },
+    getCurrentTrack: function() {
+      return wrapMopidyFunc("mopidy.playback.getCurrentTrack", this)();
+    },
+    getTimePosition: function() {
+      return wrapMopidyFunc("mopidy.playback.getTimePosition", this)();
+    },
     getVolume: function() {
       return wrapMopidyFunc("mopidy.playback.getVolume", this)();
     },

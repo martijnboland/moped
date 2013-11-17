@@ -7,6 +7,11 @@ body { margin: 0 }
 .scroll-y { overflow-y: auto; }
 
 /* Bootstrap overrides */
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
 .navbar-toggle { 
   border: none; 
   margin: 0; 
@@ -123,14 +128,30 @@ body {
 
 .maincontent { 
   top: 32px; 
-  bottom: 100px; 
+  bottom: 118px; 
   padding: 0 10px; 
 }
 
 .nowplaying { 
-  height: 50px; 
+  height: 68px; 
   bottom: 50px; 
   background-color: #eee; 
+}
+
+.nowplaying-thumb {
+  float: left;
+  height: 48px;
+  width: 48px;
+  margin: 10px 10px 10px 0px;
+}
+
+.nowplaying .time {
+  margin: 10px 0 6px;
+}
+
+.nowplaying .time-slider,
+.nowplaying .slider-horizontal  {
+  width: 100%;
 }
 
 .controls { 

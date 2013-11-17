@@ -1,13 +1,5 @@
-define(['durandal/composition','jquery'], function(composition, $) {
+define(['durandal/composition','jquery', 'util'], function(composition, $, util) {
   
-  function timeFromMilliSeconds(length) {
-    var d = Number(length/1000);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor(d % 3600 / 60);
-    var s = Math.floor(d % 3600 % 60);
-    return ((h > 0 ? h + ":" : "") + (m > 0 ? (h > 0 && m < 10 ? "0" : "") + m + ":" : "0:") + (s < 10 ? "0" : "") + s);
-  }
-
   var ctor = function() { };
 
   ctor.prototype.activate = function(settings) {
@@ -16,11 +8,11 @@ define(['durandal/composition','jquery'], function(composition, $) {
   };
 
   ctor.prototype.getArtistsAsString = function() {
-    return _.map(this.track.artists, 'name').join(',');
+    return util.getTrackArtistsAsString(this.track);
   };
 
   ctor.prototype.getDuration = function() {
-    return timeFromMilliSeconds(this.track.length);
+    return util.getTrackDuration(this.track);
   };
 
   ctor.prototype.getItemIndex = function() {

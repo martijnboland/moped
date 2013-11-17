@@ -21,8 +21,14 @@
       "durandal/system",
       "lodash"
     ],
+    "/javascripts/app/util.js": [],
     "/javascripts/app/viewmodels/home.js": [],
-    "/javascripts/app/viewmodels/nowplaying.js": [],
+    "/javascripts/app/viewmodels/nowplaying.js": [
+      "bootstraplib/bootstrap-slider",
+      "durandal/app",
+      "services/mopidyservice",
+      "jquery"
+    ],
     "/javascripts/app/viewmodels/playercontrols.js": [
       "bootstraplib/bootstrap-slider",
       "durandal/app",
@@ -53,7 +59,8 @@
     ],
     "/javascripts/app/widgets/track/viewmodel.js": [
       "durandal/composition",
-      "jquery"
+      "jquery",
+      "util"
     ]
   },
   "aliases": {

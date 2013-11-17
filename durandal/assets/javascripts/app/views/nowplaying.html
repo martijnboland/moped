@@ -1,1 +1,19 @@
-<div></div>
+<div class="container">
+  <div class="col-xs-6">
+    <img src="images/vinyl-icon.png" class="nowplaying-thumb" />
+    <a class="albumlink" href="#" data-bind="attr: { href: '#album/' + currentAlbumUri }"><h4 data-bind="text: currentTrack">Track title</h4></a>
+    <div data-bind="foreach: currentArtists">
+      <a class="artistlink" href="#" data-bind="attr: { href: '#artist/' + uri }, text: $data.name"></a>
+    </div>    
+  </div>
+  <div class="col-xs-6">
+    <div class="time">
+      <div class="pull-left">1:12</div>
+      <div class="pull-right">3:45</div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="time-slider-container">
+      <input type="text" class="time-slider" name="time" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-selection="before">
+    </div>
+  </div>
+</div>
