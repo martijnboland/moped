@@ -145,8 +145,13 @@ body {
   margin: 10px 10px 10px 0px;
 }
 
+.nowplaying h4 {
+  font-size: 110%;
+  margin: 8px 0;
+}
+
 .nowplaying .time {
-  margin: 10px 0 6px;
+  margin: 7px 0 6px;
 }
 
 .nowplaying .time-slider,

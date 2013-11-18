@@ -95,6 +95,9 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
     getTimePosition: function() {
       return wrapMopidyFunc("mopidy.playback.getTimePosition", this)();
     },
+    seek: function(timePosition) {
+      return wrapMopidyFunc("mopidy.playback.seek", this)(timePosition);
+    },
     getVolume: function() {
       return wrapMopidyFunc("mopidy.playback.getVolume", this)();
     },

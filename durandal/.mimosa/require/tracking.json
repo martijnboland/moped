@@ -27,7 +27,8 @@
       "bootstraplib/bootstrap-slider",
       "durandal/app",
       "services/mopidyservice",
-      "jquery"
+      "jquery",
+      "util"
     ],
     "/javascripts/app/viewmodels/playercontrols.js": [
       "bootstraplib/bootstrap-slider",

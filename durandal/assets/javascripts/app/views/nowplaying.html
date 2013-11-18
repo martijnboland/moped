@@ -8,12 +8,12 @@
   </div>
   <div class="col-xs-6">
     <div class="time">
-      <div class="pull-left">1:12</div>
-      <div class="pull-right">3:45</div>
+      <div class="pull-left" data-bind="text: currentTrackPosition"></div>
+      <div class="pull-right" data-bind="text: currentTrackLengthString"></div>
       <div class="clearfix"></div>
     </div>
     <div class="time-slider-container">
-      <input type="text" class="time-slider" name="time" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-selection="before">
+      <input type="text" class="time-slider" name="timeposition" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-selection="before" data-slider-value="0" data-slider-tooltip="hide">
     </div>
   </div>
 </div>
