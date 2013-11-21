@@ -10,7 +10,8 @@ requirejs.config({
         'plugins': '../vendor/durandal/plugins',
         'transitions': '../vendor/durandal/transitions',
         'touchscroll': '../vendor/touchscroll',
-        'lodash': '../vendor/lodash/lodash.compat'
+        'lodash': '../vendor/lodash/lodash.compat',
+        'lastfm': '../vendor/lastfm-api/lastfm-api'
     },
     shim: {
         'bootstrap': {

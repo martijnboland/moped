@@ -1,10 +1,11 @@
-define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice', 'jquery', 'util'], 
-  function (slider, app, mopidyservice, $, util) {
+define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice', 'services/artservice', 'jquery', 'util'], 
+  function (slider, app, mopidyservice, artservice, $, util) {
   
   var self;
   var $slider;
   var checkPositionTimer;
   var isSeeking = false;
+  var defaultTrackImageUrl = 'images/vinyl-icon.png';
 
   function updateCurrentTrack(track, timePosition) {
     self.currentTrack = track.name;
@@ -22,6 +23,16 @@ define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice
       $slider.slider('setValue', 0);
       self.currentTrackPosition = util.timeFromMilliSeconds(0);
     }
+
+    artservice.getTrackImage(track, 'medium', function(trackImageUrl, err) {
+      if (trackImageUrl !== undefined && trackImageUrl !== '') {
+        self.currentTrackImageUrl = trackImageUrl;
+      }
+      else
+      {
+        self.currentTrackImageUrl = defaultTrackImageUrl;
+      }
+    });
   }
 
   function clearCurrentTrack() {
@@ -31,6 +42,7 @@ define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice
     self.currentTrackLength = 0;
     self.currentTrackLengthString = '';
     self.currentTrackPosition = util.timeFromMilliSeconds(0);
+    self.currentTrackImageUrl = defaultTrackImageUrl;
   }
 
   function checkTimePosition() {
@@ -62,17 +74,17 @@ define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice
     currentTrackLength: 0,
     currentTrackLengthString: '',
     currentTrackPosition: util.timeFromMilliSeconds(0),
+    currentTrackImageUrl: defaultTrackImageUrl,
     attached: function(view) {
       self = this;
-      $slider = $(view).find('.time-slider');
-      $slider.slider()
+      $slider = $(view).find('.time-slider').slider()
         .on('slideStart', function() {
           isSeeking = true;
         })
         .on('slideStop', function(ev) {
           seek(ev.value);
           isSeeking = false;
-      });
+        });
 
       app.on('mopidy:state:online')
         .then(function(data) {

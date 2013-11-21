@@ -140,9 +140,9 @@ body {
 
 .nowplaying-thumb {
   float: left;
-  height: 48px;
-  width: 48px;
-  margin: 10px 10px 10px 0px;
+  height: 64px;
+  width: 64px;
+  margin: 2px 10px 2px 0px;
 }
 
 .nowplaying h4 {

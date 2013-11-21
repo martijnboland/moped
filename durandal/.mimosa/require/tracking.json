@@ -16,6 +16,10 @@
       "durandal/viewLocator",
       "durandal/system"
     ],
+    "/javascripts/app/services/artservice.js": [
+      "lastfm",
+      "lodash"
+    ],
     "/javascripts/app/services/mopidyservice.js": [
       "durandal/app",
       "durandal/system",
@@ -27,6 +31,7 @@
       "bootstraplib/bootstrap-slider",
       "durandal/app",
       "services/mopidyservice",
+      "services/artservice",
       "jquery",
       "util"
     ],
@@ -76,7 +81,8 @@
       "plugins": "../vendor/durandal/plugins",
       "transitions": "../vendor/durandal/transitions",
       "touchscroll": "../vendor/touchscroll",
-      "lodash": "../vendor/lodash/lodash.compat"
+      "lodash": "../vendor/lodash/lodash.compat",
+      "lastfm": "../vendor/lastfm-api/lastfm-api"
     }
   },
   "mappings": {
@@ -105,7 +111,8 @@
       "plugins": "../vendor/durandal/plugins",
       "transitions": "../vendor/durandal/transitions",
       "touchscroll": "../vendor/touchscroll",
-      "lodash": "../vendor/lodash/lodash.compat"
+      "lodash": "../vendor/lodash/lodash.compat",
+      "lastfm": "../vendor/lastfm-api/lastfm-api"
     }
   },
   "requireFiles": [
