@@ -46,6 +46,7 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
 	return {
     mopidy: {},
     isConnected: false,
+    currentTlTracks: [],
     start: function() {
       var self = this;
       app.trigger('mopidy:starting');
@@ -109,12 +110,33 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
     },
     playTrack: function(track, surroundingTracks) {
       var self = this;
+
+      // Check if a playlist change is required. If not cust change the track.
+      if (self.currentTlTracks.length > 0) {
+        var trackUris = _.pluck(surroundingTracks, 'uri');
+        var currentTrackUris = _.map(self.currentTlTracks, function(tlTrack) { 
+          return tlTrack.track.uri;
+        });
+        if (_.difference(trackUris, currentTrackUris).length === 0) {
+          // no playlist change required, just play a different track.
+          self.mopidy.playback.stop(false)
+            .then(function () {
+              var tlTrackToPlay = _.find(self.currentTlTracks, function(tlTrack) {
+                return tlTrack.track.uri === track.uri;
+              });
+              self.mopidy.playback.changeTrack(tlTrackToPlay);
+              self.mopidy.playback.play();              
+            });
+        }
+      }
+
       self.mopidy.playback.stop(true)
         .then(self.mopidy.tracklist.clear(), consoleError)
         .then(self.mopidy.tracklist.add(surroundingTracks), consoleError)
         .then(function() {
-          var tlTracks = self.mopidy.tracklist.getTlTracks()
+          self.mopidy.tracklist.getTlTracks()
             .then(function(tlTracks) {
+              self.currentTlTracks = tlTracks;
               var tlTrackToPlay = _.find(tlTracks, function(tlTrack) {
                 return tlTrack.track.uri === track.uri;
               });

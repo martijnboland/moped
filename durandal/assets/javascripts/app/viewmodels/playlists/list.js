@@ -14,8 +14,8 @@ define(['services/mopidyservice', 'durandal/app', 'lodash'], function (mopidyser
     }, console.error);
   };
 
-  ctor.prototype.playTrack = function(track) {
-    mopidyservice.playTrack(track, self.tracks);
+  ctor.prototype.canReuseForRoute = function() {
+    return true;
   };
 
   return ctor;

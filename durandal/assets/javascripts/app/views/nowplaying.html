@@ -1,12 +1,13 @@
-<div class="container">
-  <div class="col-xs-6">
+<div>
+  <div class="col-xs-12 col-sm-6 track">
     <img class="nowplaying-thumb" data-bind="attr: { src: currentTrackImageUrl }" />
-    <a class="albumlink" href="#" data-bind="attr: { href: '#album/' + currentAlbumUri }"><h4 data-bind="text: currentTrack">Track title</h4></a>
+    <a class="albumlink" href="#" data-bind="attr: { href: '#album/' + currentAlbumUri }"><h5 data-bind="text: currentTrack">Track title</h5></a>
     <div data-bind="foreach: currentArtists">
       <a class="artistlink" href="#" data-bind="attr: { href: '#artist/' + uri }, text: $data.name"></a>
     </div>    
   </div>
-  <div class="col-xs-6">
+  <div class="clearfix visible-xs"></div>
+  <div class="col-xs-12 col-sm-6 transport">
     <div class="time">
       <div class="pull-left" data-bind="text: currentTrackPosition"></div>
       <div class="pull-right" data-bind="text: currentTrackLengthString"></div>
