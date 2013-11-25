@@ -19,6 +19,11 @@ define(['services/mopidyservice','durandal/app', 'module', 'util'], function(mop
       .then(function(data) {
         self.isPlaying = data.tl_track.track.uri === self.track.uri;
       });
+
+    app.on('moped:currenttrackrequested')
+      .then(function(track) {
+        self.isPlaying = track.uri === self.track.uri;
+      });
   };
 
   ctor.prototype.getArtistsAsString = function() {

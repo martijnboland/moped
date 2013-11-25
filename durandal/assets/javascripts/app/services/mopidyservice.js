@@ -49,7 +49,7 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
     currentTlTracks: [],
     start: function() {
       var self = this;
-      app.trigger('mopidy:starting');
+      app.trigger('moped:mopidystarting');
 
       if (window.localStorage && localStorage['moped.mopidyUrl'] !== null) {
         this.mopidy = new Mopidy({
@@ -71,14 +71,14 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
         }
       });
       
-      app.trigger('mopidy:started');
+      app.trigger('moped:mopidystarted');
     },
     stop: function() {
-      app.trigger('mopidy:stopping');
+      app.trigger('moped:mopidystopping');
       this.mopidy.close();
       this.mopidy.off();
       this.mopidy = null;
-      app.trigger('mopidy:stopped');
+      app.trigger('moped:mopidystopped');
     },
     restart: function() {
       this.stop();

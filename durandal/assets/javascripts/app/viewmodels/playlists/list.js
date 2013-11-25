@@ -14,8 +14,12 @@ define(['services/mopidyservice', 'durandal/app', 'lodash'], function (mopidyser
     }, console.error);
   };
 
-  ctor.prototype.canReuseForRoute = function() {
-    return true;
+  ctor.prototype.compositionComplete = function() {
+    setTimeout(function() {
+      mopidyservice.getCurrentTrack().then(function(track) {
+        app.trigger('moped:currenttrackrequested', track);
+      });
+    }, 500);
   };
 
   return ctor;
