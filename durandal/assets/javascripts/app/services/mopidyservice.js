@@ -90,6 +90,16 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
     getPlaylist: function(uri) {
       return wrapMopidyFunc("mopidy.playlists.lookup", this)(uri);
     },
+    getAlbum: function(uri) {
+      var deferred = new system.defer();
+      wrapMopidyFunc("mopidy.library.lookup", this)(uri).then(function(data) {
+        
+        deferred.resolve(data);
+      }, function(err) {
+        deferred.reject(err);
+      });
+      return deferred.promise();
+    },
     getCurrentTrack: function() {
       return wrapMopidyFunc("mopidy.playback.getCurrentTrack", this)();
     },

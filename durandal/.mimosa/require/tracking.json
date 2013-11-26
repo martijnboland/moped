@@ -26,6 +26,13 @@
       "lodash"
     ],
     "/javascripts/app/util.js": [],
+    "/javascripts/app/viewmodels/browse/album.js": [
+      "services/mopidyservice",
+      "services/artservice",
+      "durandal/app",
+      "lodash",
+      "util"
+    ],
     "/javascripts/app/viewmodels/home.js": [],
     "/javascripts/app/viewmodels/nowplaying.js": [
       "bootstraplib/bootstrap-slider",

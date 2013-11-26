@@ -131,6 +131,18 @@ body {
   padding: 0 10px; 
 }
 
+.view-title h3 {
+  margin: 10px 0;
+}
+
+.view-title h4 {
+  margin: 14px 0;
+}
+
+.view-title .title-date {
+  margin: 16px 10px;
+}
+
 .nowplaying { 
   height: 136px; 
   bottom: 50px; 
@@ -196,6 +208,10 @@ body {
 
 .slider-selection {
   background: #6ce;
+}
+
+.albumcover {
+  margin-bottom: 10px;
 }
 
 /* Responsive adaptations */

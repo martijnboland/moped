@@ -26,10 +26,20 @@ define(['lastfm', 'lodash'], function (lastFm, _) {
         }
       });
 		},
-		getAlbumImage: function(album) {
-
+		getAlbumImage: function(album, size, callback) {
+      lastfm.album.getInfo({artist: album.artists[0].name, album: album.name}, {
+        success: function(data){
+          var img = _.find(data.album.image, { size: size });
+          if (img !== undefined) {
+            callback(img['#text'], null);
+          }
+        }, error: function(code, message){
+            console.log('Error #'+code+': '+message);
+            callback(null, { code: code, message: message});
+        }
+      });
 		},
-		getArtistImage: function(artist) {
+		getArtistImage: function(artist, size, callback) {
 
 		}
 	};
