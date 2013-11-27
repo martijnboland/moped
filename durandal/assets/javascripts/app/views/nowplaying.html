@@ -3,7 +3,7 @@
     <img class="nowplaying-thumb" data-bind="attr: { src: currentTrackImageUrl }" />
     <a class="albumlink" href="#" data-bind="attr: { href: '#album/' + currentAlbumUri }"><h5 data-bind="text: currentTrack">Track title</h5></a>
     <div data-bind="foreach: currentArtists">
-      <a class="artistlink" href="#" data-bind="attr: { href: '#artist/' + uri }, text: $data.name"></a>
+      <a class="artistlink" href="#" data-bind="attr: { href: '#artist/' + uri }, text: name"></a>
     </div>    
   </div>
   <div class="clearfix visible-xs"></div>

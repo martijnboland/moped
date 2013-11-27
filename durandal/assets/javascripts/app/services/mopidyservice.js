@@ -91,14 +91,10 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
       return wrapMopidyFunc("mopidy.playlists.lookup", this)(uri);
     },
     getAlbum: function(uri) {
-      var deferred = new system.defer();
-      wrapMopidyFunc("mopidy.library.lookup", this)(uri).then(function(data) {
-        
-        deferred.resolve(data);
-      }, function(err) {
-        deferred.reject(err);
-      });
-      return deferred.promise();
+      return wrapMopidyFunc("mopidy.library.lookup", this)(uri);
+    },
+    getArtist: function(uri) {
+      return wrapMopidyFunc("mopidy.library.lookup", this)(uri);
     },
     getCurrentTrack: function() {
       return wrapMopidyFunc("mopidy.playback.getCurrentTrack", this)();

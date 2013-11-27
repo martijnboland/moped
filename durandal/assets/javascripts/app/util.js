@@ -8,7 +8,10 @@ define(function() {
       return ((h > 0 ? h + ":" : "") + (m > 0 ? (h > 0 && m < 10 ? "0" : "") + m + ":" : "0:") + (s < 10 ? "0" : "") + s);
     },
     getTrackArtistsAsString: function(track) {
-      return _.map(track.artists, 'name').join(',');
+      return this.getArtistsAsString(track.artists);
+    },
+    getArtistsAsString: function(artists) {
+      return _.map(artists, 'name').join(',');
     },
     getTrackDuration: function(track) {
       return this.timeFromMilliSeconds(track.length);

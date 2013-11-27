@@ -3,10 +3,8 @@ define(['services/mopidyservice', 'services/artservice', 'durandal/app', 'lodash
   var defaultAlbumImageUrl = 'images/noalbum.png';
 
   var ctor = function () {
-    this.album = {};
-    this.artist = '';
-    this.discs = [];
-    this.albumImageUrl = defaultAlbumImageUrl;
+    this.albums = [];
+    this.tracks = [];
     self = this;
   };
 
@@ -15,35 +13,14 @@ define(['services/mopidyservice', 'services/artservice', 'durandal/app', 'lodash
 
       // data comes as a list of tracks.
       if (data.length > 0) {
+
+        _.forEach(data, function(track) {
+          self.tracks.push(track);
+        });
  
         // Extract album and artist(s) from first track.
         var firstTrack = data[0];
-        self.album = firstTrack.album;
-        self.artist = util.getTrackArtistsAsString(firstTrack);
-
-        artservice.getAlbumImage(self.album, 'extralarge', function(albumImageUrl, err) {
-          if (albumImageUrl !== undefined && albumImageUrl !== '') {
-            self.albumImageUrl = albumImageUrl;
-          }
-          else
-          {
-            self.albumImageUrl = defaultAlbumImageUrl;
-          }
-        });
-
-       // Group album into discs
-        var discNo = 1;
-        var currentTrackNo = 1;
-        var discs = _.groupBy(data, function(track) {
-          if (track.track_no < currentTrackNo) {
-            discNo++;
-          }
-          currentTrackNo = track.track_no;
-          return discNo;
-        });
-        _.forEach(discs, function(disc, index) {
-          self.discs.push({ disc: index, items: disc });
-        });
+        self.albums.push(firstTrack.album);
       }
     }, console.error);
   };

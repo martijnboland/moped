@@ -1,0 +1,13 @@
+<div class="row view-title">
+  <h3 data-bind="text: artist.name"></h3>
+  Albums
+  <hr/>
+</div>
+<div data-bind="foreach: albums">
+  <div data-bind="widget: {kind: 'album', album: album, tracks: tracks }">
+    <h3 class="pull-left" data-part="aname">
+      <a href="#" data-bind="text: album.name, attr: { href: '#album/' + album.uri }"></a>
+    </h3>
+    <div class="hidden" data-part="albumartist"></div>
+  </div>
+</div>

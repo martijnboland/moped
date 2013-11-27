@@ -33,6 +33,13 @@
       "lodash",
       "util"
     ],
+    "/javascripts/app/viewmodels/browse/artist.js": [
+      "services/mopidyservice",
+      "services/artservice",
+      "durandal/app",
+      "lodash",
+      "util"
+    ],
     "/javascripts/app/viewmodels/home.js": [],
     "/javascripts/app/viewmodels/nowplaying.js": [
       "bootstraplib/bootstrap-slider",
@@ -69,6 +76,11 @@
       "touchscroll/touchscroll",
       "services/mopidyservice",
       "jquery"
+    ],
+    "/javascripts/app/widgets/album/viewmodel.js": [
+      "services/mopidyservice",
+      "services/artservice",
+      "util"
     ],
     "/javascripts/app/widgets/track/viewmodel.js": [
       "services/mopidyservice",
