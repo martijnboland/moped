@@ -8,19 +8,22 @@
     <img class="albumcover img-responsive" data-bind="attr: { src: albumImageUrl }" />
   </div>
   <div class="col-sm-9">
-    <div class="list-group" data-bind="foreach: tracks">
-      <!-- ko widget : {kind: 'track', track: $data, tracklist: $parent.tracks, idx: $index()} -->
-        <div class="col-xs-1" data-part="trackno" data-bind="text: track.track_no"></div>
-        <h4 class="col-xs-10 list-group-item-heading" data-part="trackname" data-bind="text: track.name"></h4>
-        <div class="hidden" data-part="xs-sep1"></div>
-        <div class="hidden" data-part="xs-sp1"></div>
-        <h4 class="hidden" data-part="trackartists" data-bind="text: getArtistsAsString()"></h4>
-        <div class="col-xs-1" data-part="trackduration" data-bind="text: getDuration()"></div>
-        <div class="hidden" data-part="xs-sep2"></div>
-        <div class="hidden" data-part="xs-sp1"></div>
-        <div class="hidden" data-part="albumname" data-bind="text: track.album.name"></div>
-        <div class="hidden" data-part="albumdate" data-bind="text: track.album.date"></div>
-      <!-- /ko -->
+    <div data-bind="foreach: discs">
+      <div data-bind="text: 'Disc ' + ($data.disc), visible: $parent.discs.length > 1"></div>
+      <div class="list-group" data-bind="foreach: $data.items">
+        <!-- ko widget : {kind: 'track', track: $data, tracklist: $parent.tracks, idx: $index()} -->
+          <div class="col-xs-1" data-part="trackno" data-bind="text: track.track_no"></div>
+          <h4 class="col-xs-10 list-group-item-heading" data-part="trackname" data-bind="text: track.name"></h4>
+          <div class="hidden" data-part="xs-sep1"></div>
+          <div class="hidden" data-part="xs-sp1"></div>
+          <h4 class="hidden" data-part="trackartists" data-bind="text: getArtistsAsString()"></h4>
+          <div class="col-xs-1" data-part="trackduration" data-bind="text: getDuration()"></div>
+          <div class="hidden" data-part="xs-sep2"></div>
+          <div class="hidden" data-part="xs-sp1"></div>
+          <div class="hidden" data-part="albumname" data-bind="text: track.album.name"></div>
+          <div class="hidden" data-part="albumdate" data-bind="text: track.album.date"></div>
+        <!-- /ko -->
+      </div>
     </div>
   </div>
 </div>
