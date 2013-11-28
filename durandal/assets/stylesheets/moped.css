@@ -97,6 +97,13 @@ body {
   color: #fff;
 }
 
+.menu .btn-search {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+}
+
 .main { 
   left: 0; 
   right: auto;
@@ -140,20 +147,22 @@ body {
 }
 
 .view-title img {
-  margin: 10px 0 0 10px;
+  margin: 0 15px;
 }
 
 .view-title .title-date {
   margin: 16px 10px;
 }
 
-.albumimagelist {
+.albumimagelist,
+.artistimagelist {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.albumimagelist li {
+.albumimagelist li,
+.artistimagelist li {
   list-style: none;
   float: left;
   width: 178px;
@@ -163,9 +172,16 @@ body {
 }
 
 .albumimagelist img {
-  list-style: none;
   width: 176px;
   height: 176px;
+  display: block;
+  border: 1px solid #eee;
+  margin: 1px;
+}
+
+.artistimagelist img {
+  max-width: 176px;
+  max-height: 176px;
   display: block;
   border: 1px solid #eee;
   margin: 1px;

@@ -5,7 +5,6 @@ define(['services/mopidyservice', 'services/lastfmservice', 'durandal/app', 'lod
   var ctor = function () {
     this.artist = {};
     this.artistSummary = '';
-    this.artistImageUrl = '';
     this.albums = [];
     this.singles = [];
     this.appearsOn = [];
@@ -18,10 +17,6 @@ define(['services/mopidyservice', 'services/lastfmservice', 'durandal/app', 'lod
     lastfmservice.getArtistInfo(name, function(artistInfo, err) {
       if (! err) {
         self.artistSummary = artistInfo.artist.bio.summary;
-        var img = _.find(artistInfo.artist.image, { size: 'extralarge' });
-        if (img !== undefined) {
-          self.artistImageUrl = img['#text'];
-        }        
       }
     });
 

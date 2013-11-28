@@ -29,7 +29,8 @@ define(['plugins/router', 'durandal/app', 'touchscroll/touchscroll', 'services/m
         { route: 'settings', moduleId: 'viewmodels/settings', nav: true },
         { route: 'playlist/:uri', moduleId: 'viewmodels/playlists/list' },
         { route: 'album/:uri', moduleId: 'viewmodels/browse/album' },
-        { route: 'artist/:uri/:name', moduleId: 'viewmodels/browse/artist' }
+        { route: 'artist/:uri/:name', moduleId: 'viewmodels/browse/artist' },
+        { route: 'search/:query', moduleId: 'viewmodels/search/results' }
       ]).buildNavigationModel();
 
       router.on('router:route:activating').then(function(instance, instruction, router) {

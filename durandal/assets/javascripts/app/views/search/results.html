@@ -1,0 +1,33 @@
+<br>
+<p>Showing results for <em data-bind="text: query" /><p>
+<div class="row view-title">
+  <div class="col-sm-6">
+    <h3>Artists</h3>
+    <ul class="artistimagelist" data-bind="foreach: artists">
+      <li>
+        <a href="#" data-bind="attr: { href: '#artist/' + uri + '/' + name }">
+          <!-- ko widget : {kind: 'artistimage', artistName: name, imageSize: 'large'} -->
+          <!-- /ko -->
+          <div data-bind="text: name"></div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="clearfix visible-xs"></div>
+  <div class="col-sm-6">
+    <h3>Albums</h3>
+    <ul class="albumimagelist" data-bind="foreach: albums">
+      <li data-bind="widget: {kind: 'albumimage', album: $data, imageSize: 'large' }">
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Tracks</h3>
+  </div>
+</div>
+<div class="list-group" data-bind="foreach: tracks">
+  <!-- ko widget : {kind: 'track', track: $data, tracklist: $parent.tracks, idx: $index()} -->
+  <!-- /ko -->
+</div>

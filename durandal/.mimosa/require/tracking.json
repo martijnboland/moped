@@ -65,7 +65,16 @@
     ],
     "/javascripts/app/viewmodels/radio/menu.js": [],
     "/javascripts/app/viewmodels/radio/radio.js": [],
-    "/javascripts/app/viewmodels/search/search.js": [],
+    "/javascripts/app/viewmodels/search/results.js": [
+      "services/mopidyservice",
+      "services/lastfmservice",
+      "durandal/app",
+      "lodash",
+      "util"
+    ],
+    "/javascripts/app/viewmodels/search/search.js": [
+      "plugins/router"
+    ],
     "/javascripts/app/viewmodels/settings.js": [
       "durandal/app"
     ],
@@ -82,6 +91,9 @@
       "util"
     ],
     "/javascripts/app/widgets/albumimage/viewmodel.js": [
+      "services/lastfmservice"
+    ],
+    "/javascripts/app/widgets/artistimage/viewmodel.js": [
       "services/lastfmservice"
     ],
     "/javascripts/app/widgets/track/viewmodel.js": [

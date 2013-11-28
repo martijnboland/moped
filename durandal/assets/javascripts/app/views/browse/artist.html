@@ -1,6 +1,6 @@
 <div class="row view-title">
-  <img data-bind="attr: { src: artistImageUrl }" class="pull-right">
   <h3 data-bind="text: artist.name"></h3>
+  <div data-bind="widget: {kind: 'artistimage', artistName: artist.name, imageSize: 'extralarge' }" class="pull-right" />
   <p data-bind="html: artistSummary"></p>
 </div>
 <div class="row" data-bind="visible: albums.length > 0">

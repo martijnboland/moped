@@ -96,6 +96,9 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
     getArtist: function(uri) {
       return wrapMopidyFunc("mopidy.library.lookup", this)(uri);
     },
+    search: function(query) {
+      return wrapMopidyFunc("mopidy.library.search", this)({ any : query });
+    },
     getCurrentTrack: function() {
       return wrapMopidyFunc("mopidy.playback.getCurrentTrack", this)();
     },

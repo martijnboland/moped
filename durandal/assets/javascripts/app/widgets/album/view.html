@@ -1,5 +1,5 @@
 <div class="row view-title">
-  <h3 class="pull-left" data-part="aname" data-bind="text: album.name"></h3>
+  <h3 class="pull-left" data-part="aname" data-bind="html: album.name"></h3>
   <div class="pull-left title-date" data-bind="text: album.date"></div>
   <h4 class="pull-right" data-part="albumartist" data-bind="foreach: album.artists">
     <a class="artistlink" href="#" data-bind="attr: { href: '#artist/' + uri + '/' + name }, text: name"></a>
