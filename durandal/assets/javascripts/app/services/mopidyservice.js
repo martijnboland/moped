@@ -59,7 +59,7 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
       else {
         this.mopidy = new Mopidy();
       }
-      this.mopidy.on(consoleLog);
+      //this.mopidy.on(consoleLog);
       // Convert Mopidy events to Durandal events
       this.mopidy.on(function(ev, args) {
         app.trigger('mopidy:' + ev, args);
