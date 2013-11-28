@@ -1,7 +1,11 @@
 <div class="row view-title">
+  <img data-bind="attr: { src: artistImageUrl }" class="pull-right">
   <h3 data-bind="text: artist.name"></h3>
+  <p data-bind="html: artistSummary"></p>
+</div>
+<div class="row" data-bind="visible: albums.length > 0">
   Albums
-  <hr/>
+  <hr>
 </div>
 <div data-bind="foreach: albums">
   <div data-bind="widget: {kind: 'album', album: album, tracks: tracks }">
@@ -11,3 +15,23 @@
     <div class="hidden" data-part="albumartist"></div>
   </div>
 </div>
+<div class="row" data-bind="visible: singles.length > 0">
+  Singles
+  <hr>
+</div>
+<div data-bind="foreach: singles">
+  <div data-bind="widget: {kind: 'album', album: album, tracks: tracks, imageSize: 'medium' }">
+    <h3 class="pull-left" data-part="aname">
+      <a href="#" data-bind="text: album.name, attr: { href: '#album/' + album.uri }"></a>
+    </h3>
+    <div class="hidden" data-part="albumartist"></div>
+  </div>
+</div>
+<div class="row" data-bind="visible: appearsOn.length > 0">
+  Appears on
+  <hr>
+</div>
+<ul class="albumimagelist" data-bind="foreach: appearsOn">
+  <li data-bind="widget: {kind: 'albumimage', album: album, imageSize: 'large' }">
+  </li>
+</ul>

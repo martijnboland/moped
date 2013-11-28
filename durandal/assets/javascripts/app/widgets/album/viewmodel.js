@@ -1,16 +1,18 @@
-define(['services/mopidyservice', 'services/artservice', 'util'], function(mopidyservice, artservice, util) {
+define(['services/mopidyservice', 'services/lastfmservice', 'util'], function(mopidyservice, lastfmservice, util) {
 	
   var defaultAlbumImageUrl = 'images/noalbum.png';
+  var defaultAlbumImageSize = 'large';
 
   var ctor = function () { };
 
   ctor.prototype.activate = function(settings) {
     var self = this;
     self.discs = [];
-    var tracks = settings.tracks;
     self.album = settings.album || (tracks.length > 0 ? tracks[0].album : null);  
     self.artist = util.getArtistsAsString(self.album.artists);
     self.albumImageUrl = defaultAlbumImageUrl;
+    self.albumImageSize = settings.imageSize || defaultAlbumImageSize;
+    var tracks = settings.tracks;
 
     // Group album into discs
     if (tracks.length > 0) {
@@ -30,7 +32,7 @@ define(['services/mopidyservice', 'services/artservice', 'util'], function(mopid
     }
 
     // Album image
-    artservice.getAlbumImage(this.album, 'extralarge', function(albumImageUrl, err) {
+    lastfmservice.getAlbumImage(this.album, self.albumImageSize, function(albumImageUrl, err) {
       if (albumImageUrl !== undefined && albumImageUrl !== '') {
         self.albumImageUrl = albumImageUrl;
       }

@@ -1,5 +1,5 @@
-define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice', 'services/artservice', 'jquery', 'util'], 
-  function (slider, app, mopidyservice, artservice, $, util) {
+define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice', 'services/lastfmservice', 'jquery', 'util'], 
+  function (slider, app, mopidyservice, lastfmservice, $, util) {
   
   var self;
   var $slider;
@@ -24,7 +24,7 @@ define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice
       self.currentTrackPosition = util.timeFromMilliSeconds(0);
     }
 
-    artservice.getTrackImage(track, 'medium', function(trackImageUrl, err) {
+    lastfmservice.getTrackImage(track, 'medium', function(trackImageUrl, err) {
       if (trackImageUrl !== undefined && trackImageUrl !== '') {
         self.currentTrackImageUrl = trackImageUrl;
       }

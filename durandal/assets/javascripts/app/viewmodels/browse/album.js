@@ -1,4 +1,4 @@
-define(['services/mopidyservice', 'services/artservice', 'durandal/app', 'lodash', 'util'], function (mopidyservice, artservice, app, _, util) {
+define(['services/mopidyservice', 'durandal/app', 'lodash', 'util'], function (mopidyservice, app, _, util) {
   
   var defaultAlbumImageUrl = 'images/noalbum.png';
 

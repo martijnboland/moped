@@ -16,7 +16,7 @@
       "durandal/viewLocator",
       "durandal/system"
     ],
-    "/javascripts/app/services/artservice.js": [
+    "/javascripts/app/services/lastfmservice.js": [
       "lastfm",
       "lodash"
     ],
@@ -28,14 +28,13 @@
     "/javascripts/app/util.js": [],
     "/javascripts/app/viewmodels/browse/album.js": [
       "services/mopidyservice",
-      "services/artservice",
       "durandal/app",
       "lodash",
       "util"
     ],
     "/javascripts/app/viewmodels/browse/artist.js": [
       "services/mopidyservice",
-      "services/artservice",
+      "services/lastfmservice",
       "durandal/app",
       "lodash",
       "util"
@@ -45,7 +44,7 @@
       "bootstraplib/bootstrap-slider",
       "durandal/app",
       "services/mopidyservice",
-      "services/artservice",
+      "services/lastfmservice",
       "jquery",
       "util"
     ],
@@ -79,8 +78,11 @@
     ],
     "/javascripts/app/widgets/album/viewmodel.js": [
       "services/mopidyservice",
-      "services/artservice",
+      "services/lastfmservice",
       "util"
+    ],
+    "/javascripts/app/widgets/albumimage/viewmodel.js": [
+      "services/lastfmservice"
     ],
     "/javascripts/app/widgets/track/viewmodel.js": [
       "services/mopidyservice",

@@ -139,8 +139,36 @@ body {
   margin: 14px 0;
 }
 
+.view-title img {
+  margin: 10px 0 0 10px;
+}
+
 .view-title .title-date {
   margin: 16px 10px;
+}
+
+.albumimagelist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.albumimagelist li {
+  list-style: none;
+  float: left;
+  width: 178px;
+  height: 200px;
+  overflow: hidden;
+  font-size: 90%;
+}
+
+.albumimagelist img {
+  list-style: none;
+  width: 176px;
+  height: 176px;
+  display: block;
+  border: 1px solid #eee;
+  margin: 1px;
 }
 
 .nowplaying { 
