@@ -9,7 +9,6 @@ define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice
 
   function updateCurrentTrack(track, timePosition) {
     self.currentTrack = track.name;
-    self.currentAlbumUri = track.album.uri;
     self.currentArtists = track.artists;
     self.currentTrackLength = track.length;
     self.currentTrackLengthString = util.timeFromMilliSeconds(track.length);
@@ -24,15 +23,21 @@ define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice
       self.currentTrackPosition = util.timeFromMilliSeconds(0);
     }
 
-    lastfmservice.getTrackImage(track, 'medium', function(trackImageUrl, err) {
-      if (trackImageUrl !== undefined && trackImageUrl !== '') {
-        self.currentTrackImageUrl = trackImageUrl;
-      }
-      else
-      {
-        self.currentTrackImageUrl = defaultTrackImageUrl;
-      }
-    });
+    if (track.album !== undefined) {
+      self.currentAlbumUri = track.album.uri;
+      lastfmservice.getTrackImage(track, 'medium', function(trackImageUrl, err) {
+        if (trackImageUrl !== undefined && trackImageUrl !== '') {
+          self.currentTrackImageUrl = trackImageUrl;
+        }
+        else
+        {
+          self.currentTrackImageUrl = defaultTrackImageUrl;
+        }
+      });
+    }
+    else {
+      self.currentAlbumUri = null;
+    }
   }
 
   function clearCurrentTrack() {

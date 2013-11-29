@@ -64,7 +64,10 @@
       "durandal/app"
     ],
     "/javascripts/app/viewmodels/radio/menu.js": [],
-    "/javascripts/app/viewmodels/radio/radio.js": [],
+    "/javascripts/app/viewmodels/radio/radio.js": [
+      "services/mopidyservice",
+      "util"
+    ],
     "/javascripts/app/viewmodels/search/results.js": [
       "services/mopidyservice",
       "services/lastfmservice",

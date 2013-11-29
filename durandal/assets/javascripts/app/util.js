@@ -1,6 +1,9 @@
 define(function() {
   return {
     timeFromMilliSeconds: function(length) {
+      if (length === undefined) {
+        return '';
+      }
       var d = Number(length/1000);
       var h = Math.floor(d / 3600);
       var m = Math.floor(d % 3600 / 60);
@@ -15,6 +18,10 @@ define(function() {
     },
     getTrackDuration: function(track) {
       return this.timeFromMilliSeconds(track.length);
+    },
+    isValidStreamUri: function(uri) {
+      var regexp = /(mms|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+      return regexp.test(uri);
     }
   };
 });

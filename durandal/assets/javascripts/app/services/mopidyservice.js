@@ -154,11 +154,22 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
             }, consoleError);
         } , consoleError);
     },
+    playStream: function(streamUri) {
+      var self = this;
+
+      self.stopPlayback(true)
+        .then(self.mopidy.tracklist.clear(), consoleError)
+        .then(self.mopidy.tracklist.add(null, 0, streamUri), consoleError)
+        .then(self.mopidy.playback.play(), consoleError);
+    },
     play: function() {
       return wrapMopidyFunc("mopidy.playback.play", this)();
     },
     pause: function() {
       return wrapMopidyFunc("mopidy.playback.pause", this)();
+    },
+    stopPlayback: function(clearCurrentTrack) {
+      return wrapMopidyFunc("mopidy.playback.stop", this)(clearCurrentTrack);
     },
     previous: function() {
       return wrapMopidyFunc("mopidy.playback.previous", this)();

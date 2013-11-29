@@ -1,1 +1,27 @@
 <h3>Radio</h3>
+<form role="form">
+  <label for="streamUri">Radio stream address</label>
+  <div class="form-group row">
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="streamUri" data-bind="value: currentStreamUri">
+    </div>
+    <div class="col-sm-4">
+      <button class="btn btn-primary" data-bind="click: play">Play</button>
+      <button class="btn btn-default" data-bind="click: addToFavourites">Add to favourites</button>
+    </div>
+  </div>
+</form>
+<p>
+or
+</p>
+<form role="form">
+  <label for="searchQuery">Find Radio streams</label>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="searchQuery" data-bind="value: searchQuery">
+    </div>
+    <div class="col-sm-4">
+      <button class="btn btn-primary" data-bind="click: findStream">Find</button>
+    </div>
+  </div>
+</form>
