@@ -26,7 +26,8 @@
       "lodash"
     ],
     "/javascripts/app/services/radioservice.js": [
-      "lodash"
+      "lodash",
+      "jquery"
     ],
     "/javascripts/app/util.js": [],
     "/javascripts/app/viewmodels/browse/album.js": [
@@ -76,7 +77,8 @@
       "services/radioservice",
       "durandal/app",
       "plugins/observable",
-      "util"
+      "util",
+      "lodash"
     ],
     "/javascripts/app/viewmodels/search/results.js": [
       "services/mopidyservice",

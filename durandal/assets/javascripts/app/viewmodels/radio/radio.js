@@ -1,10 +1,12 @@
-define(['services/mopidyservice', 'services/radioservice', 'durandal/app', 'plugins/observable', 'util'], 
-  function (mopidyservice, radioservice, app, observable, util) {
+define(['services/mopidyservice', 'services/radioservice', 'durandal/app', 'plugins/observable', 'util', 'lodash'], 
+  function (mopidyservice, radioservice, app, observable, util, _) {
 
   return {
     currentStreamName: '',
     currentStreamUri: '',
     currentStation: null,
+    searchQuery: '',
+    searchResults: [],
     activate: function(stationName) {
       var self = this;
       if (stationName) {
@@ -73,6 +75,30 @@ define(['services/mopidyservice', 'services/radioservice', 'durandal/app', 'plug
           }
         });
       }
+    },
+    findStream: function() {
+      
+      document.activeElement.blur();
+
+      var self = this;
+      self.searchResults.removeAll();
+      radioservice.findStations(this.searchQuery, function(err, stations) {
+        if (err) {
+          alert(err.message);
+        }
+        else {
+          _.forEach(stations, function(station) {
+            if (station.status == 1) {
+              self.searchResults.push(station);
+            }
+          });
+        }
+      });
+    },
+    playStream: function(name, streamUri) {
+      this.currentStreamUri = streamUri;
+      this.currentStreamName = name;
+      this.play();
     }
   };
 

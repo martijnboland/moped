@@ -1,4 +1,6 @@
-define(['lodash'], function(_) {	
+define(['lodash', 'jquery'], function(_, $) {	
+
+  var DIRBLE_API_KEY= '58617094d08a7c1699efe88cbde26467901cbd19';
 
   function getStations() {
     var stationsFromStorage = window.localStorage['stations'];
@@ -50,6 +52,17 @@ define(['lodash'], function(_) {
       });
       storeStations(stations);
       callback(null, stationName);
+    },
+    findStations: function(searchQuery, callback) {
+      var searchUrl = 'http://dirble.com/dirapi/search/apikey/' + DIRBLE_API_KEY + '/search/' + searchQuery + '/count/100';
+
+      $.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent(searchUrl) + '&callback=?')
+        .done(function(data) {
+          callback(null, data.contents);
+        })
+        .fail(function(jqxhr, textStatus, error) {
+          callback({ message: textStatus + ', ' + error }, null);
+        });
     }
   };
 
