@@ -1,5 +1,5 @@
-define(['plugins/router', 'durandal/app', 'touchscroll/touchscroll', 'services/mopidyservice', 'jquery'], 
-  function (router, app, touchscroll, mopidyservice, $) {
+define(['plugins/router', 'durandal/app', 'services/mopidyservice', 'jquery', 'fastclick'], 
+  function (router, app, mopidyservice, $, fastclick) {
 
   var connectionStates = { 
     online: 'Online',
@@ -9,9 +9,15 @@ define(['plugins/router', 'durandal/app', 'touchscroll/touchscroll', 'services/m
   return {
     router: router,
     isSidebarVisible: false,
+    isBackVisible: false,
     connectionState: connectionStates.offline,
     activate: function() {
       var self = this;
+
+      new FastClick(document.body);
+
+      self.isBackVisible = window.navigator.standalone;
+
       app.on('mopidy:state:online').then(function() {
         self.connectionState = connectionStates.online;
       });
@@ -39,12 +45,11 @@ define(['plugins/router', 'durandal/app', 'touchscroll/touchscroll', 'services/m
       
       return router.activate();
     },
-    attached: function(view) {
-      touchscroll.fixScroll('menu');
-      touchscroll.fixScroll('maincontent');
-    },
     toggleSidebar: function() {
       this.isSidebarVisible = ! this.isSidebarVisible;
+    },
+    goBack: function() {
+      router.navigateBack();
     }
   };
 });

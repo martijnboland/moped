@@ -13,8 +13,11 @@
       <label>&nbsp;</label>
       <br>
       <button class="btn btn-primary" data-bind="click: play">Play</button>
-      <button class="btn btn-default" data-bind="click: addToFavourites, visible: canAddToFavourites">Add to favourites</button>
-      <button class="btn btn-default" data-bind="click: removeFromFavourites, visible: canRemoveFromFavourites">Remove from favourites</button>
+      <button class="btn btn-default" data-bind="click: addToFavourites, visible: canAddToFavourites">
+        <span class="glyphicon glyphicon-star"></span> Star
+      </button>
+      <button class="btn btn-default" data-bind="click: removeFromFavourites, visible: canRemoveFromFavourites">
+        <span class="glyphicon glyphicon-star-empty"></span> Unstar</button>
     </div>
   </div>
 </form>
@@ -22,7 +25,7 @@
 or
 </p>
 <form role="form">
-  <label for="searchQuery">Find Radio streams (highly experimental, powered by http://dirble.com and http://whateverorigin.org)</label>
+  <label for="searchQuery">Find Radio streams (experimental)</label>
   <div class="form-group row">
     <div class="col-sm-4">
       <input type="text" class="form-control" id="searchQuery" data-bind="value: searchQuery">
@@ -45,3 +48,4 @@ or
     <div class="col-xs-3 hidden-xs" data-bind="text: bitrate"></div>
   </div>
 </div>
+<p>Search powered by http://dirble.com & http://whateverorigin.org</p>

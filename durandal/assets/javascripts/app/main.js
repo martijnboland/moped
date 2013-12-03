@@ -11,7 +11,8 @@ requirejs.config({
         'transitions': '../vendor/durandal/transitions',
         'touchscroll': '../vendor/touchscroll',
         'lodash': '../vendor/lodash/lodash.compat',
-        'lastfm': '../vendor/lastfm-api/lastfm-api'
+        'lastfm': '../vendor/lastfm-api/lastfm-api',
+        'fastclick': '../vendor/fastclick/fastclick'
     },
     shim: {
         'bootstrap': {

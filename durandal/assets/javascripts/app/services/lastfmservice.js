@@ -18,11 +18,11 @@ define(['lastfm', 'lodash'], function (lastFm, _) {
         success: function(data){
           var img = _.find(data.album.image, { size: size });
           if (img !== undefined) {
-            callback(img['#text'], null);
+            callback(null, img['#text']);
           }
         }, error: function(code, message){
             console.log('Error #'+code+': '+message);
-            callback(null, { code: code, message: message});
+            callback({ code: code, message: message}, null);
         }
       });
 		},
@@ -31,21 +31,21 @@ define(['lastfm', 'lodash'], function (lastFm, _) {
         success: function(data){
           var img = _.find(data.album.image, { size: size });
           if (img !== undefined) {
-            callback(img['#text'], null);
+            callback(null, img['#text']);
           }
         }, error: function(code, message){
             console.log('Error #'+code+': '+message);
-            callback(null, { code: code, message: message});
+            callback({ code: code, message: message}, null);
         }
       });
 		},
 		getArtistInfo: function(artistName, callback) {
       lastfm.artist.getInfo({artist: artistName}, {
         success: function(data){
-          callback(data, null);
+          callback(null, data);
         }, error: function(code, message){
             console.log('Error #'+code+': '+message);
-            callback(null, { code: code, message: message});
+            callback({ code: code, message: message}, null);
         }
       });
 		}

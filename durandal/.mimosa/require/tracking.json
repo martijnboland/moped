@@ -96,9 +96,9 @@
     "/javascripts/app/viewmodels/shell.js": [
       "plugins/router",
       "durandal/app",
-      "touchscroll/touchscroll",
       "services/mopidyservice",
-      "jquery"
+      "jquery",
+      "fastclick"
     ],
     "/javascripts/app/widgets/album/viewmodel.js": [
       "services/mopidyservice",
@@ -131,7 +131,8 @@
       "transitions": "../vendor/durandal/transitions",
       "touchscroll": "../vendor/touchscroll",
       "lodash": "../vendor/lodash/lodash.compat",
-      "lastfm": "../vendor/lastfm-api/lastfm-api"
+      "lastfm": "../vendor/lastfm-api/lastfm-api",
+      "fastclick": "../vendor/fastclick/fastclick"
     }
   },
   "mappings": {
@@ -161,7 +162,8 @@
       "transitions": "../vendor/durandal/transitions",
       "touchscroll": "../vendor/touchscroll",
       "lodash": "../vendor/lodash/lodash.compat",
-      "lastfm": "../vendor/lastfm-api/lastfm-api"
+      "lastfm": "../vendor/lastfm-api/lastfm-api",
+      "fastclick": "../vendor/fastclick/fastclick"
     }
   },
   "requireFiles": [

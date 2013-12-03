@@ -8,6 +8,7 @@
     "knockout.js": "2.3.0",
     "durandal": "2.0.1",
     "lodash": "2.2.1",
-    "lastfm-api": "0.0.1"
+    "lastfm-api": "0.0.1",
+    "fastclick": "0.6.10"
   }
 }
