@@ -25,8 +25,8 @@ define(['bootstraplib/bootstrap-slider', 'durandal/app', 'services/mopidyservice
 
     if (track.album !== undefined) {
       self.currentAlbumUri = track.album.uri;
-      lastfmservice.getTrackImage(track, 'medium', function(trackImageUrl, err) {
-        if (trackImageUrl !== undefined && trackImageUrl !== '') {
+      lastfmservice.getTrackImage(track, 'medium', function(err, trackImageUrl) {
+        if (! err && trackImageUrl !== undefined && trackImageUrl !== '') {
           self.currentTrackImageUrl = trackImageUrl;
         }
         else

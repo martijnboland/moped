@@ -12,7 +12,7 @@ define(['services/lastfmservice'], function(lastfmservice) {
     self.artistImageSize = settings.imageSize || defaultArtistImageSize;
 
     // Get artist image
-    lastfmservice.getArtistInfo(self.artistName, function(artistInfo, err) {
+    lastfmservice.getArtistInfo(self.artistName, function(err, artistInfo) {
       if (! err) {
         var img = _.find(artistInfo.artist.image, { size: self.artistImageSize });
         if (img !== undefined) {

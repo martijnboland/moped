@@ -158,9 +158,15 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
       var self = this;
 
       self.stopPlayback(true)
-        .then(self.mopidy.tracklist.clear(), consoleError)
-        .then(self.mopidy.tracklist.add(null, 0, streamUri), consoleError)
-        .then(self.mopidy.playback.play(), consoleError);
+        .then(function() {
+          self.mopidy.tracklist.clear();
+        }, consoleError)
+        .then(function() {
+          self.mopidy.tracklist.add(null, 0, streamUri);
+        }, consoleError)
+        .then(function() { 
+          self.mopidy.playback.play();
+        }, consoleError);
     },
     play: function() {
       return wrapMopidyFunc("mopidy.playback.play", this)();

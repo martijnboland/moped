@@ -12,8 +12,8 @@ define(['services/lastfmservice'], function(lastfmservice) {
     self.albumImageSize = settings.imageSize || defaultAlbumImageSize;
 
     // Album image
-    lastfmservice.getAlbumImage(self.album, self.albumImageSize, function(albumImageUrl, err) {
-      if (albumImageUrl !== undefined && albumImageUrl !== '') {
+    lastfmservice.getAlbumImage(self.album, self.albumImageSize, function(err, albumImageUrl) {
+      if (! err && albumImageUrl !== undefined && albumImageUrl !== '') {
         self.albumImageUrl = albumImageUrl;
       }
       else

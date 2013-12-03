@@ -32,8 +32,8 @@ define(['services/mopidyservice', 'services/lastfmservice', 'util'], function(mo
     }
 
     // Album image
-    lastfmservice.getAlbumImage(this.album, self.albumImageSize, function(albumImageUrl, err) {
-      if (albumImageUrl !== undefined && albumImageUrl !== '') {
+    lastfmservice.getAlbumImage(this.album, self.albumImageSize, function(err, albumImageUrl) {
+      if (! err && albumImageUrl !== undefined && albumImageUrl !== '') {
         self.albumImageUrl = albumImageUrl;
       }
       else

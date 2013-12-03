@@ -25,6 +25,9 @@
       "durandal/system",
       "lodash"
     ],
+    "/javascripts/app/services/radioservice.js": [
+      "lodash"
+    ],
     "/javascripts/app/util.js": [],
     "/javascripts/app/viewmodels/browse/album.js": [
       "services/mopidyservice",
@@ -63,9 +66,16 @@
       "services/mopidyservice",
       "durandal/app"
     ],
-    "/javascripts/app/viewmodels/radio/menu.js": [],
+    "/javascripts/app/viewmodels/radio/menu.js": [
+      "durandal/app",
+      "services/radioservice",
+      "lodash"
+    ],
     "/javascripts/app/viewmodels/radio/radio.js": [
       "services/mopidyservice",
+      "services/radioservice",
+      "durandal/app",
+      "plugins/observable",
       "util"
     ],
     "/javascripts/app/viewmodels/search/results.js": [

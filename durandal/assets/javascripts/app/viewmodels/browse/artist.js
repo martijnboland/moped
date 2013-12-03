@@ -14,7 +14,7 @@ define(['services/mopidyservice', 'services/lastfmservice', 'durandal/app', 'lod
   ctor.prototype.activate = function(uri, name) {
     self.artist = { name: name };
 
-    lastfmservice.getArtistInfo(name, function(artistInfo, err) {
+    lastfmservice.getArtistInfo(name, function(err, artistInfo) {
       if (! err) {
         self.artistSummary = artistInfo.artist.bio.summary;
       }

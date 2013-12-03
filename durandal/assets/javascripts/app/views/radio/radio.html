@@ -1,13 +1,20 @@
 <h3>Radio</h3>
 <form role="form">
-  <label for="streamUri">Radio stream address</label>
-  <div class="form-group row">
-    <div class="col-sm-8">
+  <div class="row">
+    <div class="form-group col-sm-3">
+      <label for="streamName">Radio station name</label>
+      <input type="text" class="form-control" id="streamName" data-bind="value: currentStreamName">
+    </div>
+    <div class="form-group col-sm-5">
+      <label for="streamUri">Radio stream address</label>
       <input type="text" class="form-control" id="streamUri" data-bind="value: currentStreamUri">
     </div>
-    <div class="col-sm-4">
+    <div class="form-group col-sm-4">
+      <label>&nbsp;</label>
+      <br>
       <button class="btn btn-primary" data-bind="click: play">Play</button>
-      <button class="btn btn-default" data-bind="click: addToFavourites">Add to favourites</button>
+      <button class="btn btn-default" data-bind="click: addToFavourites, visible: canAddToFavourites">Add to favourites</button>
+      <button class="btn btn-default" data-bind="click: removeFromFavourites, visible: canRemoveFromFavourites">Remove from favourites</button>
     </div>
   </div>
 </form>
