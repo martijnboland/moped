@@ -1,0 +1,43 @@
+﻿<div>
+  <aside id="menu" class="menu pane-col scroll-y">
+    <div data-bind="compose:'viewmodels/search/search'"></div>
+    <div data-bind="compose:'viewmodels/playlists/menu'"></div>
+    <div data-bind="compose:'viewmodels/radio/menu'"></div>
+    <div class="panel">
+      <a href="#settings"><div class="panel-heading settings">Settings</div></a>
+    </div>
+  </aside>
+
+  <div class="main pane-col" data-bind="css: { outtaway: isSidebarVisible }">
+    
+    <header>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-bind="click: toggleSidebar, css: { outtaway: isSidebarVisible }">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="title-bar">
+        <div class="pull-right">
+          Status: <span data-bind="text: connectionState">
+        </div>
+        <a href="#" data-bind="click: goBack, visible: isBackVisible">Back</a>
+        <a href="#">Home</a>
+      </div>
+    </header>
+
+    <section id="maincontent" class="maincontent pane-row scroll-y">
+      <div class="container" data-bind="router: { }">
+
+      </div>
+    </section>
+
+    <section class="nowplaying pane-row">
+      <div data-bind="compose:'viewmodels/nowplaying'"></div>
+    </section>
+
+    <section class="controls pane-row">
+      <div data-bind="compose:'viewmodels/playercontrols'"></div>
+    </section>
+  </div>
+</div>

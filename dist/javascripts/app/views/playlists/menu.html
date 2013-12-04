@@ -1,0 +1,8 @@
+<div class="panel">
+  <div class="panel-heading playlists">Playlists</div>
+  <div class="panel-body">
+    <div class="list-group" data-bind="foreach: playlists">
+      <a class="list-group-item" data-bind="attr: { href: '#playlist/' + uri }"><span class="glyphicon glyphicon-music"></span> <span data-bind="text: name"></a>
+    </div>    
+  </div>
+</div>
