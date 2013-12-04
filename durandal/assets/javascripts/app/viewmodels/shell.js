@@ -16,8 +16,6 @@ define(['plugins/router', 'durandal/app', 'services/mopidyservice', 'jquery', 'f
 
       new FastClick(document.body);
 
-      self.isBackVisible = window.navigator.standalone;
-
       app.on('mopidy:state:online').then(function() {
         self.connectionState = connectionStates.online;
       });
@@ -30,7 +28,7 @@ define(['plugins/router', 'durandal/app', 'services/mopidyservice', 'jquery', 'f
       });
 
       router.map([
-        { route: '', title: 'Start', moduleId: 'viewmodels/home', nav: true },
+        { route: '', title: '', moduleId: 'viewmodels/home', nav: true },
         { route: 'radio(/:stationName)', moduleId: 'viewmodels/radio/radio', nav: true },
         { route: 'settings', moduleId: 'viewmodels/settings', nav: true },
         { route: 'playlist/:uri', moduleId: 'viewmodels/playlists/list' },
@@ -41,6 +39,7 @@ define(['plugins/router', 'durandal/app', 'services/mopidyservice', 'jquery', 'f
 
       router.on('router:route:activating').then(function(instance, instruction, router) {
         self.isSidebarVisible = false;
+        self.isBackVisible = window.navigator.standalone && instruction.fragment !== '';
       });
       
       return router.activate();

@@ -17,7 +17,7 @@ define(['durandal/app', 'services/radioservice', 'lodash'], function (app, radio
         self.radiostations.remove(function(station) {
           return station.name === stationName;
         });
-      })
+      });
     }
   };
 });

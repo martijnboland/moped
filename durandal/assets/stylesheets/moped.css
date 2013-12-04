@@ -128,6 +128,9 @@ body {
   padding: 0 10px;
 }
 
+.title-bar a {
+  margin: 0 5px;
+}
 .main.outtaway { 
   left: 240px; 
 }
