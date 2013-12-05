@@ -1,0 +1,10 @@
+{
+  "name": "moped",
+  "version": "0.1.0",
+  "devDependencies": {
+    "angular": "~1.2",
+    "angular-mocks": "~1.2",
+    "bootstrap": "~3.0"
+  },
+  "dependencies": {}
+}
