@@ -10,19 +10,54 @@
  * project should be imported as the rest are just wasting space.
  */
 
+// Mixins
 @import '../../vendor/bootstrap/less/mixins.less';
-@import '../../vendor/bootstrap/less/reset.less';
-@import '../../vendor/bootstrap/less/utilities.less';
-@import '../../vendor/bootstrap/less/scaffolding.less';
-@import '../../vendor/bootstrap/less/type.less';
-@import '../../vendor/bootstrap/less/grid.less';
-@import '../../vendor/bootstrap/less/layouts.less';
-@import '../../vendor/bootstrap/less/navs.less';
-@import '../../vendor/bootstrap/less/navbar.less';
-@import '../../vendor/bootstrap/less/buttons.less';
-@import '../../vendor/bootstrap/less/button-groups.less';
-@import '../../vendor/bootstrap/less/dropdowns.less';
 
+// Reset
+@import '../../vendor/bootstrap/less/normalize.less';
+@import '../../vendor/bootstrap/less/print.less';
+
+// Core CSS
+@import "../../vendor/bootstrap/less/scaffolding.less";
+@import "../../vendor/bootstrap/less/type.less";
+@import "../../vendor/bootstrap/less/code.less";
+@import "../../vendor/bootstrap/less/grid.less";
+@import "../../vendor/bootstrap/less/tables.less";
+@import "../../vendor/bootstrap/less/forms.less";
+@import "../../vendor/bootstrap/less/buttons.less";
+
+// Components
+@import "../../vendor/bootstrap/less/component-animations.less";
+@import "../../vendor/bootstrap/less/glyphicons.less";
+@import "../../vendor/bootstrap/less/dropdowns.less";
+@import "../../vendor/bootstrap/less/button-groups.less";
+@import "../../vendor/bootstrap/less/input-groups.less";
+@import "../../vendor/bootstrap/less/navs.less";
+@import "../../vendor/bootstrap/less/navbar.less";
+@import "../../vendor/bootstrap/less/breadcrumbs.less";
+@import "../../vendor/bootstrap/less/pagination.less";
+@import "../../vendor/bootstrap/less/pager.less";
+@import "../../vendor/bootstrap/less/labels.less";
+@import "../../vendor/bootstrap/less/badges.less";
+@import "../../vendor/bootstrap/less/jumbotron.less";
+@import "../../vendor/bootstrap/less/thumbnails.less";
+@import "../../vendor/bootstrap/less/alerts.less";
+@import "../../vendor/bootstrap/less/progress-bars.less";
+@import "../../vendor/bootstrap/less/media.less";
+@import "../../vendor/bootstrap/less/list-group.less";
+@import "../../vendor/bootstrap/less/panels.less";
+@import "../../vendor/bootstrap/less/wells.less";
+@import "../../vendor/bootstrap/less/close.less";
+
+// Components w/ JavaScript
+@import "../../vendor/bootstrap/less/modals.less";
+@import "../../vendor/bootstrap/less/tooltip.less";
+@import "../../vendor/bootstrap/less/popovers.less";
+@import "../../vendor/bootstrap/less/carousel.less";
+
+// Utility classes
+@import "../../vendor/bootstrap/less/utilities.less";
+@import "../../vendor/bootstrap/less/responsive-utilities.less";
 
 /**
  * This is our main variables file. It in turn imports the `variables` file from
@@ -31,121 +66,3 @@
  */
 
 @import 'variables.less';
-
-
-/**
- * Typography
- */
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto Regular'), local('Roboto-Regular'), url(fonts/Roboto-Regular.woff) format('woff');
-}
-
-code, pre, .pre {
-  padding: 5px;
-  margin: 10px 0;
-  background-color: #EFEFEF;
-  border: 1px solid #DADADA;
-  .border-radius(3px);
-}
-
-code {
-  padding: 0 3px;
-}
-
-pre {
-  margin: 10px 0;
-  padding: 5px;
-}
-
-.page-header {
-  margin-top: 60px;
-
-  &:first-child {
-    margin-top: 20px;
-  }
-}
-
-h2 {
-  margin: 20px 0;
-  color: #666;
-}
-
-
-/**
- * Navigation
- */
-
-.navbar {
-  .navbar-inner {
-    padding: 0;
-  }
-
-  .nav {
-    margin: 0;
-    display: table;
-    width: 100%;
-
-    li {
-      display: table-cell;
-      width: 1%;
-      float: none;
-
-      a {
-        font-weight: bold;
-        text-align: center;
-        //border-left: 1px solid rgba(255, 255, 255, 0.75);
-        border-right: 1px solid rgba(0, 0, 0, .1);
-      }
-      
-      &:first-child a {
-        border-left: 0;
-        border-radius: 3px 0 0 3px;
-      }
-      
-      &:last-child a {
-        border-right: 0;
-        border-radius: 3px 0 0 3px;
-      }
-    }
-  }
-}
-
-
-/**
- * Footer
- */
-
-.footer {
-  margin-top: 80px;
-
-  .footer-inner {
-    padding: 40px 0;
-    border-top: 1px solid #DDD;
-  }
-
-  .social {
-    float: right;
-    margin: 0;
-    list-style: none;
-
-    li {
-      float: left;
-      margin-left: 20px;
-
-      a, a:visited {
-        color: @grayLight;
-        text-decoration: none;
-        font-size: 40px;
-        .transition( 250ms ease-in-out );
-
-        &:hover {
-          color: @gray;
-        }
-      }
-    }
-  }
-}
