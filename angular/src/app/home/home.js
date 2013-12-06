@@ -12,8 +12,8 @@
  * The dependencies block here is also where component dependencies should be
  * specified, as shown below.
  */
-angular.module( 'moped.home', [
-  
+angular.module('moped.home', [
+  'ngRoute'
 ])
 
 /**
@@ -21,25 +21,19 @@ angular.module( 'moped.home', [
  * will handle ensuring they are all available at run-time, but splitting it
  * this way makes each module more "self-contained".
  */
- /*
-.config(function config( $stateProvider ) {
-  $stateProvider.state( 'home', {
-    url: '/home',
-    views: {
-      "main": {
-        controller: 'HomeCtrl',
-        templateUrl: 'home/home.tpl.html'
-      }
-    },
-    data:{ pageTitle: 'Home' }
-  });
+.config(function config($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'home/home.tpl.html',
+      controller: 'HomeCtrl'
+    });
 })
-*/
 
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope ) {
+.controller('HomeCtrl', function HomeController($scope) {
+  $scope.hello = "Hello Moped";
 })
 
 ;

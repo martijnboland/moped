@@ -4,7 +4,8 @@
   "devDependencies": {
     "angular": "~1.2",
     "angular-mocks": "~1.2",
-    "bootstrap": "~3.0"
+    "bootstrap": "~3.0",
+    "angular-route": "~1.2.3"
   },
   "dependencies": {}
 }
