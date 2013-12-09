@@ -355,7 +355,8 @@ module.exports = function ( grunt ) {
       },
       unit: {
         runnerPort: 9101,
-        background: true
+        background: true,
+        port: 9877
       },
       continuous: {
         singleRun: true

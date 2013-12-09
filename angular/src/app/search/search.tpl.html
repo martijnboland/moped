@@ -1,0 +1,11 @@
+<div class="panel" ng-controller="SearchCtrl">
+  <div class="panel-heading search">Search</div>
+  <div class="panel-body">
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" name="query" required ng-model="query" />
+        <input type="submit" value="Find" ng-click="find()" class="btn-search" />
+      </div>
+    </form>
+  </div>
+</div>

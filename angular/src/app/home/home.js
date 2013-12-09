@@ -16,25 +16,25 @@ angular.module('moped.home', [
   'ngRoute'
 ])
 
-/**
- * Each section or module of the site can also have its own routes. AngularJS
- * will handle ensuring they are all available at run-time, but splitting it
- * this way makes each module more "self-contained".
- */
-.config(function config($routeProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl: 'home/home.tpl.html',
-      controller: 'HomeCtrl'
-    });
-})
+  /**
+   * Each section or module of the site can also have its own routes. AngularJS
+   * will handle ensuring they are all available at run-time, but splitting it
+   * this way makes each module more "self-contained".
+   */
+  .config(function config($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'home/home.tpl.html',
+        controller: 'HomeCtrl'
+      });
+  })
 
-/**
- * And of course we define a controller for our route.
- */
-.controller('HomeCtrl', function HomeController($scope) {
-  $scope.hello = "Hello Moped";
-})
+  /**
+   * And of course we define a controller for our route.
+   */
+  .controller('HomeCtrl', function HomeController($scope) {
+    $scope.hello = "Hello Moped";
+  })
 
-;
+  ;
 
