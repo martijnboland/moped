@@ -4,10 +4,12 @@ var connectionStates = {
 };
 
 angular.module( 'moped', [
-  'templates-app',
-  'templates-common',
+  'moped.mopidy',
   'moped.search',
-  'moped.home'
+  'moped.settings',
+  'moped.home',
+  'templates-app',
+  'templates-common'
 ])
   .config( function myAppConfig ( ) {
   
@@ -17,10 +19,25 @@ angular.module( 'moped', [
   
   })
   
-  .controller('AppCtrl', function AppController ($scope, $location, $window) {
+  .controller('AppCtrl', function AppController ($scope, $location, $window, mopidyservice) {
+
     $scope.isSidebarVisibleForMobile = false;
     $scope.isBackVisible = false;
     $scope.connectionState = connectionStates.offline;
+
+    $scope.$on('mopidy:state:online', function() {
+      $scope.connectionState = connectionStates.online;
+      $scope.$apply();
+    });
+
+    $scope.$on('mopidy:state:offline', function() {
+      $scope.connectionState = connectionStates.offline;
+      $scope.$apply();
+    });
+
+    $scope.$on('settings:saved', function() {
+      mopidyservice.restart();
+    });
 
     $scope.$on('$locationChangeSuccess', function(ev, newUrl, currentUrl) {
       var path = $location.path();
@@ -35,4 +52,7 @@ angular.module( 'moped', [
     $scope.goBack = function() {
       $window.history.back();
     };
+
+    mopidyservice.start();
+
   });
