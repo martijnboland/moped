@@ -1,0 +1,8 @@
+<div class="panel" ng-controller="PlaylistMenuCtrl">
+  <div class="panel-heading playlists">Playlists</div>
+  <div class="panel-body">
+    <div class="list-group">
+      <a class="list-group-item" ng-repeat="playlist in playlists" ng-href="#/playlist/{{playlist.uri}}"><span class="glyphicon glyphicon-music"></span> {{playlist.name}}</a>
+    </div>    
+  </div>
+</div>

@@ -57,19 +57,19 @@ body {
 }
 
 .menu .panel-heading.search {
-  background-image: url(images/search-icon.png);
+  background-image: url(../images/search-icon.png);
 }
 
 .menu .panel-heading.playlists {
-  background-image: url(images/playlists-icon.png);
+  background-image: url(../images/playlists-icon.png);
 }
 
 .menu .panel-heading.radio {
-  background-image: url(images/radio-icon.png);
+  background-image: url(../images/radio-icon.png);
 }
 
 .menu .panel-heading.settings {
-  background-image: url(images/settings-icon.png);
+  background-image: url(../images/settings-icon.png);
 }
 
 .menu .panel-body {
@@ -262,6 +262,32 @@ body {
   .main { left: 240px; right: 0; width: auto;  }
   .maincontent { bottom: 118px; }
   .nowplaying { height: 68px;}
+}
+
+// Overrides
+
+// Small grid
+@media (min-width: @screen-sm-min) {
+  .container {
+    max-width: @container-sm;
+    width: auto;
+  }
+}
+
+// Medium grid
+@media (min-width: @screen-md-min) {
+  .container {
+    max-width: @container-md;
+    width: auto;
+  }
+}
+
+// Large grid
+@media (min-width: @screen-lg-min) {
+  .container {
+    max-width: @container-lg;
+    width: auto;
+  }
 }
 
 

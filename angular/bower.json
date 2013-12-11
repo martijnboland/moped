@@ -8,5 +8,8 @@
     "angular-route": "~1.2.3",
     "lodash": "~2.4.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "resolutions": {
+    "angular": "~1.2"
+  }
 }

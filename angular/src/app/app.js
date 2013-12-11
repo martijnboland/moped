@@ -3,19 +3,21 @@ var connectionStates = {
   offline: 'Offline'
 };
 
-angular.module( 'moped', [
+angular.module('moped', [
   'moped.mopidy',
   'moped.search',
+  'moped.playlists',
   'moped.settings',
   'moped.home',
+  'moped.widgets',
   'templates-app',
   'templates-common'
 ])
-  .config( function myAppConfig ( ) {
+  .config(function myAppConfig () {
   
   })
 
-  .run( function run () {
+  .run(function run () {
   
   })
   

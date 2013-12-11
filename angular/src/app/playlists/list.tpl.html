@@ -1,0 +1,6 @@
+<div class="row view-title">
+  <h3>{{playlist.name}}</h3>
+</div>
+<div class="list-group">
+  <moped-track track-no="$index+1" track="track" ng-repeat="track in playlist.tracks" />
+</div>

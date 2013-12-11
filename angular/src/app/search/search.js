@@ -3,7 +3,7 @@ angular.module('moped.search', [
 ])
   .config(function config($routeProvider) {
     $routeProvider
-      .when('#/search/:query', {
+      .when('/search/:query', {
         templateUrl: 'search/results.tpl.html',
         controller: 'SearchResultsCtrl'
       });

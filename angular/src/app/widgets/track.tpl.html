@@ -1,0 +1,12 @@
+<a href="" class="list-group-item row" ng-click="playTrack()" ng-class="{ active: isPlaying }">
+  <div class="col-xs-1">{{trackNo}}</div>
+  <h4 class="col-xs-10 col-sm-5 list-group-item-heading">{{track.name}}</h4>
+  <div class="clearfix visible-xs" data-part="xs-sep1"></div>
+  <div class="col-xs-1 visible-xs" data-part="xs-sp1"></div>
+  <h4 class="col-xs-9 col-sm-5 list-group-item-heading">{{artistsAsString()}}</h4>
+  <div class="col-xs-1" data-part="trackduration">{{trackDuration()}}</div>
+  <div class="clearfix hidden-xs" data-part="xs-sep2"></div>
+  <div class="col-md-1 hidden-xs" data-part="xs-sp1"></div>
+  <div class="col-md-5 hidden-xs" data-part="albumname">{{track.album.name}}</div>
+  <div class="col-md-5 hidden-xs" data-part="albumdate">{{track.album.date}}</div>
+</a>
