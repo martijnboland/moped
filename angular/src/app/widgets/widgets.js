@@ -9,6 +9,7 @@ angular.module('moped.widgets', [
       track: '='
     },
     replace: true,
+    templateUrl: 'widgets/track.tpl.html',
     link: function(scope, element, attrs) {
       scope.artistsAsString = function() {
         return util.getTrackArtistsAsString(scope.track);
@@ -20,24 +21,26 @@ angular.module('moped.widgets', [
         scope.$emit('moped:playtrackrequest', scope.track);
         return false;
       };
-      scope.$on('mopidy:event:trackPlaybackStarted', function(event, data) {
+      var cleanUpTrackPlaybackStarted = scope.$on('mopidy:event:trackPlaybackStarted', function(event, data) {
         scope.isPlaying = data.tl_track.track.uri === scope.track.uri;
         scope.$apply();
       });
 
-      scope.$on('mopidy:event:trackPlaybackPaused', function(event, data) {
+      var cleanUpTrackPlaybackPaused = scope.$on('mopidy:event:trackPlaybackPaused', function(event, data) {
         scope.isPlaying = data.tl_track.track.uri === scope.track.uri;
         scope.$apply();
       });
 
-      scope.$on('moped:currenttrackrequested', function(track) {
+      var cleanUpCurrentTrackRequested = scope.$on('moped:currenttrackrequested', function(track) {
         scope.isPlaying = track.uri === scope.track.uri;
         scope.$apply();
       });
-    },
-    controller : function ($scope) {
 
-    },
-    templateUrl: 'widgets/track.tpl.html'
+      $scope.$on('$destroy', function() {
+        cleanUpTrackPlaybackStarted();
+        cleanUpTrackPlaybackPaused();
+        cleanUpCurrentTrackRequested();
+      };
+    }
   };
 });
