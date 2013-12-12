@@ -1,8 +1,3 @@
-var connectionStates = { 
-  online: 'Online',
-  offline: 'Offline'
-};
-
 angular.module('moped', [
   'moped.mopidy',
   'moped.search',
@@ -22,10 +17,16 @@ angular.module('moped', [
   })
   
   .controller('AppCtrl', function AppController ($scope, $location, $window, mopidyservice) {
+    var connectionStates = { 
+      online: 'Online',
+      offline: 'Offline'
+    };
+    var defaultPageTitle = 'Moped';
 
     $scope.isSidebarVisibleForMobile = false;
     $scope.isBackVisible = false;
     $scope.connectionState = connectionStates.offline;
+    $scope.pageTitle = defaultPageTitle;
 
     $scope.$on('mopidy:state:online', function() {
       $scope.connectionState = connectionStates.online;
@@ -45,6 +46,10 @@ angular.module('moped', [
       var path = $location.path();
       $scope.isSidebarVisibleForMobile = false;
       $scope.isBackVisible = $window.navigator.standalone && path !== '/';
+    });
+
+    $scope.$on("$routeChangeSuccess", function(ev, currentRoute, previousRoute) {
+      $scope.pageTitle = currentRoute.title || defaultPageTitle;
     });
 
     $scope.toggleSidebar = function() {

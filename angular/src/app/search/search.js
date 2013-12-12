@@ -5,7 +5,8 @@ angular.module('moped.search', [
     $routeProvider
       .when('/search/:query', {
         templateUrl: 'search/results.tpl.html',
-        controller: 'SearchResultsCtrl'
+        controller: 'SearchResultsCtrl',
+        title: 'Search results'
       });
   })
   .controller('SearchCtrl', function SearchController($scope, $location) {

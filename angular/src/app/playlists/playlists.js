@@ -8,7 +8,8 @@ angular.module('moped.playlists', [
   $routeProvider
     .when('/playlist/:uri', {
       templateUrl: 'playlists/list.tpl.html',
-      controller: 'PlaylistCtrl'
+      controller: 'PlaylistCtrl',
+      title: 'Playlist'
     });
 })
 

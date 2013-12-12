@@ -5,7 +5,8 @@ angular.module('moped.settings', [
     $routeProvider
       .when('/settings', {
         templateUrl: 'settings/settings.tpl.html',
-        controller: 'SettingsCtrl'
+        controller: 'SettingsCtrl',
+        title: 'Settings'
       });
   })
 
