@@ -36,11 +36,11 @@ angular.module('moped.widgets', [
         scope.$apply();
       });
 
-      $scope.$on('$destroy', function() {
+      scope.$on('$destroy', function() {
         cleanUpTrackPlaybackStarted();
         cleanUpTrackPlaybackPaused();
         cleanUpCurrentTrackRequested();
-      };
+      });
     }
   };
 });
