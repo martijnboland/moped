@@ -63,17 +63,20 @@ module.exports = {
   vendor_files: {
     js: [
       'vendor/mopidy/mopidy.js',
+      'vendor/jquery/jquery.js',
       'vendor/angular/angular.js',
       'vendor/angular-route/angular-route.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
-      'vendor/lodash/dist/lodash.js'
+      'vendor/lodash/dist/lodash.js',
+      'vendor/bootstrap-slider/bootstrap-slider.js'
     ],
     css: [
+      'vendor/bootstrap-slider/slider.css'
     ],
     assets: [
     ],
     fonts: [
-      'vendor/bootstrap/fonts/glyphicons-halflings-regular.*'
+      'vendor/bootstrap/dist/fonts/glyphicons-halflings-regular.*'
     ]
   },
 };

@@ -611,7 +611,7 @@ module.exports = function ( grunt ) {
    */
   function filterForCSS ( files ) {
     return files.filter( function ( file ) {
-      return file.match( /\.css$/ );
+      return file.match( /\.css$/ ) && ! file.match( /vendor/ ); // vendor css files are concatenated
     });
   }
 

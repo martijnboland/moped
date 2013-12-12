@@ -4,6 +4,8 @@ angular.module('moped', [
   'moped.playlists',
   'moped.settings',
   'moped.home',
+  'moped.nowplaying',
+  'moped.playercontrols',
   'moped.widgets',
   'templates-app',
   'templates-common'

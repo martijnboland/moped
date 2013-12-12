@@ -1,6 +1,4 @@
-angular.module('moped.widgets', [
-  'moped.util'
-])
+angular.module('moped.widgets')
 .directive('mopedTrack', function(util) {
   return {
     restrict: 'EA',
@@ -21,6 +19,7 @@ angular.module('moped.widgets', [
         scope.$emit('moped:playtrackrequest', scope.track);
         return false;
       };
+
       var cleanUpTrackPlaybackStarted = scope.$on('mopidy:event:trackPlaybackStarted', function(event, data) {
         scope.isPlaying = data.tl_track.track.uri === scope.track.uri;
         scope.$apply();
