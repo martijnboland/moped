@@ -8,6 +8,10 @@ angular.module('moped.widgets')
     link: function(scope, element, attrs) {
       var $slider = $(element).slider(scope.$eval(attrs.mopedSlider));
 
+      $slider.on('slideStart', function(ev) {
+        scope.$emit('moped:slidervaluechanging', ev.value);
+      });
+
       $slider.on('slideStop', function(ev) {
         scope.$emit('moped:slidervaluechanged', ev.value);
       });

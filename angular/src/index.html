@@ -23,7 +23,6 @@
         <div ng-include="'search/search.tpl.html'"></div>
         <div ng-include="'playlists/menu.tpl.html'"></div>
         <!--
-        <div data-bind="compose:'viewmodels/playlists/menu'"></div>
         <div data-bind="compose:'viewmodels/radio/menu'"></div>
     -->
         <div class="panel">
@@ -56,9 +55,7 @@
         </section>
 
         <section class="nowplaying pane-row">
-          <!--
-          <div data-bind="compose:'viewmodels/nowplaying'"></div>
-        -->
+          <div ng-include="'nowplaying/nowplaying.tpl.html'"></div>
         </section>
 
         <section class="controls pane-row">

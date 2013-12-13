@@ -1,0 +1,20 @@
+<div ng-controller="NowPlayingCtrl">
+  <div class="col-xs-12 col-sm-6 track">
+    <img class="nowplaying-thumb" ng-src="{{currentTrackImageUrl}}" />
+    <a class="albumlink" href="" ng-href="#/album/{{currentAlbumUri}}"><h5>{{currentTrack}}</h5></a>
+    <div ng-repeat="artist in currentArtists">
+      <a class="artistlink" href="" ng-href="#/artist/{{artist.uri}}/{{artist.name}}">{{artist.name}}</a>
+    </div>    
+  </div>
+  <div class="clearfix visible-xs"></div>
+  <div class="col-xs-12 col-sm-6 transport">
+    <div class="time">
+      <div class="pull-left">{{currentTrackPosition}}</div>
+      <div class="pull-right">{{currentTrackLengthString}}</div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="time-slider-container">
+      <input type="text" class="time-slider" name="timeposition" moped-slider="{ min: 0, max: 100, step: 1, selection: 'before', tooltip: 'hide' }" slider-value="currentTimePosition" />
+    </div>
+  </div>
+</div>

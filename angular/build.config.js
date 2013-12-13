@@ -68,7 +68,8 @@ module.exports = {
       'vendor/angular-route/angular-route.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/lodash/dist/lodash.js',
-      'vendor/bootstrap-slider/bootstrap-slider.js'
+      'vendor/bootstrap-slider/bootstrap-slider.js',
+      'vendor/lastfm-api/lastfm-api.js'
     ],
     css: [
       'vendor/bootstrap-slider/slider.css'
