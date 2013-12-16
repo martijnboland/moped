@@ -66,6 +66,7 @@ module.exports = {
       'vendor/jquery/jquery.js',
       'vendor/angular/angular.js',
       'vendor/angular-route/angular-route.js',
+      'vendor/angular-sanitize/angular-sanitize.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/lodash/dist/lodash.js',
       'vendor/bootstrap-slider/bootstrap-slider.js',

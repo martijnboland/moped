@@ -1,8 +1,11 @@
 <div>
   <div class="row view-title">
-    <h3 class="pull-left">{{album.name}}</h3>
+    <h3 class="pull-left">
+      <a ng-href="#/album/{{album.uri}}" ng-if="linkAlbumTitle">{{album.name}}</a>
+      <span ng-if="!linkAlbumTitle">{{album.name}}</span>
+    </h3>
     <div class="pull-left title-date">{{album.date}}</div>
-    <h4 class="pull-right" ng-repeat="artist in album.artists">
+    <h4 class="pull-right" ng-repeat="artist in album.artists" ng-hide="hideArtist">
       <a class="artistlink" href="" ng-href="#/artist/{{artist.uri}}/{{artist.name}}">{{artist.name}}</a>
     </h4> 
   </div>

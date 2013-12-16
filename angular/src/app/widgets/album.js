@@ -9,7 +9,9 @@ angular.module('moped.widgets')
     scope: {
       album: '=',
       tracks: '=',
-      imageSize: '='
+      hideArtist: '=',
+      linkAlbumTitle: '=',
+      imageSize: '@'
     },
     replace: true,
     templateUrl: 'widgets/album.tpl.html',
@@ -49,6 +51,7 @@ angular.module('moped.widgets')
             {
               scope.albumImageUrl = defaultAlbumImageUrl;
             }
+            scope.$apply();
           });
 
         }

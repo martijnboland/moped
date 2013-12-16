@@ -144,7 +144,9 @@ angular.module('moped.mopidy', [])
         }
 
         self.mopidy.playback.stop(true)
-          .then(self.mopidy.tracklist.clear(), consoleError)
+          .then(function() { 
+            self.mopidy.tracklist.clear();
+          }, consoleError)
           .then(function() {
             self.mopidy.tracklist.add(surroundingTracks);
           }, consoleError)

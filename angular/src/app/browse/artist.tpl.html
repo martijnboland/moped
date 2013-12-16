@@ -1,0 +1,29 @@
+<div class="row view-title">
+  <h3>{{artist.name}}</h3>
+  <div class="pull-right" moped-artist-image artist-name="artist.name" image-size="extralarge" />
+  <p ng-bind-html="artistSummary"></p>
+</div>
+
+<div class="row" ng-show="albums.length > 0">
+  Albums
+  <hr>
+</div>
+<div ng-repeat="a in albums">
+  <moped-album album="a.album" tracks="a.tracks" hide-artist="true" link-album-title="true" /> 
+</div>
+
+<div class="row" ng-show="singles.length > 0">
+  Singles
+  <hr>
+</div>
+<div ng-repeat="s in singles">
+  <moped-album album="s.album" tracks="s.tracks" hide-artist="true" link-album-title="true"  /> 
+</div>
+
+<div class="row" ng-show="appearsOn.length > 0">
+  Appears on
+  <hr>
+</div>
+<ul class="albumimagelist">
+  <li moped-album-image album="a.album" ng-repeat="a in appearsOn">
+</ul>

@@ -1,6 +1,8 @@
 angular.module('moped.browse', [
   'moped.mopidy',
-  'ngRoute'
+  'moped.lastfm',
+  'ngRoute',
+  'ngSanitize'
 ])
 
 .config(function config($routeProvider) {
@@ -10,7 +12,7 @@ angular.module('moped.browse', [
       controller: 'AlbumCtrl',
       title: 'Album'
     })
-    .when('/artist/:uri', {
+    .when('/artist/:uri/:name', {
       templateUrl: 'browse/artist.tpl.html',
       controller: 'ArtistCtrl',
       title: 'Artist'
@@ -18,7 +20,7 @@ angular.module('moped.browse', [
 })
 
 .controller('AlbumCtrl', function AlbumController($scope, $timeout, $routeParams, mopidyservice) {
-  var defaultAlbumImageUrl = 'images/noalbum.png';
+  var defaultAlbumImageUrl = 'assets/images/noalbum.png';
 
   $scope.album = {};
   $scope.tracks = [];
@@ -40,7 +42,9 @@ angular.module('moped.browse', [
 
   $timeout(function() {
     mopidyservice.getCurrentTrack().then(function(track) {
-      $scope.$broadcast('moped:currenttrackrequested', track);
+      if (track) {
+        $scope.$broadcast('moped:currenttrackrequested', track);
+      }
     });
   }, 500);
 
@@ -49,6 +53,93 @@ angular.module('moped.browse', [
   });
 })
 
-.controller('ArtistCtrl', function ArtistController($scope) {
-  
+.controller('ArtistCtrl', function ArtistController($scope, $timeout, $routeParams, mopidyservice, lastfmservice) {
+  var defaultAlbumImageUrl = 'assets/images/noalbum.png';
+
+  var uri = $routeParams.uri;
+  var name = $routeParams.name;
+
+  $scope.artistSummary = '';
+  $scope.albums = [];
+  $scope.singles = [];
+  $scope.appearsOn = [];
+
+  $scope.artist = { name: name };
+
+  lastfmservice.getArtistInfo(name, function(err, artistInfo) {
+    if (! err) {
+      $scope.artistSummary = artistInfo.artist.bio.summary;
+    }
+  });
+
+  mopidyservice.getArtist(uri).then(function(data) {
+
+    // data comes as a list of tracks.
+    if (data.length > 0) {
+      // Get artist object from list of tracks
+      $scope.artist = _.chain(data)
+        .map(function(track) {
+          return track.artists[0];
+        })
+        .find({ uri: uri })
+        .value();
+
+      // Extract albums from list of tracks
+      var allAlbums = _.chain(data)
+        .map(function(track) {
+          return track.album;
+        })
+        .uniq(function(album) {
+          return album.uri;
+        })
+        .sortBy('date')
+        .value();
+
+      var tracksByAlbum = _.groupBy(data, function(track) {
+        return track.album.uri;
+      });
+
+      _.forEachRight(allAlbums, function(album) {
+        var tracks = tracksByAlbum[album.uri];
+        var albumObject = { album: album, tracks: tracks };
+        if (album.artists[0].uri === uri) { // Main artist, otherwise appears on.
+          if (tracks.length > 4) { // If an album has 4 tracks or less, we're categorizing it as single.
+            $scope.albums.push(albumObject);
+          }
+          else {
+            $scope.singles.push(albumObject);
+          }
+        }
+        else {
+          $scope.appearsOn.push(albumObject);
+        }
+      });
+    }
+  }, console.error);
+
+  $timeout(function() {
+    mopidyservice.getCurrentTrack().then(function(track) {
+      if (track) {
+        $scope.$broadcast('moped:currenttrackrequested', track);
+      }
+    });
+  }, 500);
+
+  $scope.$on('moped:playtrackrequest', function(event, track) {
+    var surroundingTracks = [];
+    // Add ordered tracks from albums and singles to track context.
+    var tracksFromAlbums = _.chain($scope.albums)
+      .flatten('tracks')
+      .forEach(function(track) {
+        surroundingTracks.push(track);
+      });
+    var tracksFromSingles = _.chain($scope.singles)
+      .flatten('tracks')
+      .forEach(function(track) {
+        surroundingTracks.push(track);
+      });
+
+    mopidyservice.playTrack(track, surroundingTracks);
+  });
+
 });

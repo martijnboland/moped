@@ -2,10 +2,11 @@
   "name": "moped",
   "version": "0.1.0",
   "devDependencies": {
-    "angular": "~1.2.4",
-    "angular-mocks": "~1.2.4",
+    "angular": "~1.2",
+    "angular-mocks": "~1.2",
+    "angular-route": "~1.2",
+    "angular-sanitize": "~1.2",
     "bootstrap": "~3.0",
-    "angular-route": "~1.2.4",
     "lodash": "~2.4.1",
     "jquery": "~2.0.3",
     "lastfm-api": "~0.0.1"
