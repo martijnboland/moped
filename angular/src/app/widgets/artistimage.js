@@ -5,11 +5,12 @@ angular.module('moped.widgets')
 
   return {
     restrict: 'A',
+    transclude: true,
     scope: {
       artistName: '=',
       imageSize: '@'
     },
-    template: '<img class="img-responsive" ng-src="{{artistImageUrl}}" />',
+    template: '<img class="img-responsive" ng-src="{{artistImageUrl}}" /><div ng-transclude></div>',
     link: function(scope, element, attrs) {
       scope.artistImageUrl = defaultArtistImageUrl;
       scope.artistImageSize = scope.imageSize || defaultArtistImageSize;

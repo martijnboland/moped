@@ -1,3 +1,30 @@
-<div>
-  Results
+<br>
+<p>Showing results for <em>{{query}}</em><p>
+<div class="row view-title">
+  <div class="col-sm-6">
+    <h3>Artists</h3>
+    <ul class="artistimagelist">
+      <li ng-repeat="artist in artists">
+        <a ng-href="#/artist/{{artist.uri}}/{{artist.name}}" moped-artist-image artist-name="artist.name" image-size="large" >
+           <div>{{artist.name}}</div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="clearfix visible-xs"></div>
+  <div class="col-sm-6">
+    <h3>Albums</h3>
+    <ul class="albumimagelist">
+      <li ng-repeat="album in albums" moped-album-image album="album" image-size="large">
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Tracks</h3>
+  </div>
+</div>
+<div class="list-group">
+  <moped-track track-no="$index+1" track="track" ng-repeat="track in tracks" />
 </div>
