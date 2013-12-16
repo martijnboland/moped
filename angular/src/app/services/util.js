@@ -23,6 +23,21 @@ angular.module(['moped.util'], [])
     isValidStreamUri: function(uri) {
       var regexp = /(mms|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
       return regexp.test(uri);
+    },
+    safeApply: function($scope, fn) {
+      var phase = $scope.$root.$$phase;
+      if(phase == '$apply' || phase == '$digest') {
+        if (fn) {
+          $scope.$eval(fn);
+        }
+      } 
+      else {
+        if (fn) {
+          $scope.$apply(fn);
+        } else {
+          $scope.$apply();
+        }
+      }
     }
   };
 });

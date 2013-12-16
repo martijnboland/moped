@@ -134,8 +134,9 @@ define(['durandal/app', 'durandal/system', 'lodash'], function (app, system, _) 
                 return tlTrack.track.uri === track.uri;
               });
               self.mopidy.playback.changeTrack(tlTrackToPlay);
-              self.mopidy.playback.play();              
+              self.mopidy.playback.play();
             });
+          return;
         }
       }
 

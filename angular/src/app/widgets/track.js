@@ -1,13 +1,21 @@
 angular.module('moped.widgets')
 .directive('mopedTrack', function(util) {
   return {
-    restrict: 'EA',
+    restrict: 'E',
     scope: {
       trackNo: '=',
       track: '='
     },
     replace: true,
-    templateUrl: 'widgets/track.tpl.html',
+    templateUrl: function(element, attrs) {
+      var display = attrs.display || 'default';
+      switch (display) {
+        case 'short':
+          return 'widgets/track-short.tpl.html';
+        case 'default':
+          return 'widgets/track.tpl.html';
+      }
+    }, 
     link: function(scope, element, attrs) {
       scope.artistsAsString = function() {
         return util.getTrackArtistsAsString(scope.track);
@@ -30,9 +38,9 @@ angular.module('moped.widgets')
         scope.$apply();
       });
 
-      var cleanUpCurrentTrackRequested = scope.$on('moped:currenttrackrequested', function(track) {
+      var cleanUpCurrentTrackRequested = scope.$on('moped:currenttrackrequested', function(event, track) {
         scope.isPlaying = track.uri === scope.track.uri;
-        scope.$apply();
+        util.safeApply(scope);
       });
 
       scope.$on('$destroy', function() {

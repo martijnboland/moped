@@ -60,36 +60,38 @@ angular.module('moped.nowplaying', [
   });
 
   function updateCurrentTrack(track, timePosition) {
-    $scope.currentTrack = track.name;
-    $scope.currentArtists = track.artists;
-    $scope.currentTrackLength = track.length;
-    $scope.currentTrackLengthString = util.timeFromMilliSeconds(track.length);
+    if (track) {
+      $scope.currentTrack = track.name;
+      $scope.currentArtists = track.artists;
+      $scope.currentTrackLength = track.length;
+      $scope.currentTrackLengthString = util.timeFromMilliSeconds(track.length);
 
-    if (track !== null && timePosition !== null && track.length > 0) {
-      $scope.currentTimePosition = (timePosition / track.length) * 100;
-      $scope.currentTrackPosition = util.timeFromMilliSeconds(timePosition);
-    }
-    else
-    {
-      $scope.currentTimePosition = 0;
-      $scope.currentTrackPosition = util.timeFromMilliSeconds(0);
-    }
+      if (track !== null && timePosition !== null && track.length > 0) {
+        $scope.currentTimePosition = (timePosition / track.length) * 100;
+        $scope.currentTrackPosition = util.timeFromMilliSeconds(timePosition);
+      }
+      else
+      {
+        $scope.currentTimePosition = 0;
+        $scope.currentTrackPosition = util.timeFromMilliSeconds(0);
+      }
 
-    if (track.album !== undefined) {
-      $scope.currentAlbumUri = track.album.uri;
-      lastfmservice.getTrackImage(track, 'medium', function(err, trackImageUrl) {
-        if (! err && trackImageUrl !== undefined && trackImageUrl !== '') {
-          $scope.currentTrackImageUrl = trackImageUrl;
-        }
-        else
-        {
-          $scope.currentTrackImageUrl = defaultTrackImageUrl;
-        }
-        $scope.$apply();
-      });
-    }
-    else {
-      $scope.currentAlbumUri = null;
+      if (track.album !== undefined) {
+        $scope.currentAlbumUri = track.album.uri;
+        lastfmservice.getTrackImage(track, 'medium', function(err, trackImageUrl) {
+          if (! err && trackImageUrl !== undefined && trackImageUrl !== '') {
+            $scope.currentTrackImageUrl = trackImageUrl;
+          }
+          else
+          {
+            $scope.currentTrackImageUrl = defaultTrackImageUrl;
+          }
+          $scope.$apply();
+        });
+      }
+      else {
+        $scope.currentAlbumUri = null;
+      }
     }
   }
 

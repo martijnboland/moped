@@ -1,0 +1,22 @@
+<div>
+  <div class="row view-title">
+    <h3 class="pull-left">{{album.name}}</h3>
+    <div class="pull-left title-date">{{album.date}}</div>
+    <h4 class="pull-right" ng-repeat="artist in album.artists">
+      <a class="artistlink" href="" ng-href="#/artist/{{artist.uri}}/{{artist.name}}">{{artist.name}}</a>
+    </h4> 
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <img class="albumcover img-responsive" ng-src="{{albumImageUrl}}" />
+    </div>
+    <div class="col-sm-9">
+      <div ng-repeat="disc in discs">
+        <div ng-show="discs.length > 1">Disc {{disc.disc}}</div>
+        <div class="list-group">
+          <moped-track track-no="track.track_no" track="track" ng-repeat="track in disc.tracksOnDisc" display="short" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

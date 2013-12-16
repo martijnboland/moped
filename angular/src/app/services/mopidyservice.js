@@ -134,15 +134,20 @@ angular.module('moped.mopidy', [])
                 var tlTrackToPlay = _.find(self.currentTlTracks, function(tlTrack) {
                   return tlTrack.track.uri === track.uri;
                 });
-                self.mopidy.playback.changeTrack(tlTrackToPlay);
-                self.mopidy.playback.play();              
+                self.mopidy.playback.changeTrack(tlTrackToPlay)
+                  .then(function() {
+                    self.mopidy.playback.play();  
+                  });
               });
+            return;
           }
         }
 
         self.mopidy.playback.stop(true)
           .then(self.mopidy.tracklist.clear(), consoleError)
-          .then(self.mopidy.tracklist.add(surroundingTracks), consoleError)
+          .then(function() {
+            self.mopidy.tracklist.add(surroundingTracks);
+          }, consoleError)
           .then(function() {
             self.mopidy.tracklist.getTlTracks()
               .then(function(tlTracks) {
@@ -150,8 +155,10 @@ angular.module('moped.mopidy', [])
                 var tlTrackToPlay = _.find(tlTracks, function(tlTrack) {
                   return tlTrack.track.uri === track.uri;
                 });
-                self.mopidy.playback.changeTrack(tlTrackToPlay);
-                self.mopidy.playback.play();
+                self.mopidy.playback.changeTrack(tlTrackToPlay)
+                  .then(function() {
+                    self.mopidy.playback.play();  
+                  });
               }, consoleError);
           } , consoleError);
       },
