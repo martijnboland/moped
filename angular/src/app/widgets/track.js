@@ -30,12 +30,10 @@ angular.module('moped.widgets')
 
       var cleanUpTrackPlaybackStarted = scope.$on('mopidy:event:trackPlaybackStarted', function(event, data) {
         scope.isPlaying = data.tl_track.track.uri === scope.track.uri;
-        scope.$apply();
       });
 
       var cleanUpTrackPlaybackPaused = scope.$on('mopidy:event:trackPlaybackPaused', function(event, data) {
         scope.isPlaying = data.tl_track.track.uri === scope.track.uri;
-        scope.$apply();
       });
 
       var cleanUpCurrentTrackRequested = scope.$on('moped:currenttrackrequested', function(event, track) {

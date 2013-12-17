@@ -54,6 +54,15 @@ angular.module('moped.widgets')
             scope.$apply();
           });
 
+          var cleanUpPlayTrackRequest = scope.$on('moped:playtrackrequest', function(event, track) {
+            var surroundingTracks = [];
+            // Broadcast album.
+            scope.$emit('moped:playtrackalbumrequest', { tracks: scope.tracks, currenttrack: track });            
+          });
+
+          scope.$on('$destroy', function() {
+            cleanUpPlayTrackRequest();
+          });
         }
       });
     }

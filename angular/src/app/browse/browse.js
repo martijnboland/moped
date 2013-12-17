@@ -125,21 +125,8 @@ angular.module('moped.browse', [
     });
   }, 500);
 
-  $scope.$on('moped:playtrackrequest', function(event, track) {
-    var surroundingTracks = [];
-    // Add ordered tracks from albums and singles to track context.
-    var tracksFromAlbums = _.chain($scope.albums)
-      .flatten('tracks')
-      .forEach(function(track) {
-        surroundingTracks.push(track);
-      });
-    var tracksFromSingles = _.chain($scope.singles)
-      .flatten('tracks')
-      .forEach(function(track) {
-        surroundingTracks.push(track);
-      });
-
-    mopidyservice.playTrack(track, surroundingTracks);
+  $scope.$on('moped:playtrackalbumrequest', function(event, album) {
+    mopidyservice.playTrack(album.currenttrack, album.tracks);
   });
 
 });
