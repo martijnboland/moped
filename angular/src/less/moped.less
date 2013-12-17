@@ -169,21 +169,33 @@ body {
   list-style: none;
   float: left;
   width: 176px;
-  max-height: 200px;
+  height: 176px;
   overflow: hidden;
   font-size: 90%;
+  position: relative;
 }
+
 
 .albumimagelist img {
   display: block;
-  border: 1px solid #eee;
   margin: 1px;
 }
 
 .artistimagelist img {
   display: block;
-  border: 1px solid #eee;
+  width: 174px;
   margin: 1px;
+}
+
+.imgoverlay {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  background: #000;
+  background: rgba(0, 0, 0, 0.5);
+  width: 174px;
+  margin: 1px;
+  padding: 3px;
 }
 
 .nowplaying { 
