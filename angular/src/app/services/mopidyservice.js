@@ -4,7 +4,7 @@ angular.module('moped.mopidy', [])
     var consoleLog = console.log.bind(console);
     var consoleError = console.error.bind(console);
 
-    // Wraps calls to mopidy api and converts mopidy's promise to Angulat $q promise.
+    // Wraps calls to mopidy api and converts mopidy's promise to Angular $q promise.
     // Mopidy method calls are passed as a string because some methods are not 
     // available yet when this method is called, due to the introspection.
     // See also http://blog.mbfisher.com/2013/06/mopidy-websockets-and-introspective-apis.html
@@ -14,11 +14,15 @@ angular.module('moped.mopidy', [])
         var args = Array.prototype.slice.call(arguments);
         var self = thisObj || this;
 
+        $rootScope.$broadcast('moped:mopidycalling', { name: functionNameToWrap, args: args });
+
         if (self.isConnected) {
           executeFunctionByName(functionNameToWrap, self, args).then(function(data) {
             deferred.resolve(data);
+            $rootScope.$broadcast('moped:mopidycalled', { name: functionNameToWrap, args: args });
           }, function(err) { 
             deferred.reject(err);
+            $rootScope.$broadcast('moped:mopidyerror', { name: functionNameToWrap, args: args, err: err });
           });
         }
         else
@@ -26,8 +30,10 @@ angular.module('moped.mopidy', [])
           self.mopidy.on("state:online", function() {
             executeFunctionByName(functionNameToWrap, self, args).then(function(data) {
               deferred.resolve(data);
+              $rootScope.$broadcast('moped:mopidycalled', { name: functionNameToWrap, args: args });
             }, function(err) { 
               deferred.reject(err);
+              $rootScope.$broadcast('moped:mopidyerror', { name: functionNameToWrap, args: args, err: err });
             });
           });
         }

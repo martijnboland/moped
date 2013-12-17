@@ -14,20 +14,26 @@ angular.module('moped', [
 
 .config(function ($provide) {
 
-  return $provide.decorator('$rootScope', function($delegate) {
-    $delegate.safeApply = function(fn) {
-      var phase = $delegate.$$phase;
-      if (phase === "$apply" || phase === "$digest") {
-        if (fn && typeof fn === 'function') {
-          fn();
-        }
-      } else {
-        $delegate.$apply(fn);
-      }
+  // Decorator for promises so the ui knows when one or more promises are pending.
+  $provide.decorator('$q', function($delegate, $rootScope) {
+    var pendingPromises = 0;
+    $rootScope.$watch(function() { 
+      return pendingPromises > 0; 
+    }, function(working) { 
+      $rootScope.working = working; 
+    });
+    var $q = $delegate;
+    var origDefer = $q.defer;
+    $q.defer = function() {
+      var defer = origDefer();
+      pendingPromises++;
+      defer.promise['finally'](function() {
+        pendingPromises--;
+      });
+      return defer;
     };
-    return $delegate;
+    return $q;
   });
-  
 })
 
 .run(function run () {

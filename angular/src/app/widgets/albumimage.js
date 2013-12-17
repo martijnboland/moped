@@ -19,6 +19,7 @@ angular.module('moped.widgets')
       lastfmservice.getAlbumImage(scope.album, scope.albumImageSize, function(err, albumImageUrl) {
         if (! err && albumImageUrl !== undefined && albumImageUrl !== '') {
           scope.albumImageUrl = albumImageUrl;
+          scope.$digest();
         }
         else
         {
