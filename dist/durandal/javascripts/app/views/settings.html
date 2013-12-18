@@ -1,0 +1,14 @@
+<form role="form">
+  <h3>Settings</h3>
+  <label for="mopidyUrl">Mopidy Web Socket url</label>
+  <div class="form-group row">
+  	<div class="col-sm-9">
+    	<input type="text" class="form-control" id="mopidyUrl" data-bind="value: settings.mopidyUrl">
+      <span class="help-block">Leave empty for default, example url: ws://hostname:6680/mopidy/ws/</span>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-default" data-bind="click: verifyConnection">Verify connection</button>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" data-bind="click: saveSettings">Save settings</button>
+</form>

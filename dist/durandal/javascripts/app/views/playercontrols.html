@@ -1,0 +1,11 @@
+<ul class="list-inline">
+  <li><a href="#" class="glyphicon glyphicon-fast-backward" role="button" data-bind="click: previous"></a></li>
+  <li><a href="#" class="glyphicon" data-bind="css: { 'glyphicon-play': ! isPlaying, 'glyphicon-pause': isPlaying }, click: play" role="button"></a></li>
+  <li><a href="#" class="glyphicon glyphicon-fast-forward" role="button" data-bind="click: next"></a></li>
+  <li>
+    <input type="text" class="volume-slider" name="volume" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-selection="before" data-slider-tooltip="hide">
+  </li>
+  <li>
+    <span class="glyphicon glyphicon-volume-up" />
+  </li>
+</ul>
