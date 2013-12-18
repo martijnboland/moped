@@ -16,7 +16,7 @@ angular.module('moped', [
 .config(function ($provide) {
 
   // Decorator for promises so the ui knows when one or more promises are pending.
-  $provide.decorator('$q', function($delegate, $rootScope) {
+  $provide.decorator('$q', ['$delegate', '$rootScope', function($delegate, $rootScope) {
     var pendingPromises = 0;
     $rootScope.$watch(function() { 
       return pendingPromises > 0; 
@@ -34,7 +34,7 @@ angular.module('moped', [
       return defer;
     };
     return $q;
-  });
+  }]);
 })
 
 .run(function run () {
