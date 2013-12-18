@@ -2,6 +2,7 @@ angular.module('moped', [
   'moped.mopidy',
   'moped.search',
   'moped.playlists',
+  'moped.radio',
   'moped.settings',
   'moped.home',
   'moped.browse',
