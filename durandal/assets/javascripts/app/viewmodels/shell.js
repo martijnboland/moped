@@ -14,7 +14,7 @@ define(['plugins/router', 'durandal/app', 'services/mopidyservice', 'jquery', 'f
     activate: function() {
       var self = this;
 
-      new FastClick(document.body);
+      //new FastClick(document.body);
 
       app.on('mopidy:state:online').then(function() {
         self.connectionState = connectionStates.online;

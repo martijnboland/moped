@@ -62,6 +62,7 @@ module.exports = {
    */
   vendor_files: {
     js: [
+      'vendor/modernizr/modernizr.js',
       'vendor/mopidy/mopidy.js',
       'vendor/jquery/jquery.js',
       'vendor/angular/angular.js',
