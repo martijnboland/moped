@@ -87,4 +87,8 @@ angular.module('moped', [
 
   mopidyservice.start();
 
+  window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+  }, false);
+
 });

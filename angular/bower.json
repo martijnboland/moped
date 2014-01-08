@@ -10,7 +10,8 @@
     "lodash": "~2.4.1",
     "jquery": "~2.0.3",
     "lastfm-api": "~0.0.1",
-    "modernizr": "~2.7.1"
+    "modernizr": "~2.7.1",
+    "fastclick": "~0.6.10"
   },
   "dependencies": {},
   "resolutions": {
