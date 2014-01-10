@@ -2,10 +2,10 @@
   "name": "moped",
   "version": "0.2.0",
   "devDependencies": {
-    "angular": "~1.2",
-    "angular-mocks": "~1.2",
-    "angular-route": "~1.2",
-    "angular-sanitize": "~1.2",
+    "angular": "~1.2.7",
+    "angular-mocks": "~1.2.7",
+    "angular-route": "~1.2.7",
+    "angular-sanitize": "~1.2.7",
     "bootstrap": "~3.0",
     "lodash": "~2.4.1",
     "jquery": "~2.0.3",
@@ -13,8 +13,5 @@
     "modernizr": "~2.7.1",
     "fastclick": "~0.6.10"
   },
-  "dependencies": {},
-  "resolutions": {
-    "angular": "~1.2"
-  }
+  "dependencies": {}
 }
