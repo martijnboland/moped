@@ -109,11 +109,16 @@ body {
   right: auto;
   width: 100%; 
   background-color: #fff;   
-  -webkit-transition: all 0.2s ease-out;  
-  -moz-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.2s ease;  
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .main .container {
@@ -140,7 +145,11 @@ body {
 }
 
 .main.outtaway { 
-  left: 240px; 
+  -webkit-transform: translate3d(240px, 0, 0);
+  -moz-transform: translate3d(240px, 0, 0);
+  -ms-transform: translate3d(240px, 0, 0);
+  -o-transform: translate3d(240px, 0, 0);
+  transform: translate3d(240px, 0, 0);
 }
 
 .maincontent { 
