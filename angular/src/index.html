@@ -29,7 +29,7 @@
         </div>
       </aside>
 
-      <div class="main pane-col" ng-class="{ outtaway: isSidebarVisibleForMobile }">
+      <div class="main pane-col" ng-class="{ outtaway: isSidebarVisibleForMobile }"ng-swipe-right="isSidebarVisibleForMobile = true" ng-swipe-left="isSidebarVisibleForMobile = false">
         
         <header>
           <button type="button" class="navbar-toggle" data-toggle="collapse" ng-click="toggleSidebar()" ng-class="{ outtaway: isSidebarVisibleForMobile }">

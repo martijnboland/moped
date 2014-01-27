@@ -1,4 +1,5 @@
 angular.module('moped', [
+  'ngTouch',
   'moped.mopidy',
   'moped.search',
   'moped.playlists',
