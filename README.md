@@ -23,7 +23,9 @@ Now get the files with git:
 
 or [download the files from this repository](https://github.com/martijnboland/moped/archive/master.zip).
 
-There are two different versions of Moped. One built with [Durandal](http://durandaljs.org) and one built with [Angular](http://angularjs.org). Both versions are in their own directory. To install your version of choice, copy all files from the [/dist/durandal](dist/durandal) directory or [/dist/angular](/dist/angular) directory to your web client directory (/opt/webclient) and you're good to go. Browse to your server (e.g. http://servername:6680) to see Moped in action.
+There are two different versions of Moped. One built with [Angular](http://angularjs.org) and one built with [Durandal](http://durandaljs.org). Both versions are in their own directory. To install your version of choice, copy all files from the [/dist/angular](/dist/angular) directory or [/dist/durandal](dist/durandal) directory to your web client directory (/opt/webclient) and you're good to go. Browse to your server (e.g. http://servername:6680) to see Moped in action.
+
+*2014-02-21: From now on, all new development is only done in the Angular version, so this will be the preferred version.*
 
 ### Known issues
 
@@ -40,23 +42,6 @@ Development
 -----------
 
 Moped is originally developed as a learning excercise and to compare [Durandal](http://durandaljs.com) and [Angular](http://angularjs.org). Therefore, there are two versions that are about the same functionality-wise.
-
-### Durandal
-
-1. Install [Node.js](http://nodejs.org/)
-2. Install Mimosa
-
-		npm install -g mimosa
-
-3. Clone the repository to your local machine:
-
-		git clone https://github.com/martijnboland/moped.git
-
-4. Navigate to the [/durandal](durandal) directory and enter:
-
-		make start
-	
-This will start a local web server on port 3000 with a watcher that monitors any changes. 
 
 ### Angular
 
@@ -80,3 +65,20 @@ This will start a local web server on port 3000 with a watcher that monitors any
 		grunt watch
 		
 This will start a local web server on port 3001.
+
+### Durandal
+
+1. Install [Node.js](http://nodejs.org/)
+2. Install Mimosa
+
+		npm install -g mimosa
+
+3. Clone the repository to your local machine:
+
+		git clone https://github.com/martijnboland/moped.git
+
+4. Navigate to the [/durandal](durandal) directory and enter:
+
+		make start
+	
+This will start a local web server on port 3000 with a watcher that monitors any changes. 

@@ -31,11 +31,14 @@ angular.module('moped.browse', [
     if (data.length > 0) {
 
       _.forEach(data, function(track) {
-        $scope.tracks.push(track);
+        // don't add unplayable tracks
+        if (track.name.indexOf('[unplayable]') === -1) {
+          $scope.tracks.push(track);
+        }
       });
 
       // Extract album and artist(s) from first track.
-      var firstTrack = data[0];
+      var firstTrack = $scope.tracks[0];
       $scope.album = firstTrack.album;
     }
   }, console.error);
@@ -76,6 +79,11 @@ angular.module('moped.browse', [
 
     // data comes as a list of tracks.
     if (data.length > 0) {
+      // First filter unplayable tracks
+      _.remove(data, function(track) { 
+        return track.name.indexOf('[unplayable]') > -1;
+      });
+
       // Get artist object from list of tracks
       $scope.artist = _.chain(data)
         .map(function(track) {
