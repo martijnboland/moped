@@ -5,6 +5,7 @@ angular.module('moped.radio', [
 
 .factory('radioservice', function($http, $window) {
   var DIRBLE_API_KEY= '58617094d08a7c1699efe88cbde26467901cbd19';
+  var DIRBLE_API_ENDPOINT = 'http://api.dirble.com/v1/';
 
   function getStations() {
     var stationsFromStorage = $window.localStorage['stations'];
@@ -58,7 +59,7 @@ angular.module('moped.radio', [
       callback(null, stationName);
     },
     findStations: function(searchQuery, callback) {
-      var searchUrl = 'http://dirble.com/dirapi/search/apikey/' + DIRBLE_API_KEY + '/search/' + searchQuery + '/count/100';
+      var searchUrl = DIRBLE_API_ENDPOINT + 'search/apikey/' + DIRBLE_API_KEY + '/search/' + searchQuery + '/count/100';
 
       $http.jsonp('http://whateverorigin.org/get?url=' + encodeURIComponent(searchUrl) + '&callback=JSON_CALLBACK')
         .success(function(data) {
