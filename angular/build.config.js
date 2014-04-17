@@ -65,7 +65,7 @@ module.exports = {
       'vendor/modernizr/modernizr.js',
       'vendor/mopidy/mopidy.js',
       'vendor/fastclick/lib/fastclick.js',
-      'vendor/jquery/jquery.js',
+      'vendor/jquery/dist/jquery.js',
       'vendor/angular/angular.js',
       'vendor/angular-route/angular-route.js',
       'vendor/angular-sanitize/angular-sanitize.js',
