@@ -60,11 +60,14 @@ angular.module('moped.mopidy', [])
 
         if (window.localStorage && localStorage['moped.mopidyUrl']) {
           this.mopidy = new Mopidy({
-            webSocketUrl: localStorage['moped.mopidyUrl']
+            webSocketUrl: localStorage['moped.mopidyUrl'],
+            callingConvention: 'by-position-or-by-name'
           });
         }
         else {
-          this.mopidy = new Mopidy();
+          this.mopidy = new Mopidy({ 
+            callingConvention: 'by-position-or-by-name' 
+          });
         }
         this.mopidy.on(consoleLog);
         // Convert Mopidy events to Durandal events
@@ -95,13 +98,13 @@ angular.module('moped.mopidy', [])
         return wrapMopidyFunc("mopidy.playlists.getPlaylists", this)();
       },
       getPlaylist: function(uri) {
-        return wrapMopidyFunc("mopidy.playlists.lookup", this)(uri);
+        return wrapMopidyFunc("mopidy.playlists.lookup", this)({ uri: uri });
       },
       getAlbum: function(uri) {
-        return wrapMopidyFunc("mopidy.library.lookup", this)(uri);
+        return wrapMopidyFunc("mopidy.library.lookup", this)({ uri: uri });
       },
       getArtist: function(uri) {
-        return wrapMopidyFunc("mopidy.library.lookup", this)(uri);
+        return wrapMopidyFunc("mopidy.library.lookup", this)({ uri: uri });
       },
       search: function(query) {
         return wrapMopidyFunc("mopidy.library.search", this)({ any : query });
@@ -113,7 +116,7 @@ angular.module('moped.mopidy', [])
         return wrapMopidyFunc("mopidy.playback.getTimePosition", this)();
       },
       seek: function(timePosition) {
-        return wrapMopidyFunc("mopidy.playback.seek", this)(timePosition);
+        return wrapMopidyFunc("mopidy.playback.seek", this)({ time_position: timePosition });
       },
       getVolume: function() {
         return wrapMopidyFunc("mopidy.playback.getVolume", this)();
@@ -135,12 +138,12 @@ angular.module('moped.mopidy', [])
           });
           if (_.difference(trackUris, currentTrackUris).length === 0) {
             // no playlist change required, just play a different track.
-            self.mopidy.playback.stop(false)
+            self.mopidy.playback.stop({ clear_current_track: false })
               .then(function () {
                 var tlTrackToPlay = _.find(self.currentTlTracks, function(tlTrack) {
                   return tlTrack.track.uri === track.uri;
                 });
-                self.mopidy.playback.changeTrack(tlTrackToPlay)
+                self.mopidy.playback.changeTrack({ tl_track: tlTrackToPlay })
                   .then(function() {
                     self.mopidy.playback.play();  
                   });
@@ -149,12 +152,12 @@ angular.module('moped.mopidy', [])
           }
         }
 
-        self.mopidy.playback.stop(true)
+        self.mopidy.playback.stop({ clear_current_track: true })
           .then(function() { 
             self.mopidy.tracklist.clear();
           }, consoleError)
           .then(function() {
-            self.mopidy.tracklist.add(surroundingTracks);
+            self.mopidy.tracklist.add({ tracks: surroundingTracks });
           }, consoleError)
           .then(function() {
             self.mopidy.tracklist.getTlTracks()
@@ -163,7 +166,7 @@ angular.module('moped.mopidy', [])
                 var tlTrackToPlay = _.find(tlTracks, function(tlTrack) {
                   return tlTrack.track.uri === track.uri;
                 });
-                self.mopidy.playback.changeTrack(tlTrackToPlay)
+                self.mopidy.playback.changeTrack({ tl_track: tlTrackToPlay })
                   .then(function() {
                     self.mopidy.playback.play();  
                   });
@@ -178,7 +181,7 @@ angular.module('moped.mopidy', [])
             self.mopidy.tracklist.clear();
           }, consoleError)
           .then(function() {
-            self.mopidy.tracklist.add(null, 0, streamUri);
+            self.mopidy.tracklist.add({ at_position: 0, uri: streamUri });
           }, consoleError)
           .then(function() { 
             self.mopidy.playback.play();
@@ -191,7 +194,7 @@ angular.module('moped.mopidy', [])
         return wrapMopidyFunc("mopidy.playback.pause", this)();
       },
       stopPlayback: function(clearCurrentTrack) {
-        return wrapMopidyFunc("mopidy.playback.stop", this)(clearCurrentTrack);
+        return wrapMopidyFunc("mopidy.playback.stop", this)({ clear_current_track: clearCurrentTrack });
       },
       previous: function() {
         return wrapMopidyFunc("mopidy.playback.previous", this)();
