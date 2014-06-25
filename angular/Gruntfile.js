@@ -675,7 +675,7 @@ module.exports = function ( grunt ) {
   });
 
   grunt.registerTask( 'mopidypackageversion', 'Create a mopidy package', function () {
-    grunt.file.copy('__init.py__.tpl', grunt.config( 'mopidy_package_dir' ) + '/__init.py__', { 
+    grunt.file.copy('__init__.py.tpl', grunt.config( 'mopidy_package_dir' ) + '/__init__.py', { 
       process: function ( contents, path ) {
         return grunt.template.process( contents, {
           data: {
