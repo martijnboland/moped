@@ -20,8 +20,7 @@ setup(
     author_email='martijn@boland.org',
     description='Responsive Web client for Mopidy',
     long_description=open('README.rst').read(),
-    packages=find_packages(
-        exclude=['angular', 'durandal', 'dist', 'html', 'screenshots']),
+    packages=find_packages(),
     zip_safe=False,
     include_package_data=True,
     install_requires=[
