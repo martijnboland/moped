@@ -684,6 +684,7 @@ module.exports = function ( grunt ) {
         });
       }
     });
+    grunt.file.copy('ext.conf', grunt.config( 'mopidy_package_dir' ) + '/ext.conf'); 
   });
 
 };
