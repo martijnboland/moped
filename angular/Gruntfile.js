@@ -88,10 +88,14 @@ module.exports = function ( grunt ) {
     /**
      * The directories to delete when `grunt clean` is executed.
      */
-    clean: [ 
-      '<%= build_dir %>', 
-      '<%= compile_dir %>'
-    ],
+    clean: {
+      options: {
+        force: true
+      },
+      build: [ '<%= build_dir %>' ],
+      compile: [ '<%= compile_dir %>' ],
+      mopidy: [ '<%= mopidy_package_dir %>' ]
+    },
 
     /**
      * The `copy` task just copies files from A to B. We use it here to copy
@@ -157,6 +161,16 @@ module.exports = function ( grunt ) {
             src: [ '**' ],
             dest: '<%= compile_dir %>/assets',
             cwd: '<%= build_dir %>/assets',
+            expand: true
+          }
+        ]
+      },
+      build_for_mopidy: {
+        files: [
+          {
+            src: [ '**' ],
+            dest: '<%= mopidy_package_dir %>/static',
+            cwd: '<%= compile_dir %>',
             expand: true
           }
         ]
@@ -575,7 +589,7 @@ module.exports = function ( grunt ) {
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
-    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
+    'clean:build', 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_vendor_fonts',
     'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
@@ -587,8 +601,13 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+    'clean:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
   ]);
+
+  /**
+   * The `build-mopidy-extension` task builds Mopidy extension package
+   */
+  grunt.registerTask( 'build-mopidy-extension', [ 'clean:mopidy', 'build', 'compile', 'copy:build_for_mopidy', 'mopidypackageversion' ] );
 
   /**
    * A utility function to get all app JavaScript sources.
@@ -649,6 +668,18 @@ module.exports = function ( grunt ) {
         return grunt.template.process( contents, {
           data: {
             scripts: jsFiles
+          }
+        });
+      }
+    });
+  });
+
+  grunt.registerTask( 'mopidypackageversion', 'Create a mopidy package', function () {
+    grunt.file.copy('__init.py__.tpl', grunt.config( 'mopidy_package_dir' ) + '/__init.py__', { 
+      process: function ( contents, path ) {
+        return grunt.template.process( contents, {
+          data: {
+            version: grunt.config( 'pkg.version' )
           }
         });
       }

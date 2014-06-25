@@ -8,7 +8,7 @@ Moped is a responsive web client for the [Mopidy](http://mopidy.com) music serve
 Installation 
 ------------
 
-Make sure to have Mopidy 0.16 or higher [installed](http://docs.mopidy.com/en/latest/installation/) on your music server. Also make sure that the [HTTP extension](http://docs.mopidy.com/en/latest/ext/http/) is enabled. The configuration should look like:
+Make sure to have Mopidy 0.19 or higher [installed](http://docs.mopidy.com/en/latest/installation/) on your music server. Also make sure that the [HTTP extension](http://docs.mopidy.com/en/latest/ext/http/) is enabled. The configuration should look like:
 
 	[http]
 	enabled = true

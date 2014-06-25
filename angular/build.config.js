@@ -9,6 +9,7 @@ module.exports = {
    */
   build_dir: 'build',
   compile_dir: 'bin',
+  mopidy_package_dir: '../mopidy_moped',
 
   /**
    * This is a collection of file patterns that refer to our app code (the
