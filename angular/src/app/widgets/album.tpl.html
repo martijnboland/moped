@@ -5,7 +5,7 @@
       <span ng-if="!linkAlbumTitle">{{album.name}}</span>
     </h3>
     <div class="pull-left title-date">{{album.date}}</div>
-    <h4 class="pull-right" ng-repeat="artist in album.artists" ng-hide="hideArtist">
+    <h4 class="pull-right" ng-repeat="artist in album.artists track by artist.uri" ng-hide="hideArtist">
       <a class="artistlink" href="" ng-href="#/artist/{{artist.uri}}/{{artist.name}}">{{artist.name}}</a>
     </h4> 
   </div>
@@ -14,10 +14,10 @@
       <img class="albumcover img-responsive" ng-src="{{albumImageUrl}}" />
     </div>
     <div class="col-sm-9">
-      <div ng-repeat="disc in discs">
+      <div ng-repeat="disc in discs track by disc.disc">
         <div ng-show="discs.length > 1">Disc {{disc.disc}}</div>
         <div class="list-group">
-          <moped-track track-no="track.track_no" track="track" ng-repeat="track in disc.tracksOnDisc" display="short" />
+          <moped-track track-no="track.track_no" track="track" ng-repeat="track in disc.tracksOnDisc track by track.uri" display="short" />
         </div>
       </div>
     </div>

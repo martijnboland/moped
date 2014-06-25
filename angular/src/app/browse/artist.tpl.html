@@ -8,7 +8,7 @@
   Albums
   <hr>
 </div>
-<div ng-repeat="a in albums">
+<div ng-repeat="a in albums track by a.album.uri">
   <moped-album album="a.album" tracks="a.tracks" hide-artist="true" link-album-title="true" /> 
 </div>
 
@@ -16,7 +16,7 @@
   Singles
   <hr>
 </div>
-<div ng-repeat="s in singles">
+<div ng-repeat="s in singles track by s.uri">
   <moped-album album="s.album" tracks="s.tracks" hide-artist="true" link-album-title="true"  /> 
 </div>
 
@@ -25,5 +25,5 @@
   <hr>
 </div>
 <ul class="albumimagelist">
-  <li moped-album-image album="a.album" ng-repeat="a in appearsOn">
+  <li moped-album-image album="a.album" ng-repeat="a in appearsOn track by a.uri">
 </ul>

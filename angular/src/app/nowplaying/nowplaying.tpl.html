@@ -2,7 +2,7 @@
   <div class="col-xs-12 col-sm-6 track">
     <img class="nowplaying-thumb" ng-src="{{currentTrackImageUrl}}" />
     <a class="albumlink" href="" ng-href="#/album/{{currentAlbumUri}}"><h5>{{currentTrack}}</h5></a>
-    <div ng-repeat="artist in currentArtists">
+    <div ng-repeat="artist in currentArtists track by artist.uri">
       <a class="artistlink" href="" ng-href="#/artist/{{artist.uri}}/{{artist.name}}">{{artist.name}}</a>
     </div>    
   </div>

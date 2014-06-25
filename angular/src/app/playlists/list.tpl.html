@@ -2,5 +2,5 @@
   <h3>{{playlist.name}}</h3>
 </div>
 <div class="list-group">
-  <moped-track track-no="$index+1" track="track" ng-repeat="track in playlist.tracks" />
+  <moped-track track-no="$index+1" track="track" ng-repeat="track in playlist.tracks track by track.uri" />
 </div>

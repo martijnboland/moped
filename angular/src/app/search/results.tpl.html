@@ -26,5 +26,5 @@
   </div>
 </div>
 <div class="list-group">
-  <moped-track track-no="$index+1" track="track" ng-repeat="track in tracks" />
+  <moped-track track-no="$index+1" track="track" ng-repeat="track in tracks track by track.uri" />
 </div>
