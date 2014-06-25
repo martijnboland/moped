@@ -32,6 +32,7 @@ setup(
         ],
     },
     classifiers=[
+        'Development Status :: 4 - Beta'    
         'Environment :: No Input/Output (Daemon)',
         'Intended Audience :: End Users/Desktop',
         'License :: OSI Approved :: MIT License',
