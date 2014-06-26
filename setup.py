@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 
 import re
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 
 def get_version(filename):
@@ -19,7 +20,7 @@ setup(
     author_email='martijn@boland.org',
     description='Responsive Web client for Mopidy',
     long_description=open('README.rst').read(),
-    packages=find_packages(exclude=['angular', 'durandal', 'dist', 'html', 'screenshots']),
+    packages=find_packages(),
     zip_safe=False,
     include_package_data=True,
     install_requires=[
@@ -32,7 +33,7 @@ setup(
         ],
     },
     classifiers=[
-        'Development Status :: 4 - Beta'    
+        'Development Status :: 4 - Beta',
         'Environment :: No Input/Output (Daemon)',
         'Intended Audience :: End Users/Desktop',
         'License :: OSI Approved :: MIT License',
