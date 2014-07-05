@@ -23,7 +23,7 @@ Now get the files with git:
 
 or [download the files from this repository](https://github.com/martijnboland/moped/archive/master.zip).
 
-There are two different versions of Moped. One built with [Angular](http://angularjs.org) and one built with [Durandal](http://durandaljs.org). Both versions are in their own directory. To install your version of choice, copy all files from the [/dist/angular](/dist/angular) directory or [/dist/durandal](dist/durandal) directory to your web client directory (/opt/webclient) and you're good to go. Browse to your server (e.g. http://servername:6680) to see Moped in action.
+There are two different versions of Moped. One built with [Angular](http://angularjs.org) and one built with [Durandal](http://durandaljs.org). Both versions are in their own directory. To install your version of choice, copy first all files from the html directory and then all files from the [/dist/angular](/dist/angular) directory or [/dist/durandal](dist/durandal) directory to your web client directory (/opt/webclient) and you're good to go. Browse to your server (e.g. http://servername:6680) to see Moped in action.
 
 *2014-02-21: From now on, all new development is only done in the Angular version, so this will be the preferred version.*
 
