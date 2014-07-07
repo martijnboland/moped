@@ -2,3 +2,9 @@
 *.pyc
 dist/*.tar.gz
 dist/*.whl
+*.sw*
+*~
+build/
+bin/
+node_modules/
+vendor/
