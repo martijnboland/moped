@@ -7,4 +7,6 @@ dist/*.whl
 build/
 bin/
 node_modules/
-vendor/
+vendor/*
+!vendor/mopidy
+!vendor/bootstrap-slider
