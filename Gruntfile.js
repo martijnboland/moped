@@ -201,12 +201,10 @@ module.exports = function ( grunt ) {
           banner: '<%= meta.banner %>'
         },
         src: [ 
-          '<%= vendor_files.js %>', 
-          'module.prefix', 
+          '<%= vendor_files.js %>',
           '<%= build_dir %>/src/**/*.js', 
           '<%= html2js.app.dest %>', 
-          '<%= html2js.common.dest %>', 
-          'module.suffix' 
+          '<%= html2js.common.dest %>'
         ],
         dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
       }

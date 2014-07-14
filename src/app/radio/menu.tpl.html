@@ -1,8 +1,8 @@
 <div class="panel" ng-controller="RadioMenuCtrl">
   <a href="#/radio"><div class="panel-heading radio">Radio</div></a>
   <div class="panel-body">
-    <div class="list-group">
-      <a class="list-group-item" ng-repeat="radiostation in radiostations" ng-href="#/radio/{{radiostation.name}}"><span class="glyphicon glyphicon-star"></span> {{radiostation.name}}</a>
-    </div>    
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="radiostation in radiostations"><a ng-href="#/radio/{{radiostation.name}}"><span class="glyphicon glyphicon-star"></span> {{radiostation.name}}</a></li>
+    </ul>    
   </div>
 </div>

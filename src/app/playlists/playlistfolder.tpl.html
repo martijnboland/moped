@@ -1,0 +1,7 @@
+<a href="" ng-click="toggle(folder)"><span class="glyphicon" ng-class="{ 'glyphicon-folder-close': ! folder.expanded, 'glyphicon-folder-open': folder.expanded }"></span> {{folder.name}}</a>
+<ul ng-show="folder.expanded">
+  <li ng-repeat="playlist in folder.items">
+    <a ng-if="!playlist.items" ng-href="#/playlist/{{playlist.uri}}"><span class="glyphicon glyphicon-music"></span> {{playlist.name}}</a>
+    <playlist-folder ng-if="playlist.items" folder="playlist">
+  </li>
+</ul>

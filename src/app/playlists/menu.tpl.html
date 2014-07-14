@@ -1,8 +1,11 @@
 <div class="panel" ng-controller="PlaylistMenuCtrl">
   <div class="panel-heading playlists">Playlists</div>
   <div class="panel-body">
-    <div class="list-group">
-      <a class="list-group-item" ng-repeat="playlist in playlists" ng-href="#/playlist/{{playlist.uri}}"><span class="glyphicon glyphicon-music"></span> {{playlist.name}}</a>
-    </div>    
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="playlist in playlists">
+        <a ng-if="!playlist.items" ng-href="#/playlist/{{playlist.uri}}"><span class="glyphicon glyphicon-music"></span> {{playlist.name}}</a>
+        <playlist-folder ng-if="playlist.items" folder="playlist">
+      </li>
+    </ul>    
   </div>
 </div>
