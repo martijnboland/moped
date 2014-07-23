@@ -1,14 +1,22 @@
 include LICENSE
 include MANIFEST.in
 include README.rst
+include CHANGELOG.md
 
 recursive-include mopidy_moped ext.conf
 recursive-include mopidy_moped/static *
 
-exclude README.md
+exclude .bowerrc
+exclude *.tpl
+exclude *.json
+exclude build.config.js
+exclude Gruntfile.js
+exclude ext.conf
 
-recursive-exclude angular *
+recursive-exclude build *
 recursive-exclude dist *
-recursive-exclude durandal *
-recursive-exclude html *
+recursive-exclude karma *
+recursive-exclude node_modules *
 recursive-exclude screenshots *
+recursive-exclude src *
+recursive-exclude vendor *
