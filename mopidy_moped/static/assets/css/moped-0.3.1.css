@@ -6024,12 +6024,22 @@ body {
   color: #ccc;
   background-color: transparent;
   border: none;
+  padding: 0;
 }
-.menu .list-group-item:hover {
+.menu .list-group-item a:hover {
   background-color: #555;
 }
 .menu .glyphicon {
   color: #fff;
+}
+.menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #ccc;
+}
+.menu ul ul {
+  list-style: none;
+  padding-left: 16px;
 }
 .menu .btn-search {
   position: absolute;
