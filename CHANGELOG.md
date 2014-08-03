@@ -1,3 +1,7 @@
+# 0.3.3 (2014-08-03)
+
+Reduced default amount of logging
+
 # 0.3.2 (2014-08-03)
 
 Fixed volume slider
