@@ -1,8 +1,8 @@
 angular.module('moped.mopidy', [])
   .factory('mopidyservice', function($q, $rootScope) {
     
-    //var consoleLog = console.log.bind(console);
-    var consoleLog = function () {};
+    var consoleLog = console.log.bind(console);
+    //var consoleLog = function () {};
     var consoleError = console.error.bind(console);
 
     // Wraps calls to mopidy api and converts mopidy's promise to Angular $q promise.
@@ -71,7 +71,7 @@ angular.module('moped.mopidy', [])
           });
         }
         this.mopidy.on(consoleLog);
-        // Convert Mopidy events to Durandal events
+        // Convert Mopidy events to Angular events
         this.mopidy.on(function(ev, args) {
           $rootScope.$broadcast('mopidy:' + ev, args);
           if (ev === 'state:online') {
@@ -123,7 +123,7 @@ angular.module('moped.mopidy', [])
         return wrapMopidyFunc("mopidy.playback.getVolume", this)();
       },
       setVolume: function(volume) {
-        return wrapMopidyFunc("mopidy.playback.setVolume", this)(volume);
+        return wrapMopidyFunc("mopidy.playback.setVolume", this)({ volume: volume });
       },
       getState: function() {
         return wrapMopidyFunc("mopidy.playback.getState", this)();
