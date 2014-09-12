@@ -1,4 +1,5 @@
 angular.module('moped.search', [
+  'moped.util',
   'moped.mopidy',
   'ngRoute'
 ])
@@ -12,14 +13,14 @@ angular.module('moped.search', [
     });
 })
 
-.controller('SearchCtrl', function SearchController($scope, $location) {
+.controller('SearchCtrl', function SearchController($scope, $location, util) {
 
   $scope.query = '';
   
   $scope.find = function() {
     if ($scope.query !== '' && $scope.query.length > 2) {
         document.activeElement.blur();
-        $location.path('/search/' + $scope.query);
+        $location.path('/search/' + util.urlEncode($scope.query));
       }
       else {
         alert('Enter at least 3 characters');
@@ -27,7 +28,7 @@ angular.module('moped.search', [
   };
 })
 
-.controller('SearchResultsCtrl', function SearchResultsController($scope, $routeParams, mopidyservice) {
+.controller('SearchResultsCtrl', function SearchResultsController($scope, $routeParams, util, mopidyservice) {
   $scope.artists = [];
   $scope.albums = [];
   $scope.tracks = [];

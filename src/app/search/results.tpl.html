@@ -5,7 +5,7 @@
     <h3>Artists</h3>
     <ul class="artistimagelist">
       <li ng-repeat="artist in artists">
-        <a ng-href="#/artist/{{artist.uri}}/{{artist.name}}" moped-artist-image artist-name="artist.name" image-size="extralarge" >
+        <a ng-href="#/artist/{{artist.uri}}/{{artist.name|doubleUrlEncode}}" moped-artist-image artist-name="artist.name" image-size="extralarge" >
            <div class="imgoverlay">{{artist.name}}</div>
         </a>
       </li>

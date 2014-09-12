@@ -10,6 +10,7 @@ angular.module('moped', [
   'moped.nowplaying',
   'moped.playercontrols',
   'moped.widgets',
+  'moped.filters',
   'templates-app',
   'templates-common'
 ])

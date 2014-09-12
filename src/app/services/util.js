@@ -1,5 +1,5 @@
 angular.module(['moped.util'], [])
-.factory('util', function() {
+.factory('util', function($window) {
   return {
     timeFromMilliSeconds: function(length) {
       if (length === undefined) {
@@ -38,6 +38,15 @@ angular.module(['moped.util'], [])
           $scope.$apply();
         }
       }
+    },
+    urlEncode: function(textToEncode) {
+      return $window.encodeURIComponent(textToEncode);
+    },
+    doubleUrlEncode: function(textToEncode) {
+      return $window.encodeURIComponent($window.encodeURIComponent(textToEncode));
+    },
+    urlDecode: function(textToDecode) {
+      return $window.decodeURIComponent(textToDecode);
     }
   };
 });
