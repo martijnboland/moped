@@ -1,0 +1,22 @@
+<div ng-if="directories.length != 0">
+  <h2>Directories</h2>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="directory in directories">
+      <a ng-href="#/library/{{directory.uri | directoryUrlEncode}}"><span class="glyphicon glyphicon-folder-close"></span> {{directory.name}}</a>
+    </li>
+  </ul>
+</div>
+
+<div ng-if="playlists.length != 0">
+  <h2>Playlists</h2>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="playlist in playlists">
+      <a ng-href="#/playlist/{{playlist.uri}}"><span class="glyphicon glyphicon-music"></span> {{playlist.name}}</a>
+    </li>
+  </ul>
+</div>
+
+<div ng-if="tracks.length != 0">
+  <h2>Tracks</h2>
+  <moped-track track-no="$index+1" track="track" ng-repeat="track in tracks track by $index" />
+</div>

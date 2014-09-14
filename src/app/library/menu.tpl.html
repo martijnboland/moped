@@ -1,0 +1,10 @@
+<div class="panel" ng-controller="LibraryMenuCtrl">
+  <div class="panel-heading library">Browse</div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="directory in libraryDirectories">
+        <a ng-href="#/library/{{directory.uri | directoryUrlEncode}}"><span class="{{directory.uri | serviceIconStyle}}"></span> {{directory.name}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
