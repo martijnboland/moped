@@ -27,6 +27,10 @@ angular.module('moped.widgets')
         scope.$emit('moped:playtrackrequest', scope.track);
         return false;
       };
+      scope.trackProvider = function() {
+        var provider = scope.track.uri.split(':')[0];
+        return (provider.charAt(0).toUpperCase() + provider.slice(1));
+      };
 
       var cleanUpTrackPlaybackStarted = scope.$on('mopidy:event:trackPlaybackStarted', function(event, data) {
         scope.isPlaying = data.tl_track.track.uri === scope.track.uri;
