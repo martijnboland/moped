@@ -56,11 +56,11 @@ angular.module('moped.browse', [
   });
 })
 
-.controller('ArtistCtrl', function ArtistController($scope, $timeout, $routeParams, mopidyservice, lastfmservice) {
+.controller('ArtistCtrl', function ArtistController($scope, $timeout, $routeParams, util, mopidyservice, lastfmservice) {
   var defaultAlbumImageUrl = 'assets/images/noalbum.png';
 
   var uri = $routeParams.uri;
-  var name = $routeParams.name;
+  var name = util.urlDecode($routeParams.name);
 
   $scope.artistSummary = '';
   $scope.albums = [];
