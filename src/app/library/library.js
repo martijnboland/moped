@@ -6,7 +6,7 @@ angular.module('moped.library', [
 
 .config(function config($routeProvider) {
   $routeProvider
-    .when('/library/:uri', {
+    .when('/library/:uri/:name?', {
       templateUrl: 'library/directory.tpl.html',
       controller: 'DirectoryCtrl',
       title: 'Directories'
@@ -30,14 +30,15 @@ angular.module('moped.library', [
 })
 
 .controller('DirectoryCtrl', function DirectoryController($scope, $routeParams, mopidyservice, util) {
-  $scope.uri = util.urlDecode($routeParams.uri);
+  $scope.directory = { name: util.urlDecode($routeParams.name), uri: util.urlDecode($routeParams.uri) };
   $scope.directories = [];
   $scope.playlists = [];
   $scope.tracks = [];
 
-  mopidyservice.getDirectoryItems($scope.uri).then(function(data) {
+  mopidyservice.getDirectoryItems($scope.directory.uri).then(function(data) {
     _.forEach(data, function (item, index) {
       if (item.type === 'directory') {
+        item.fullName = $scope.directory.name + '/' + item.name;
         $scope.directories.push(item);
       }
       else if (item.type === 'playlist') {
@@ -60,14 +61,12 @@ angular.module('moped.library', [
     mopidyservice.playTrack(track, $scope.tracks);
   });
 })
-.filter('serviceIconStyle', function () {
-  return function(uri) {
-    switch(uri) {
-      case "internetarchive:/": return "glyphicon glyphicon-cloud";
-      //case "local:directory": return "glyphicon glyphicon-server";
-      //case "podcast:": return "glyphicon glyphicon-rss";
-      case "spotify:directory": return "glyphicon glyphicon-signal";
-      default: return "glyphicon glyphicon-folder-close";
-    }
+
+.directive("subDirectory", function () {
+  return {
+    restrict: "E",
+    scope: { directory: '=' },
+    templateUrl: 'library/subDirectory.tpl.html',
+    replace:true
   };
 });
