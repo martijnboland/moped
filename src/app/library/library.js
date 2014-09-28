@@ -54,7 +54,6 @@ angular.module('moped.library', [
         });
       }
     });
-    $scope.directories = _.sortBy($scope.directories, function(directory) { return directory.name; });
   }, console.error.bind(console));
 
   $scope.$on('moped:playtrackrequest', function(event, track) {
