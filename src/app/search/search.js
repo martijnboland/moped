@@ -33,7 +33,7 @@ angular.module('moped.search', [
   $scope.albums = [];
   $scope.tracks = [];
 
-  $scope.query = $routeParams.query;
+  $scope.query = util.urlDecode($routeParams.query);
   if ($scope.query.length > 3) {
     mopidyservice.search($scope.query).then(function(results) {
       _.forEach(results, function(result) {
