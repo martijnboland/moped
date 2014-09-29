@@ -41,7 +41,7 @@ angular.module('moped.browse', [
       var firstTrack = $scope.tracks[0];
       $scope.album = firstTrack.album;
     }
-  }, console.error);
+  }, console.error.bind(console));
 
   $timeout(function() {
     mopidyservice.getCurrentTrack().then(function(track) {
@@ -80,7 +80,7 @@ angular.module('moped.browse', [
     // data comes as a list of tracks.
     if (data.length > 0) {
       // First filter unplayable tracks
-      _.remove(data, function(track) { 
+      _.remove(data, function(track) {
         return track.name.indexOf('[unplayable]') > -1;
       });
 
@@ -123,7 +123,7 @@ angular.module('moped.browse', [
         }
       });
     }
-  }, console.error);
+  }, console.error.bind(console));
 
   $timeout(function() {
     mopidyservice.getCurrentTrack().then(function(track) {

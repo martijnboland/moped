@@ -1,12 +1,12 @@
 angular.module('moped.mopidy', [])
   .factory('mopidyservice', function($q, $rootScope) {
-    
+
     //var consoleLog = console.log.bind(console);
     var consoleLog = function () {};
     var consoleError = console.error.bind(console);
 
     // Wraps calls to mopidy api and converts mopidy's promise to Angular $q promise.
-    // Mopidy method calls are passed as a string because some methods are not 
+    // Mopidy method calls are passed as a string because some methods are not
     // available yet when this method is called, due to the introspection.
     // See also http://blog.mbfisher.com/2013/06/mopidy-websockets-and-introspective-apis.html
     function wrapMopidyFunc(functionNameToWrap, thisObj) {
@@ -21,7 +21,7 @@ angular.module('moped.mopidy', [])
           executeFunctionByName(functionNameToWrap, self, args).then(function(data) {
             deferred.resolve(data);
             $rootScope.$broadcast('moped:mopidycalled', { name: functionNameToWrap, args: args });
-          }, function(err) { 
+          }, function(err) {
             deferred.reject(err);
             $rootScope.$broadcast('moped:mopidyerror', { name: functionNameToWrap, args: args, err: err });
           });
@@ -32,7 +32,7 @@ angular.module('moped.mopidy', [])
             executeFunctionByName(functionNameToWrap, self, args).then(function(data) {
               deferred.resolve(data);
               $rootScope.$broadcast('moped:mopidycalled', { name: functionNameToWrap, args: args });
-            }, function(err) { 
+            }, function(err) {
               deferred.reject(err);
               $rootScope.$broadcast('moped:mopidyerror', { name: functionNameToWrap, args: args, err: err });
             });
@@ -66,8 +66,8 @@ angular.module('moped.mopidy', [])
           });
         }
         else {
-          this.mopidy = new Mopidy({ 
-            callingConvention: 'by-position-or-by-name' 
+          this.mopidy = new Mopidy({
+            callingConvention: 'by-position-or-by-name'
           });
         }
         this.mopidy.on(consoleLog);
@@ -81,7 +81,7 @@ angular.module('moped.mopidy', [])
             self.isConnected = false;
           }
         });
-        
+
         $rootScope.$broadcast('moped:mopidystarted');
       },
       stop: function() {
@@ -100,6 +100,21 @@ angular.module('moped.mopidy', [])
       },
       getPlaylist: function(uri) {
         return wrapMopidyFunc("mopidy.playlists.lookup", this)({ uri: uri });
+      },
+      getLibrary: function() {
+        return wrapMopidyFunc("mopidy.library.browse", this)({ uri: null });
+      },
+      getDirectoryItems: function(uri) {
+        return wrapMopidyFunc("mopidy.library.browse", this)({ uri: uri });
+      },
+      refresh: function(uri) {
+        return wrapMopidyFunc("mopidy.library.refresh", this)({ uri: uri });
+      },
+      getDirectory: function(uri) {
+        return wrapMopidyFunc("mopidy.library.lookup", this)({ uri: uri });
+      },
+      getTrack: function(uri) {
+        return wrapMopidyFunc("mopidy.library.lookup", this)({ uri: uri });
       },
       getAlbum: function(uri) {
         return wrapMopidyFunc("mopidy.library.lookup", this)({ uri: uri });
@@ -134,7 +149,7 @@ angular.module('moped.mopidy', [])
         // Check if a playlist change is required. If not cust change the track.
         if (self.currentTlTracks.length > 0) {
           var trackUris = _.pluck(surroundingTracks, 'uri');
-          var currentTrackUris = _.map(self.currentTlTracks, function(tlTrack) { 
+          var currentTrackUris = _.map(self.currentTlTracks, function(tlTrack) {
             return tlTrack.track.uri;
           });
           if (_.difference(trackUris, currentTrackUris).length === 0) {
@@ -146,7 +161,7 @@ angular.module('moped.mopidy', [])
                 });
                 self.mopidy.playback.changeTrack({ tl_track: tlTrackToPlay })
                   .then(function() {
-                    self.mopidy.playback.play();  
+                    self.mopidy.playback.play();
                   });
               });
             return;
@@ -154,7 +169,7 @@ angular.module('moped.mopidy', [])
         }
 
         self.mopidy.playback.stop({ clear_current_track: true })
-          .then(function() { 
+          .then(function() {
             self.mopidy.tracklist.clear();
           }, consoleError)
           .then(function() {
@@ -169,7 +184,7 @@ angular.module('moped.mopidy', [])
                 });
                 self.mopidy.playback.changeTrack({ tl_track: tlTrackToPlay })
                   .then(function() {
-                    self.mopidy.playback.play();  
+                    self.mopidy.playback.play();
                   });
               }, consoleError);
           } , consoleError);
@@ -184,7 +199,7 @@ angular.module('moped.mopidy', [])
           .then(function() {
             self.mopidy.tracklist.add({ at_position: 0, uri: streamUri });
           }, consoleError)
-          .then(function() { 
+          .then(function() {
             self.mopidy.playback.play();
           }, consoleError);
       },

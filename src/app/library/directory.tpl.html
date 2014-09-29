@@ -1,0 +1,15 @@
+<div class="row view-title">
+  <h3>{{directory.name}}</h3>
+</div>
+
+<div ng-if="directories.length != 0" class="list-group">
+  <sub-directory directory="directory" ng-repeat="directory in directories" />
+</div>
+
+<div ng-if="playlists.length != 0" class="list-group">
+  <moped-playlist playlist="playlist" ng-repeat="playlist in playlists" />
+</div>
+
+<div ng-if="tracks.length != 0" class="list-group">
+  <moped-track track-no="$index+1" track="track" ng-repeat="track in tracks track by $index" />
+</div>
