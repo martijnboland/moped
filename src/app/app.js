@@ -2,6 +2,7 @@ angular.module('moped', [
   'ngTouch',
   'moped.mopidy',
   'moped.search',
+  'moped.library',
   'moped.playlists',
   'moped.radio',
   'moped.settings',
@@ -20,10 +21,10 @@ angular.module('moped', [
   // Decorator for promises so the ui knows when one or more promises are pending.
   $provide.decorator('$q', ['$delegate', '$rootScope', function($delegate, $rootScope) {
     var pendingPromises = 0;
-    $rootScope.$watch(function() { 
-      return pendingPromises > 0; 
-    }, function(working) { 
-      $rootScope.working = working; 
+    $rootScope.$watch(function() {
+      return pendingPromises > 0;
+    }, function(working) {
+      $rootScope.working = working;
     });
     var $q = $delegate;
     var origDefer = $q.defer;
@@ -42,9 +43,9 @@ angular.module('moped', [
 .run(function run () {
 
 })
-  
+
 .controller('AppCtrl', function AppController ($scope, $location, $window, mopidyservice) {
-  var connectionStates = { 
+  var connectionStates = {
     online: 'Online',
     offline: 'Offline'
   };

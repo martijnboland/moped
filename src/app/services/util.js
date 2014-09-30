@@ -45,8 +45,14 @@ angular.module(['moped.util'], [])
     doubleUrlEncode: function(textToEncode) {
       return $window.encodeURIComponent($window.encodeURIComponent(textToEncode));
     },
+    directoryUrlEncode: function(textToEncode) {
+      return $window.encodeURIComponent($window.encodeURIComponent(textToEncode));
+    },
     urlDecode: function(textToDecode) {
       return $window.decodeURIComponent(textToDecode);
+    },
+    doubleUrlDecode: function(textToDecode) {
+      return $window.decodeURIComponent($window.decodeURIComponent(textToDecode));
     }
   };
 });

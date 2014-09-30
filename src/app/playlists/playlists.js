@@ -64,7 +64,7 @@ angular.module('moped.playlists', [
   function loadPlaylists() {
     mopidyservice.getPlaylists().then(function(data) {
       $scope.playlists = processPlaylists(data);
-    }, console.error);
+    }, console.error.bind(console));
   }
 
   $scope.playlists = [];
@@ -83,7 +83,7 @@ angular.module('moped.playlists', [
 
   mopidyservice.getPlaylist($routeParams.uri).then(function(data) {
     $scope.playlist = data;
-  }, console.error);
+  }, console.error.bind(console));
 
   $scope.$on('moped:playtrackrequest', function(event, track) {
     mopidyservice.playTrack(track, $scope.playlist.tracks);
@@ -108,10 +108,9 @@ angular.module('moped.playlists', [
           compiledContents = $compile(contents);
         }
         compiledContents(scope, function (clone, scope) {
-          el.append(clone); 
+          el.append(clone);
         });
       };
     }
   };
 });
-
