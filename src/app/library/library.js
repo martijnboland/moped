@@ -36,7 +36,8 @@ angular.module('moped.library', [
   $scope.tracks = [];
 
   mopidyservice.getDirectoryItems($scope.directory.uri).then(function(data) {
-    _.forEach(data, function (item, index) {
+    var currentTrackIndex = 0;
+    _.forEach(data, function (item) {
       if (item.type === 'directory') {
         item.fullName = $scope.directory.name + '/' + item.name;
         $scope.directories.push(item);
@@ -45,14 +46,18 @@ angular.module('moped.library', [
         $scope.playlists.push(item);
       }
       else if (item.type === 'track') {
-        mopidyservice.getTrack(item.uri).then(function(data) {
-          if (data.length == 1) {
-            $scope.tracks[index] = data[0];
-          }
-          else {
-            throw new Error('Expected exactly one track in result.');
-          }
-        });
+        (
+          function(trackIndex) {
+            mopidyservice.getTrack(item.uri).then(function (data) {
+              if (data.length == 1) {
+                $scope.tracks[trackIndex] = data[0];
+              }
+              else {
+                throw new Error('Expected exactly one track in result.');
+              }
+            });
+          }(currentTrackIndex++)
+        );
       }
     });
   }, console.error.bind(console));
