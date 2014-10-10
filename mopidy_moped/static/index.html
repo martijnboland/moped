@@ -13,7 +13,7 @@
     <title ng-bind-template="{{pageTitle}} | Moped"></title>
 
     
-    <link rel="stylesheet" type="text/css" href="assets/css/moped-0.3.3.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/moped-0.4.0.css" />
     
 
   </head>
@@ -22,6 +22,7 @@
     <div id="applicationhost">
       <aside id="menu" class="menu pane-col scroll-y">
         <div ng-include="'search/search.tpl.html'"></div>
+        <div ng-include="'library/menu.tpl.html'"></div>
         <div ng-include="'playlists/menu.tpl.html'"></div>
         <div ng-include="'radio/menu.tpl.html'"></div>
         <div class="panel">
@@ -30,7 +31,7 @@
       </aside>
 
       <div class="main pane-col" ng-class="{ outtaway: isSidebarVisibleForMobile }"ng-swipe-right="isSidebarVisibleForMobile = true" ng-swipe-left="isSidebarVisibleForMobile = false">
-        
+
         <header>
           <button type="button" class="navbar-toggle" data-toggle="collapse" ng-click="toggleSidebar()" ng-class="{ outtaway: isSidebarVisibleForMobile }">
             <span class="sr-only">Toggle navigation</span>
@@ -66,7 +67,7 @@
     </div>
 
     
-    <script type="text/javascript" src="assets/moped-0.3.3.js"></script>
+    <script type="text/javascript" src="assets/moped-0.4.0.js"></script>
     
   </body>
 </html>

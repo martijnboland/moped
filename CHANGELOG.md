@@ -1,3 +1,11 @@
+# 0.4.0 (2014-10-10)
+
+Support for Mopidy browsing (David Tischler, https://github.com/tischlda)
+Fix for search queries (David Tischler)
+Backend provider is displayed in track list (Julien Bordellier)
+Allow special characters in search
+Interpolation of track position and checking every 10 seconds
+
 # 0.3.3 (2014-08-03)
 
 Reduced default amount of logging

@@ -6002,6 +6002,9 @@ body {
 .menu .panel-heading.search {
   background-image: url(../images/search-icon.png);
 }
+.menu .panel-heading.library {
+  background-image: url(../images/library-icon.png);
+}
 .menu .panel-heading.playlists {
   background-image: url(../images/playlists-icon.png);
 }
