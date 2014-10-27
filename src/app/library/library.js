@@ -38,13 +38,13 @@ angular.module('moped.library', [
   mopidyservice.getDirectoryItems($scope.directory.uri).then(function(data) {
     var currentTrackIndex = 0;
     _.forEach(data, function (item) {
-      if (item.type === 'directory') {
+      if (item.type === 'directory' || item.type === 'playlist') {
         item.fullName = $scope.directory.name + '/' + item.name;
         $scope.directories.push(item);
       }
-      else if (item.type === 'playlist') {
-        $scope.playlists.push(item);
-      }
+      // else if (item.type === 'playlist') {
+      //   $scope.playlists.push(item);
+      // }
       else if (item.type === 'track') {
         (
           function(trackIndex) {
