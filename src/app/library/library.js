@@ -7,8 +7,8 @@ angular.module('moped.library', [
 .config(function config($routeProvider) {
   $routeProvider
     .when('/library/:uri/:name?', {
-      templateUrl: 'library/directory.tpl.html',
-      controller: 'DirectoryCtrl',
+      templateUrl: 'library/container.tpl.html',
+      controller: 'ContainerCtrl',
       title: 'Directories'
     });
 })
@@ -29,22 +29,23 @@ angular.module('moped.library', [
   });
 })
 
-.controller('DirectoryCtrl', function DirectoryController($scope, $routeParams, mopidyservice, util) {
-  $scope.directory = { name: util.urlDecode($routeParams.name), uri: util.urlDecode($routeParams.uri) };
+.controller('ContainerCtrl', function ContainerController($scope, $routeParams, mopidyservice, util) {
+  $scope.container = { name: util.urlDecode($routeParams.name), uri: util.urlDecode($routeParams.uri) };
   $scope.directories = [];
   $scope.playlists = [];
   $scope.tracks = [];
 
-  mopidyservice.getDirectoryItems($scope.directory.uri).then(function(data) {
+  mopidyservice.getLibraryItems($scope.container.uri).then(function(data) {
     var currentTrackIndex = 0;
     _.forEach(data, function (item) {
-      if (item.type === 'directory' || item.type === 'playlist') {
-        item.fullName = $scope.directory.name + '/' + item.name;
+      if (item.type === 'directory') {
+        item.fullName = $scope.container.name + '/' + item.name;
         $scope.directories.push(item);
       }
-      // else if (item.type === 'playlist') {
-      //   $scope.playlists.push(item);
-      // }
+      else if (item.type === 'playlist') {
+        item.fullName = $scope.container.name + '/' + item.name;
+        $scope.playlists.push(item);
+      }
       else if (item.type === 'track') {
         (
           function(trackIndex) {
@@ -67,11 +68,20 @@ angular.module('moped.library', [
   });
 })
 
-.directive("subDirectory", function () {
+.directive("directory", function () {
   return {
     restrict: "E",
     scope: { directory: '=' },
-    templateUrl: 'library/subDirectory.tpl.html',
+    templateUrl: 'library/directory.tpl.html',
+    replace:true
+  };
+})
+
+.directive("playlist", function () {
+  return {
+    restrict: "E",
+    scope: { playlist: '=' },
+    templateUrl: 'library/playlist.tpl.html',
     replace:true
   };
 });
