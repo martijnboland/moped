@@ -104,7 +104,7 @@ angular.module('moped.mopidy', [])
       getLibrary: function() {
         return wrapMopidyFunc("mopidy.library.browse", this)({ uri: null });
       },
-      getDirectoryItems: function(uri) {
+      getLibraryItems: function(uri) {
         return wrapMopidyFunc("mopidy.library.browse", this)({ uri: uri });
       },
       refresh: function(uri) {
