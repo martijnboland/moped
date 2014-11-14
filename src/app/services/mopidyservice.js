@@ -123,7 +123,7 @@ angular.module('moped.mopidy', [])
         return wrapMopidyFunc("mopidy.library.lookup", this)({ uri: uri });
       },
       search: function(query) {
-        return wrapMopidyFunc("mopidy.library.search", this)({ any : query });
+        return wrapMopidyFunc("mopidy.library.search", this)({ any : [ query ] });
       },
       getCurrentTrack: function() {
         return wrapMopidyFunc("mopidy.playback.getCurrentTrack", this)();
