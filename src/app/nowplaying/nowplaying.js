@@ -5,10 +5,7 @@ angular.module('moped.nowplaying', [
 ])
 
 .controller('NowPlayingCtrl', function NowPlayingController($scope, mopidyservice, lastfmservice, util) {
-  var CHECK_POSITION_INTERVAL = 10000;
-  var INCREASE_POSITION_INTERVAL = 1000;
   var checkPositionTimer;
-  var increasePositionTimer;
   var isSeeking = false;
   var defaultTrackImageUrl = 'assets/images/vinyl-icon.png';
 
@@ -21,7 +18,6 @@ angular.module('moped.nowplaying', [
   $scope.$on('moped:slidervaluechanged', function(event, value) {
     seek(value);
     isSeeking = false;
-    checkTimePosition();
   });
 
   $scope.$on('mopidy:state:online', function(event, data) {
@@ -34,15 +30,13 @@ angular.module('moped.nowplaying', [
       if (state === 'playing') {
         checkPositionTimer = setInterval(function() {
           checkTimePosition();
-        }, CHECK_POSITION_INTERVAL);                
-        checkTimePosition();
+        }, 1000);                
       }
     });
   });
 
   $scope.$on('mopidy:state:offline', function() {
     clearInterval(checkPositionTimer);
-    clearInterval(increasePositionTimer);
     resetCurrentTrack();
   });
 
@@ -50,12 +44,10 @@ angular.module('moped.nowplaying', [
     if (data.new_state === 'playing') {
       checkPositionTimer = setInterval(function() {
         checkTimePosition();
-      }, CHECK_POSITION_INTERVAL); 
-      checkTimePosition();
+      }, 1000); 
     }
     else {
       clearInterval(checkPositionTimer);
-      clearInterval(increasePositionTimer);
     }
   });
 
@@ -116,17 +108,10 @@ angular.module('moped.nowplaying', [
 
   function checkTimePosition() {
     if (! isSeeking) {
-
-      clearInterval(increasePositionTimer);
-
       mopidyservice.getTimePosition().then(function(timePosition) {
-        if ($scope.currentTrackLength > 0) {
+        if ($scope.currentTrackLength > 0 && timePosition > 0) {
           $scope.currentTimePosition = (timePosition / $scope.currentTrackLength) * 100;
           $scope.currentTrackPosition = util.timeFromMilliSeconds(timePosition);
-          // start timer that updates position without checking mopidy
-          increasePositionTimer = setInterval(function() {
-            updateTimePosition(INCREASE_POSITION_INTERVAL);
-          }, INCREASE_POSITION_INTERVAL);    
         }
         else {
           $scope.currentTimePosition = 0;
@@ -136,20 +121,10 @@ angular.module('moped.nowplaying', [
     }
   }
 
-  function updateTimePosition(msToUpdate) {
-    if (! isSeeking && checkPositionTimer && $scope.currentTrackLength > 0) {
-      var previousTimePositionMs = ($scope.currentTimePosition / 100) * $scope.currentTrackLength;
-      var newTimePositionMs = previousTimePositionMs + msToUpdate;
-      $scope.currentTimePosition = (newTimePositionMs / $scope.currentTrackLength) * 100;
-      $scope.currentTrackPosition = util.timeFromMilliSeconds(newTimePositionMs);
-      $scope.$apply();
-    }
-  }
-
   function seek(sliderValue) {
     if ($scope.currentTrackLength > 0) {
       var milliSeconds = ($scope.currentTrackLength / 100) * sliderValue;
-      mopidyservice.seek(milliSeconds);
+      mopidyservice.seek(milliSeconds);      
     }
   }
 
