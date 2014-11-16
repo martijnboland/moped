@@ -8,6 +8,7 @@ angular.module('moped.playercontrols', [
 
   $scope.volume = 0;
   $scope.isPlaying = false;
+  $scope.isRandom = false;
 
   $scope.$on('moped:slidervaluechanged', function(event, value) {
     mopidyservice.setVolume(value);
@@ -23,6 +24,9 @@ angular.module('moped.playercontrols', [
     });
     mopidyservice.getState().then(function(state) {
       $scope.isPlaying = state === 'playing';
+    });
+    mopidyservice.getRandom().then(function (isRandom) {
+      $scope.isRandom = isRandom === true;
     });
   });
 
@@ -48,5 +52,17 @@ angular.module('moped.playercontrols', [
 
   $scope.next = function() {
     mopidyservice.next();
+  };
+
+  $scope.toggleRandom = function () {
+    if ($scope.isRandom) {
+      mopidyservice.setRandom(false).then(function () {
+        $scope.isRandom = false;
+      });
+    } else {
+      mopidyservice.setRandom(true).then(function () {
+        $scope.isRandom = true;
+      });
+    }
   };
 });

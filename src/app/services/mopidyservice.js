@@ -1,8 +1,8 @@
 angular.module('moped.mopidy', [])
   .factory('mopidyservice', function($q, $rootScope) {
 
-    //var consoleLog = console.log.bind(console);
-    var consoleLog = function () {};
+    var consoleLog = console.log.bind(console);
+    //var consoleLog = function () {};
     var consoleError = console.error.bind(console);
 
     // Wraps calls to mopidy api and converts mopidy's promise to Angular $q promise.
@@ -217,6 +217,12 @@ angular.module('moped.mopidy', [])
       },
       next: function() {
         return wrapMopidyFunc("mopidy.playback.next", this)();
+      },
+      getRandom: function () {
+        return wrapMopidyFunc("mopidy.tracklist.getRandom", this)();
+      },
+      setRandom: function (isRandom) {
+        return wrapMopidyFunc("mopidy.tracklist.setRandom", this)([ isRandom ]);
       }
     };
   });
