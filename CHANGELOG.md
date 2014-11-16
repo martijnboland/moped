@@ -1,3 +1,9 @@
+# 0.4.1 (2014-11-16)
+
+Fixed browsing of playlists (David Tischler)
+Reverted interpolation of track position
+Search query is passed to mopidy as an array to support new Spotify backend
+
 # 0.4.0 (2014-10-10)
 
 Support for Mopidy browsing (David Tischler, https://github.com/tischlda)
