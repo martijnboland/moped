@@ -1,7 +1,8 @@
 # 0.4.1 (2014-11-16)
 
+Added random toggle switch
 Fixed browsing of playlists (David Tischler)
-Reverted interpolation of track position
+Reverted interpolation of track position due to instability
 Search query is passed to mopidy as an array to support new Spotify backend
 
 # 0.4.0 (2014-10-10)
