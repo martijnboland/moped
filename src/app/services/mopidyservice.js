@@ -3,7 +3,7 @@ angular.module('moped.mopidy', [])
 
     //var consoleLog = console.log.bind(console);
     var consoleLog = function () {};
-    //var consoleError = console.error.bind(console);
+    var consoleError = console.error.bind(console);
 
     // Wraps calls to mopidy api and converts mopidy's promise to Angular $q promise.
     // Mopidy method calls are passed as a string because some methods are not
