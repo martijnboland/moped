@@ -18,12 +18,12 @@ angular.module('moped.search', [
   $scope.query = '';
   
   $scope.find = function() {
-    if ($scope.query !== '' && $scope.query.length > 2) {
+    if ($scope.query !== '' && $scope.query.length > 1) {
         document.activeElement.blur();
         $location.path('/search/' + util.urlEncode($scope.query));
       }
       else {
-        alert('Enter at least 3 characters');
+        alert('Enter at least 2 characters');
       }
   };
 })
@@ -34,7 +34,7 @@ angular.module('moped.search', [
   $scope.tracks = [];
 
   $scope.query = util.urlDecode($routeParams.query);
-  if ($scope.query.length > 3) {
+  if ($scope.query.length > 1) {
     mopidyservice.search($scope.query).then(function(results) {
       _.forEach(results, function(result) {
         _.chain(result.artists)
