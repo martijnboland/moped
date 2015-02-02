@@ -15,17 +15,22 @@ angular.module('moped.widgets')
       scope.albumImageUrl = defaultAlbumImageUrl;
       scope.albumImageSize = scope.imageSize || defaultAlbumImageSize;
 
-      // Album image
-      lastfmservice.getAlbumImage(scope.album, scope.albumImageSize, function(err, albumImageUrl) {
-        if (! err && albumImageUrl !== undefined && albumImageUrl !== '') {
-          scope.albumImageUrl = albumImageUrl;
-          scope.$digest();
-        }
-        else
-        {
-          scope.albumImageUrl = defaultAlbumImageUrl;
-        }
-      });
+      // First check if an album image is set in the album itself
+      if (scope.album.images && scope.album.images.length > 0) {
+        scope.albumImageUrl = scope.album.images[0];
+      } else {
+        // Album image via LastFM
+        lastfmservice.getAlbumImage(scope.album, scope.albumImageSize, function(err, albumImageUrl) {
+          if (! err && albumImageUrl !== undefined && albumImageUrl !== '') {
+            scope.albumImageUrl = albumImageUrl;
+            scope.$digest();
+          }
+          else
+          {
+            scope.albumImageUrl = defaultAlbumImageUrl;
+          }
+        });        
+      }
     }
   };
 

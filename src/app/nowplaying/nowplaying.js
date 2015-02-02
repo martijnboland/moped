@@ -78,16 +78,21 @@ angular.module('moped.nowplaying', [
 
       if (track.album !== undefined) {
         $scope.currentAlbumUri = track.album.uri;
-        lastfmservice.getTrackImage(track, 'medium', function(err, trackImageUrl) {
-          if (! err && trackImageUrl !== undefined && trackImageUrl !== '') {
-            $scope.currentTrackImageUrl = trackImageUrl;
-          }
-          else
-          {
-            $scope.currentTrackImageUrl = defaultTrackImageUrl;
-          }
-          $scope.$apply();
-        });
+
+        if (track.album.images && track.album.images.length > 0) {
+          $scope.currentTrackImageUrl = track.album.images[0];
+        } else {
+          lastfmservice.getTrackImage(track, 'medium', function(err, trackImageUrl) {
+            if (! err && trackImageUrl !== undefined && trackImageUrl !== '') {
+              $scope.currentTrackImageUrl = trackImageUrl;
+            }
+            else
+            {
+              $scope.currentTrackImageUrl = defaultTrackImageUrl;
+            }
+            $scope.$apply();
+          });
+        }
       }
       else {
         $scope.currentAlbumUri = null;
