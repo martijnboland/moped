@@ -33,7 +33,9 @@ angular.module('moped.settings', [
       }
     };
 
-    $scope.verifyConnection = function() {
+    $scope.verifyConnection = function(e) {
+      e.preventDefault();
+      
       var mopidy = new Mopidy({ 
         autoConnect: false,
         webSocketUrl: $scope.settings.mopidyUrl
