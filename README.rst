@@ -77,6 +77,29 @@ Project resources
 Changelog
 =========
 
+0.4.3 (2015-03-14)
+------------------
+
+Min. characters for search is now 2 instead of 3
+Use protocol relative urls for fonts (André Gaul)
+Updated Angular to 1.3.x
+Updated various other js libs to latest version
+Try to display Mopidy album images before requesting album images from LastFM
+Removed clear_current_track parameter from mopidy.stop() method for Mopidy 0.20 compatibility
+
+0.4.2 (2014-11-17)
+------------------
+
+Fixed accidentally disabled error logger
+
+0.4.1 (2014-11-16)
+------------------
+
+Added random toggle switch
+Fixed browsing of playlists (David Tischler)
+Reverted interpolation of track position due to instability
+Search query is passed to mopidy as an array to support new Spotify backend
+
 0.4.0 (2014-10-10)
 ------------------
 
