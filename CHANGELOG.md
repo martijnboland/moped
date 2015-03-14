@@ -1,3 +1,7 @@
+# 0.4.4 (2015-03-14)
+
+Fixed search
+
 # 0.4.3 (2015-03-14)
 
 Min. characters for search is now 2 instead of 3
