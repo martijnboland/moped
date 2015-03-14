@@ -37,21 +37,18 @@ angular.module('moped.search', [
   if ($scope.query.length > 1) {
     mopidyservice.search($scope.query).then(function(results) {
       _.forEach(results, function(result) {
-        _.chain(result.artists)
-          .first(6)
-          .forEach(function(artist) {
-            $scope.artists.push(artist);
-          });
-        _.chain(result.albums)
-          .first(6)
-          .forEach(function(album) {
-            $scope.albums.push(album);
-          });
-        _.chain(result.tracks)
-          .first(20)
-          .forEach(function(track) {
-            $scope.tracks.push(track);
-          });
+        var artists = _.take(result.artists, 6);
+        _.forEach(artists, function(artist) {
+          $scope.artists.push(artist);
+        });
+        var albums = _.take(result.albums, 6);
+        _.forEach(albums, function(album) {
+          $scope.albums.push(album);
+        });
+        var tracks = _.take(result.tracks, 20);
+        _.forEach(tracks, function(track) {
+          $scope.tracks.push(track);
+        });
       });
     });
   }
