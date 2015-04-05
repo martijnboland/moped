@@ -135,10 +135,10 @@ angular.module('moped.mopidy', [])
         return wrapMopidyFunc("mopidy.playback.seek", this)({ time_position: timePosition });
       },
       getVolume: function() {
-        return wrapMopidyFunc("mopidy.playback.getVolume", this)();
+        return wrapMopidyFunc("mopidy.mixer.getVolume", this)();
       },
       setVolume: function(volume) {
-        return wrapMopidyFunc("mopidy.playback.setVolume", this)({ volume: volume });
+        return wrapMopidyFunc("mopidy.mixer.setVolume", this)({ volume: volume });
       },
       getState: function() {
         return wrapMopidyFunc("mopidy.playback.getState", this)();
