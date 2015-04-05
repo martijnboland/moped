@@ -159,10 +159,7 @@ angular.module('moped.mopidy', [])
                 var tlTrackToPlay = _.find(self.currentTlTracks, function(tlTrack) {
                   return tlTrack.track.uri === track.uri;
                 });
-                self.mopidy.playback.changeTrack({ tl_track: tlTrackToPlay })
-                  .then(function() {
-                    self.mopidy.playback.play();
-                  });
+                self.mopidy.playback.play({ tl_track: tlTrackToPlay });
               });
             return;
           }
@@ -182,10 +179,7 @@ angular.module('moped.mopidy', [])
                 var tlTrackToPlay = _.find(tlTracks, function(tlTrack) {
                   return tlTrack.track.uri === track.uri;
                 });
-                self.mopidy.playback.changeTrack({ tl_track: tlTrackToPlay })
-                  .then(function() {
-                    self.mopidy.playback.play();
-                  });
+                self.mopidy.playback.play({ tl_track: tlTrackToPlay });
               }, consoleError);
           } , consoleError);
       },

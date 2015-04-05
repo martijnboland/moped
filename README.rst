@@ -9,7 +9,7 @@ Moped is response HTML5 + JavaScript client for the `Mopidy <http://www.mopidy.c
 Installation
 ============
 
-Make sure to have Mopidy 0.19 or higher `installed <http://docs.mopidy.com/en/latest/installation/>`_ on your music server. Also make sure that the `HTTP extension <http://docs.mopidy.com/en/latest/ext/http/>`_ is enabled. 
+Make sure to have Mopidy 1.0.0 or higher `installed <http://docs.mopidy.com/en/latest/installation/>`_ on your music server. Also make sure that the `HTTP extension <http://docs.mopidy.com/en/latest/ext/http/>`_ is enabled. 
 
 Install from PyPI on your music server::
 
