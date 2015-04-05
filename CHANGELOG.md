@@ -1,3 +1,9 @@
+# 0.5.0 (2015-04-05)
+
+Updated mopidy.js to 0.5.0
+Mopidy 1.0.0 compatibility
+Updated player controls active and hover styles (Sebastian) 
+
 # 0.4.4 (2015-03-14)
 
 Fixed search

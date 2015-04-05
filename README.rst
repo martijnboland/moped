@@ -70,14 +70,18 @@ and to build the Mopidy extension::
 Project resources
 =================
 
-- `Source code <https://github.com/martijnboland/moped/angular>`_
+- `Source code <https://github.com/martijnboland/moped>`_
 - `Issue tracker <https://github.com/martijnboland/moped/issues>`_
 - `Download development snapshot <https://github.com/martijnboland/moped/tarball/master#egg=Mopidy-Moped-dev>`_
 
 Changelog
 =========
 
+0.5.0 (2015-04-05)
 
+Updated mopidy.js to 0.5.0
+Mopidy 1.0.0 compatibility
+Updated player controls active and hover styles (Sebastian) 
 
 0.4.4 (2015-03-14)
 ------------------
