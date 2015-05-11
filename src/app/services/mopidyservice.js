@@ -146,7 +146,7 @@ angular.module('moped.mopidy', [])
       playTrack: function(track, surroundingTracks) {
         var self = this;
 
-        // Check if a playlist change is required. If not cust change the track.
+        // Check if a playlist change is required. If not just change the track.
         if (self.currentTlTracks.length > 0) {
           var trackUris = _.pluck(surroundingTracks, 'uri');
           var currentTrackUris = _.map(self.currentTlTracks, function(tlTrack) {
