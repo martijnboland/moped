@@ -35,7 +35,7 @@ angular.module('moped.home', [
   .controller('HomeCtrl', function HomeController($scope, $timeout, mopidyservice) {
     $scope.hello = "Hello Moped";
     $scope.currentTracks = [];
-    
+
     mopidyservice.getCurrentTrackList()
       .then(function(tracks) {
         $scope.currentTracks = tracks;
@@ -47,7 +47,7 @@ angular.module('moped.home', [
           $scope.$broadcast('moped:currenttrackrequested', track);
         }
       });
-    }, 500);
+    }, 1000);
 
     $scope.$on('moped:playtrackrequest', function(event, track) {
       mopidyservice.playTrack(track, $scope.currentTracks);
