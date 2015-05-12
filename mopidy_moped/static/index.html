@@ -5,16 +5,19 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
     <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <link rel="manifest" href="assets/images/manifest.json">
     <link rel="icon" sizes="192x192" href="assets/images/touch-icon.png">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
-    
-    <title ng-bind-template="{{pageTitle}} | Moped"></title>
+
+    <title ng-bind-template="{{pageTitle}} | Moped 0.6.0"></title>
 
     
-    <link rel="stylesheet" type="text/css" href="assets/css/moped-0.5.0.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/moped-0.6.0.css" />
     
 
   </head>
@@ -46,8 +49,8 @@
             </div>
             <div class="pull-right working" ng-show="working">
             </div>
-            <a href="#" ng-click="goBack" ng-show="isBackVisible">Back</a>
-            <a href="#">Home</a>
+            <a href="" ng-click="goBack()" ng-show="isBackVisible">< Back</a>
+            <a href="#/">Home</a>
           </div>
         </header>
 
@@ -68,7 +71,7 @@
     </div>
 
     
-    <script type="text/javascript" src="assets/moped-0.5.0.js"></script>
+    <script type="text/javascript" src="assets/moped-0.6.0.js"></script>
     
   </body>
 </html>

@@ -1,3 +1,10 @@
+# 0.6.0 (2015-05-12)
+
+Added list of current tracks to home screen
+Added Moped version to browser title bar
+New icon and support for favicon in windows phone
+Fixed back button behaviour in standalone mode
+
 # 0.5.0 (2015-04-05)
 
 Updated mopidy.js to 0.5.0
