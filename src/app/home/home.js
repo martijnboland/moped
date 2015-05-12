@@ -32,8 +32,27 @@ angular.module('moped.home', [
   /**
    * And of course we define a controller for our route.
    */
-  .controller('HomeCtrl', function HomeController($scope) {
+  .controller('HomeCtrl', function HomeController($scope, $timeout, mopidyservice) {
     $scope.hello = "Hello Moped";
+    $scope.currentTracks = [];
+    
+    mopidyservice.getCurrentTrackList()
+      .then(function(tracks) {
+        $scope.currentTracks = tracks;
+      });
+
+    $timeout(function() {
+      mopidyservice.getCurrentTrack().then(function(track) {
+        if (track) {
+          $scope.$broadcast('moped:currenttrackrequested', track);
+        }
+      });
+    }, 500);
+
+    $scope.$on('moped:playtrackrequest', function(event, track) {
+      mopidyservice.playTrack(track, $scope.currentTracks);
+    });
+
   })
 
   ;

@@ -12,6 +12,8 @@ angular.module('moped.widgets')
       switch (display) {
         case 'short':
           return 'widgets/track-short.tpl.html';
+        case 'medium':
+          return 'widgets/track-medium.tpl.html';
         case 'default':
           return 'widgets/track.tpl.html';
       }

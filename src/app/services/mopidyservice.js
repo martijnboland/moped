@@ -217,6 +217,9 @@ angular.module('moped.mopidy', [])
       },
       setRandom: function (isRandom) {
         return wrapMopidyFunc("mopidy.tracklist.setRandom", this)([ isRandom ]);
+      },
+      getCurrentTrackList: function () {
+        return wrapMopidyFunc("mopidy.tracklist.getTracks", this)();
       }
     };
   });
