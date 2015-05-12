@@ -85,7 +85,7 @@ angular.module('moped', [
   };
 
   $scope.goBack = function() {
-    $window.history.go(-1);
+    $window.history.back();
     return false;
   };
 
