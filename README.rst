@@ -78,6 +78,7 @@ Changelog
 =========
 
 0.6.0 (2015-05-12)
+------------------
 
 Added list of current tracks to home screen
 Added Moped version to browser title bar
