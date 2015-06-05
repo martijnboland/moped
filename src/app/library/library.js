@@ -25,7 +25,9 @@ angular.module('moped.library', [
   }
 
   $scope.$on('mopidy:state:online', function() {
-    loadLibraryDirectories();
+    // Load directories when going online, but wait a little, so other commands like obtaining playback state etc
+    // can be executed before this one. 
+    setTimeout(loadLibraryDirectories, 200); 
   });
 })
 
