@@ -96,7 +96,7 @@ angular.module('moped.mopidy', [])
         this.start();
       },
       getPlaylists: function() {
-        return wrapMopidyFunc("mopidy.playlists.getPlaylists", this)();
+        return wrapMopidyFunc("mopidy.playlists.asList", this)();
       },
       getPlaylist: function(uri) {
         return wrapMopidyFunc("mopidy.playlists.lookup", this)({ uri: uri });
