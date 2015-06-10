@@ -71,9 +71,7 @@ angular.module('moped.playlists', [
   $scope.playlists = [];
 
   $scope.$on('mopidy:state:online', function() {
-    // Load playlists when going online, but wait a little, so other commands like obtaining playback state etc
-    // can be executed before this one. 
-    setTimeout(loadPlaylists, 200); 
+    loadPlaylists(); 
   });
 
   $scope.$on('mopidy:event:playlistsLoaded', function() {
@@ -90,7 +88,7 @@ angular.module('moped.playlists', [
 
   $scope.playlist = {};
  
-  setTimeout(loadPlaylist, 300);
+  loadPlaylist();
 
   $scope.$on('moped:playtrackrequest', function(event, track) {
     mopidyservice.playTrack(track, $scope.playlist.tracks);
