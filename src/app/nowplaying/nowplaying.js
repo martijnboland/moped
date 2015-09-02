@@ -129,7 +129,7 @@ angular.module('moped.nowplaying', [
   function seek(sliderValue) {
     if ($scope.currentTrackLength > 0) {
       var milliSeconds = ($scope.currentTrackLength / 100) * sliderValue;
-      mopidyservice.seek(milliSeconds);      
+      mopidyservice.seek(Math.round(milliSeconds));      
     }
   }
 
