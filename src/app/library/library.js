@@ -42,10 +42,6 @@ angular.module('moped.library', [
         item.fullName = $scope.container.name + '/' + item.name;
         $scope.directories.push(item);
       }
-      else if (item.type === 'playlist') {
-        item.fullName = $scope.container.name + '/' + item.name;
-        $scope.playlists.push(item);
-      }
       else if (item.type === 'track') {
         (
           function(trackIndex) {
@@ -59,6 +55,10 @@ angular.module('moped.library', [
             });
           }(currentTrackIndex++)
         );
+      }
+      else { // container
+        item.fullName = $scope.container.name + '/' + item.name;
+        $scope.playlists.push(item);
       }
     });
   }, console.error.bind(console));
