@@ -1,3 +1,8 @@
+# 0.6.2 (2015-09-11)
+
+- Fixed seek issue with Mopidy (#55)
+- Browsing now supports all ref types (#54, #56)
+
 # 0.6.1 (2015-06-10)
 
 - Optimized loading of playlists
