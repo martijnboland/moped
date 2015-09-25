@@ -1,3 +1,8 @@
+# 0.6.3 (2015-09-25)
+
+- Fixed rescaling issue on iOS 9 when using left menu
+- Improved experience on iOS by removing hover effect on the playback buttons.
+
 # 0.6.2 (2015-09-11)
 
 - Fixed seek issue with Mopidy (#55)

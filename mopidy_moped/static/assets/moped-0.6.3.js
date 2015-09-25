@@ -1,5 +1,5 @@
 /**
- * moped - v0.6.2 - 2015-09-11
+ * moped - v0.6.3 - 2015-09-25
  * https://github.com/martijnboland/moped
  *
  * Copyright (c) 2015 Martijn Boland
