@@ -10,3 +10,4 @@ node_modules/
 vendor/*
 !vendor/mopidy
 !vendor/bootstrap-slider
+.DS_Store
