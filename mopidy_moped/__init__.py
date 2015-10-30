@@ -4,7 +4,7 @@ import os
 
 from mopidy import config, ext
 
-__version__ = '0.6.3'
+__version__ = '0.6.4'
 
 class MopedExtension(ext.Extension):
     dist_name = 'Mopidy-Moped'
