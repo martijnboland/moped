@@ -77,6 +77,11 @@ Project resources
 Changelog
 =========
 
+0.6.4 (2015-10-28)
+------------------
+
+- Fixed navigation issue on iOS 9 when running from start screen (using UIWebView)
+
 0.6.3 (2015-09-25)
 ------------------
 
