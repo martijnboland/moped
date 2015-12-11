@@ -1,6 +1,6 @@
 {
   "name": "moped",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "devDependencies": {
     "angular": "~1.4.7",
     "angular-mocks": "~1.4.7",
