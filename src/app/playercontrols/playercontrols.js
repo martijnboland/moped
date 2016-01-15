@@ -16,6 +16,7 @@ angular.module('moped.playercontrols', [
 
   $scope.$on('mopidy:event:playbackStateChanged', function(event, data) {
     $scope.isPlaying = data.new_state === 'playing';
+    $scope.$apply();
   });
 
   $scope.$on('mopidy:state:online', function() {
@@ -52,6 +53,10 @@ angular.module('moped.playercontrols', [
 
   $scope.next = function() {
     mopidyservice.next();
+  };
+  
+  $scope.stop = function() {
+    mopidyservice.stopPlayback();
   };
 
   $scope.toggleRandom = function () {

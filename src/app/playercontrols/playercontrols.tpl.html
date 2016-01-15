@@ -1,6 +1,7 @@
 <ul class="list-inline" ng-controller="PlayerControlsCtrl">
   <li><a href="" class="glyphicon glyphicon-fast-backward" role="button" ng-click="previous()"></a></li>
   <li><a href="" class="glyphicon" ng-class="{ 'glyphicon-play': ! isPlaying, 'glyphicon-pause': isPlaying }" ng-click="play()" role="button"></a></li>
+  <li><a href="" class="glyphicon glyphicon-stop" role="button" ng-click="stop()"></a></li>
   <li><a href="" class="glyphicon glyphicon-fast-forward" role="button" ng-click="next()"></a></li>
   <li>
     <input type="text" class="volume-slider" name="volume" moped-slider="{ min: 0, max: 100, step: 1, selection: 'before', tooltip: 'hide' }" slider-value="volume" />
