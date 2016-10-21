@@ -21,31 +21,8 @@
     </div>
   </div>
 </form>
+<br>
 <p>
-or
+  Alternatively, you can use the tunein mopidy plugin to listen to radio stations, see 
+  <a href="https://github.com/kingosticks/mopidy-tunein">https://github.com/kingosticks/mopidy-tunein</a>.
 </p>
-<form role="form">
-  <label for="searchQuery">Find Radio streams (experimental)</label>
-  <div class="form-group row">
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="searchQuery" ng-model="searchQuery">
-    </div>
-    <div class="col-sm-4">
-      <button class="btn btn-primary" ng-click="findStream()">Find</button>
-    </div>
-  </div>
-</form>
-<div class="list-group">
-  <div class="list-group-item row" ng-repeat="searchResult in searchResults">
-    <h4 class="col-xs-6 list-group-item-heading">{{searchResult.name}}</h4>
-    <div class="col-xs-3">{{searchResult.country}}</div>
-    <div class="col-xs-3">
-      <button class="btn btn-default" ng-click="playStream(searchResult.name, searchResult.streamurl)">Play</button>
-    </div>
-    <div class="col-xs-9 hidden-xs">
-      <a ng-href="{{searchResult.website}}">{{searchResult.website}}</a> 
-    </div>
-    <div class="col-xs-3 hidden-xs">{{searchResult.bitrate}}</div>
-  </div>
-</div>
-<p>Search powered by http://dirble.com & http://whateverorigin.org</p>

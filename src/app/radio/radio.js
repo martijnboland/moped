@@ -4,8 +4,6 @@ angular.module('moped.radio', [
 ])
 
 .factory('radioservice', function($http, $window) {
-  var DIRBLE_API_KEY= '58617094d08a7c1699efe88cbde26467901cbd19';
-  var DIRBLE_API_ENDPOINT = 'http://api.dirble.com/v1/';
 
   function getStations() {
     var stationsFromStorage = $window.localStorage['stations'];
@@ -57,17 +55,6 @@ angular.module('moped.radio', [
       });
       storeStations(stations);
       callback(null, stationName);
-    },
-    findStations: function(searchQuery, callback) {
-      var searchUrl = DIRBLE_API_ENDPOINT + 'search/apikey/' + DIRBLE_API_KEY + '/search/' + searchQuery + '/count/100';
-
-      $http.jsonp('http://whateverorigin.org/get?url=' + encodeURIComponent(searchUrl) + '&callback=JSON_CALLBACK')
-        .success(function(data) {
-          callback(null, data.contents);
-        })
-        .error(function(data, status) {
-          callback({ message: status + ', ' + data }, null);
-        });
     }
 
   };
@@ -159,25 +146,6 @@ angular.module('moped.radio', [
         }
       });
     }
-  };
-
-  $scope.findStream = function() {
-      
-    document.activeElement.blur();
-
-    $scope.searchResults.splice(0, $scope.searchResults.length);
-    radioservice.findStations($scope.searchQuery, function(err, stations) {
-      if (err) {
-        alert(err.message);
-      }
-      else {
-        _.forEach(stations, function(station) {
-          if (station.status == 1) {
-            $scope.searchResults.push(station);
-          }
-        });
-      }
-    });
   };
 
   $scope.playStream = function(name, streamUri) {
