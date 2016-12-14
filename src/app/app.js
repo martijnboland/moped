@@ -16,7 +16,7 @@ angular.module('moped', [
   'templates-common'
 ])
 
-.config(function ($provide) {
+.config(function ($provide, $locationProvider) {
 
   // Decorator for promises so the ui knows when one or more promises are pending.
   $provide.decorator('$q', ['$delegate', '$rootScope', function($delegate, $rootScope) {
@@ -38,6 +38,8 @@ angular.module('moped', [
     };
     return $q;
   }]);
+
+  $locationProvider.hashPrefix('');
 })
 
 .run(function run () {

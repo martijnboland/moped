@@ -77,6 +77,12 @@ Project resources
 Changelog
 =========
 
+0.7.0 (2016-10-21)
+------------------
+
+- Added stop button in player controls (#45)
+- Removed (experimental) radio station search
+
 0.6.4 (2015-10-28)
 ------------------
 
