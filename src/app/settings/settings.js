@@ -21,7 +21,7 @@ angular.module('moped.settings', [
 
     $scope.saveSettings = function() {
       if (window.localStorage) {
-        if ($scope.settings.mopidyUrl !== '' && $scope.settings.mopidyUrl !== null) {
+        if ($scope.settings.mopidyUrl) {
           localStorage['moped.mopidyUrl'] = $scope.settings.mopidyUrl;
         }
         else {
