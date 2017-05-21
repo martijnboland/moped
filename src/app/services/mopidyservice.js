@@ -123,7 +123,11 @@ angular.module('moped.mopidy', [])
         return wrapMopidyFunc("mopidy.library.lookup", this)({ uri: uri });
       },
       search: function(query) {
-        return wrapMopidyFunc("mopidy.library.search", this)({ any : [ query ] });
+        var queryElements = query.match(/(".*?"|[^"\s]+)+(?=\s*|\s*$)/g);
+        queryElements = queryElements.map(function (el) {
+          return el.replace(/"/g, '');
+        });
+        return wrapMopidyFunc("mopidy.library.search", this)({ any : queryElements });
       },
       getCurrentTrack: function() {
         return wrapMopidyFunc("mopidy.playback.getCurrentTrack", this)();
