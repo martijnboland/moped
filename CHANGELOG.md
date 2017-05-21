@@ -1,3 +1,8 @@
+# 0.7.1 (2017-05-21)
+
+- Fixed search by sending individual arguments as array, except when surrounded with double quotes (#69)
+- Fixed issue where mopidy server url was set to undefined in LocalStorage when leaving the field empty (#53)
+
 # 0.7.0 (2016-10-21)
 
 - Added stop button in player controls (#45)
