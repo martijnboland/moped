@@ -28,17 +28,19 @@ angular.module('moped.lastfm', [])
       });
     },
     getAlbumImage: function(album, size, callback) {
-      lastfm.album.getInfo({artist: album.artists[0].name, album: album.name}, {
-        success: function(data){
-          var img = _.find(data.album.image, { size: size });
-          if (img !== undefined) {
-            callback(null, img['#text']);
+      if (album.artists && album.artists.length > 0) {
+        lastfm.album.getInfo({artist: album.artists[0].name, album: album.name}, {
+          success: function(data){
+            var img = _.find(data.album.image, { size: size });
+            if (img !== undefined) {
+              callback(null, img['#text']);
+            }
+          }, error: function(code, message){
+              console.log('Error #'+code+': '+message);
+              callback({ code: code, message: message}, null);
           }
-        }, error: function(code, message){
-            console.log('Error #'+code+': '+message);
-            callback({ code: code, message: message}, null);
-        }
-      });
+        });
+      }
 		},
     getArtistInfo: function(artistName, callback) {
       lastfm.artist.getInfo({artist: artistName}, {
