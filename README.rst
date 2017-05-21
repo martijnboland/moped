@@ -2,7 +2,7 @@
 Mopidy-Moped
 ************
 
-Moped is response HTML5 + JavaScript client for the `Mopidy <http://www.mopidy.com/>`_ music server.
+Moped is a responsive HTML5 + JavaScript client for the `Mopidy <http://www.mopidy.com/>`_ music server.
 
 .. image:: https://github.com/martijnboland/moped/raw/master/screenshots/moped-all-720.png?raw=true
 
